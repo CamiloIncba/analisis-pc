@@ -36,49 +36,49 @@
       "id": "resumen",
       "tag": "Resumen",
       "title": "Las cinco opciones",
-      "subtitle": "Precio de la torre completa en pesos chilenos. No incluye monitor, teclado, mouse ni Windows; el monitor recomendado va aparte en cada gama.",
-      "columns": 3,
+      "subtitle": "De menor a mayor rendimiento. Precio de la torre completa en pesos chilenos, sin monitor, teclado, mouse ni Windows; el monitor recomendado va aparte en cada gama.",
+      "columns": 5,
       "cta": "Ver detalle",
       "items": [
         {
+          "image": "thinkpad-t495s.jpg",
+          "alt": "Lenovo ThinkPad T495s",
+          "title": "1 · Seguir con el notebook · $0",
+          "desc": "El ThinkPad T495s actual, con sus límites para WoW Forever.",
+          "href": "#notebook"
+        },
+        {
           "image": "gabinete-entrada.jpg",
           "alt": "Gabinete Cougar MX110",
-          "title": "1 · Gama de entrada · $796.050",
+          "title": "2 · Gama de entrada · $796.050",
           "desc": "Para World of Warcraft a más de 60 FPS en 1080p.",
           "href": "#entrada"
         },
         {
           "image": "gabinete-media.jpg",
           "alt": "Gabinete Antec VCX300",
-          "title": "2 · Gama media · $1.502.785",
+          "title": "3 · Gama media · $1.502.785",
           "desc": "Juegos AAA actuales a más de 144 FPS en 1080p.",
           "href": "#media"
         },
         {
           "image": "gabinete-alta.jpg",
           "alt": "Gabinete Airflow Roble Artis",
-          "title": "3 · Gama alta · $2.587.560",
+          "title": "4 · Gama alta · $2.587.560",
           "desc": "Los mismos juegos a más de 144 FPS en 1440p.",
           "href": "#alta"
         },
         {
           "image": "gabinete-arte.jpg",
           "alt": "Gabinete Hyte Y70",
-          "title": "4 · Estado del arte · $7.390.875",
+          "title": "5 · Estado del arte · $7.390.875",
           "desc": "4K con los mejores componentes disponibles en Chile.",
           "href": "#arte"
-        },
-        {
-          "image": "thinkpad-t495s.jpg",
-          "alt": "Lenovo ThinkPad T495s",
-          "title": "5 · Seguir con el notebook · $0",
-          "desc": "El ThinkPad T495s actual, con sus límites para WoW Forever.",
-          "href": "#notebook"
         }
       ],
       "quote": {
-        "text": "La tarjeta de video explica entre el 70 % y el 80 % de los FPS. El procesador pesa en 1080p y deja de ser el límite en 1440p y 4K.",
-        "who": "Regla que se repite en todos los benchmarks y que ordena las cinco opciones"
+        "text": "La tarjeta de video es la que hace casi todo el trabajo: de ella salen 7 u 8 de cada 10 cuadros por segundo. El procesador importa cuando se juega en 1080p; en 1440p y 4K ya casi no se nota.",
+        "who": "Con esta regla se ordenaron las cinco opciones"
       }
     },
     {
@@ -177,8 +177,63 @@
     {
       "type": "table",
       "tone": "light",
+      "id": "notebook",
+      "tag": "Opción 1 · Seguir con el notebook · $0",
+      "title": "Lenovo ThinkPad T495s, el equipo actual",
+      "subtitle": "Ningún benchmark de este análisis cubre este notebook, así que lo que sigue es una estimación a partir de su potencia relativa: sus gráficos integrados Vega 10 rinden cerca de la mitad que los integrados del Ryzen 5 8500G, que sí se midieron (Counter Strike 2 sobre 100 FPS en calidad media y Battlefield 6 en 50 FPS en baja), y una fracción pequeña de la RX 7600 de la gama de entrada.",
+      "headers": [
+        "Aspecto",
+        "Qué tiene",
+        "Qué significa para WoW"
+      ],
+      "rows": [
+        [
+          "Procesador",
+          "AMD Ryzen 7 3700U (4 núcleos, 2019, diseñado para bajo consumo)",
+          "Cumple en mundo abierto; se queda corto en raids y ciudades llenas."
+        ],
+        [
+          "Gráficos",
+          "Radeon Vega 10 integrados en el procesador",
+          "WoW actual en 1080p con calidad baja a media (preset 2 a 3): 40 a 60 FPS en mundo abierto y bajo 30 FPS en raids. Estimación, sin benchmark propio."
+        ],
+        [
+          "Memoria",
+          "16 GB DDR4 soldados",
+          "Suficiente para WoW; sin posibilidad de ampliar."
+        ],
+        [
+          "Pantalla",
+          "14\" 1080p 60 Hz",
+          "Tope de 60 FPS en pantalla; un monitor externo no cambia la potencia."
+        ],
+        [
+          "Temperatura",
+          "Chasis delgado de 16 mm",
+          "En sesiones largas baja la velocidad para no sobrecalentarse y los FPS caen."
+        ],
+        [
+          "WoW Forever",
+          "Mayor exigencia gráfica prevista",
+          "La experiencia bajaría a calidad mínima o 720p."
+        ],
+        [
+          "Upgrade",
+          "Solo el SSD se puede cambiar",
+          "Sin camino de mejora: ni gráficos ni memoria ni procesador."
+        ],
+        [
+          "**Costo**",
+          "",
+          "**$0**, ya está en casa. Útil como respaldo o para jugar fuera; la gama de entrada ($796.050) lo supera por un margen muy amplio."
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "tone": "light",
       "id": "entrada",
-      "tag": "Opción 1 · Gama de entrada · $796.050",
+      "tag": "Opción 2 · Gama de entrada · $796.050",
       "title": "World of Warcraft a más de 60 FPS en 1080p",
       "subtitle": "WoW exige poco de la tarjeta de video y bastante de un núcleo del procesador en ciudades y raids. Ningún benchmark cubre WoW, así que el equipo se dimensionó con juegos más pesados medidos en esta misma plataforma: con Ryzen 5 5500 y RX 7600 en 1080p ultra, Red Dead Redemption 2 promedia 101 FPS, God of War Ragnarok 95 FPS y Battlefield 6 109 FPS. Un juego con el perfil de WoW queda muy por sobre 60 FPS en calidad alta; en raids el límite lo pone el procesador.",
       "headers": [
@@ -248,7 +303,7 @@
     {
       "type": "table",
       "id": "entrada-fps",
-      "tag": "Opción 1 · rendimiento medido",
+      "tag": "Opción 2 · rendimiento medido",
       "title": "Benchmarks con Ryzen 5 5500 y RX 7600",
       "subtitle": "1080p, calidad ultra, FSR calidad con generación de frames y trazado de rayos activo. FPS promedio y 1 % low (los peores momentos).",
       "headers": [
@@ -312,7 +367,7 @@
       "type": "table",
       "tone": "light",
       "id": "media",
-      "tag": "Opción 2 · Gama media · $1.502.785",
+      "tag": "Opción 3 · Gama media · $1.502.785",
       "title": "Juegos AAA a más de 144 FPS en 1080p",
       "subtitle": "Para sostener 144 FPS en Battlefield 6 o Red Dead Redemption 2 en 1080p con calidad alta o ultra hace falta una tarjeta de la clase RX 9070 GRE y un procesador AM5 actual. La RX 9060 XT de 8 GB, un escalón más abajo, llega a 172 FPS en Doom The Dark Ages y 231 FPS en Delta Force, pero cae a 91 FPS en Expedition 33 y 52 FPS en Spider-Man 2 por falta de memoria de video. Baldur's Gate 3 depende del procesador en su acto final, por eso un Ryzen 7000 de 5,3 GHz. GTA 6 aún no tiene versión de PC ni requisitos publicados; el socket AM5 y la fuente de 750 W dejan margen para absorberlo.",
       "headers": [
@@ -388,7 +443,7 @@
     {
       "type": "table",
       "id": "media-fps",
-      "tag": "Opción 2 · rendimiento medido",
+      "tag": "Opción 3 · rendimiento medido",
       "title": "Benchmarks con la RX 9070 GRE",
       "subtitle": "1440p, calidad ultra, FSR 4 calidad con generación de frames, con Ryzen 7 9850X3D. En 1080p estos valores suben y el límite pasa a ser el procesador.",
       "headers": [
@@ -448,7 +503,7 @@
       "type": "table",
       "tone": "light",
       "id": "alta",
-      "tag": "Opción 3 · Gama alta · $2.587.560",
+      "tag": "Opción 4 · Gama alta · $2.587.560",
       "title": "Juegos AAA a más de 144 FPS en 1440p",
       "subtitle": "Este objetivo se midió directamente con la RX 9070 XT y un Ryzen 5 7600: 270 FPS en Battlefield 6, 242 FPS en God of War Ragnarok, 244 FPS en The Last of Us Part II y 201 FPS en Horizon Forbidden West, todo en 1440p ultra con FSR y generación de frames. Red Dead Redemption 2 queda en 123 FPS en ultra (no tiene generación de frames) y supera los 144 FPS en calidad alta. Los únicos títulos bajo 100 FPS son los que usan path tracing, que ninguna tarjeta por debajo de la RTX 5080 mueve a 144 FPS. El Ryzen 7 7800X3D mejora los mínimos y hace que Baldur's Gate 3 y los competitivos escalen a 144 FPS en todo momento.",
       "headers": [
@@ -524,7 +579,7 @@
     {
       "type": "table",
       "id": "alta-fps",
-      "tag": "Opción 3 · rendimiento medido",
+      "tag": "Opción 4 · rendimiento medido",
       "title": "Benchmarks con RX 9070 XT y Ryzen 5 7600",
       "subtitle": "Calidad ultra en cada juego, FSR y generación de frames activos. FPS promedio en 1440p y, como referencia, en 2160p (4K).",
       "headers": [
@@ -594,7 +649,7 @@
       "type": "table",
       "tone": "light",
       "id": "arte",
-      "tag": "Opción 4 · Estado del arte · $7.390.875",
+      "tag": "Opción 5 · Estado del arte · $7.390.875",
       "title": "4K con lo mejor que se vende en Chile",
       "subtitle": "La única tarjeta que promedia sobre 144 FPS en 4K es la RTX 5090: 151 FPS de media en 15 juegos, frente a 112 FPS de la RTX 4090 y 101 FPS de la RTX 5080. En Cyberpunk 4K con RT ultra da 80 FPS y con DLSS 4 multiframe supera los 200 FPS. El Ryzen 7 9850X3D es hoy el procesador más rápido para juegos en todos los benchmarks; a 4K la diferencia con un 7800X3D es de 2 % a 6 %, pero en esta gama el objetivo es tener los mejores mínimos. La memoria va a 48 GB DDR5-6000, el punto óptimo de AM5, y el almacenamiento a 4 TB PCIe 5.0.",
       "headers": [
@@ -670,7 +725,7 @@
     {
       "type": "table",
       "id": "arte-fps",
-      "tag": "Opción 4 · rendimiento medido",
+      "tag": "Opción 5 · rendimiento medido",
       "title": "Benchmarks en 4K",
       "subtitle": "FPS promedio y 1 % low con RTX 5090, RTX 4090 y RTX 5080.",
       "headers": [
@@ -726,66 +781,11 @@
     },
     {
       "type": "table",
-      "tone": "light",
-      "id": "notebook",
-      "tag": "Opción 5 · Seguir con el notebook · $0",
-      "title": "Lenovo ThinkPad T495s, el equipo actual",
-      "subtitle": "Ningún benchmark de este análisis cubre este notebook, así que lo que sigue es una estimación a partir de su potencia relativa: sus gráficos integrados Vega 10 rinden cerca de la mitad que los integrados del Ryzen 5 8500G, que sí se midieron (Counter Strike 2 sobre 100 FPS en calidad media y Battlefield 6 en 50 FPS en baja), y una fracción pequeña de la RX 7600 de la gama de entrada.",
-      "headers": [
-        "Aspecto",
-        "Qué tiene",
-        "Qué significa para WoW"
-      ],
-      "rows": [
-        [
-          "Procesador",
-          "AMD Ryzen 7 3700U (4 núcleos, 2019, diseñado para bajo consumo)",
-          "Cumple en mundo abierto; se queda corto en raids y ciudades llenas."
-        ],
-        [
-          "Gráficos",
-          "Radeon Vega 10 integrados en el procesador",
-          "WoW actual en 1080p con calidad baja a media (preset 2 a 3): 40 a 60 FPS en mundo abierto y bajo 30 FPS en raids. Estimación, sin benchmark propio."
-        ],
-        [
-          "Memoria",
-          "16 GB DDR4 soldados",
-          "Suficiente para WoW; sin posibilidad de ampliar."
-        ],
-        [
-          "Pantalla",
-          "14\" 1080p 60 Hz",
-          "Tope de 60 FPS en pantalla; un monitor externo no cambia la potencia."
-        ],
-        [
-          "Temperatura",
-          "Chasis delgado de 16 mm",
-          "En sesiones largas baja la velocidad para no sobrecalentarse y los FPS caen."
-        ],
-        [
-          "WoW Forever",
-          "Mayor exigencia gráfica prevista",
-          "La experiencia bajaría a calidad mínima o 720p."
-        ],
-        [
-          "Upgrade",
-          "Solo el SSD se puede cambiar",
-          "Sin camino de mejora: ni gráficos ni memoria ni procesador."
-        ],
-        [
-          "**Costo**",
-          "",
-          "**$0**, ya está en casa. Útil como respaldo o para jugar fuera; la gama de entrada ($796.050) lo supera por un margen muy amplio."
-        ]
-      ]
-    },
-    {
-      "type": "table",
       "tone": "dark",
       "id": "upgrade",
       "tag": "Camino de actualización",
       "title": "¿Hasta dónde se puede hacer upgrade en el futuro?",
-      "subtitle": "AM4 con DDR4 es la entrada más barata, pero el procesador tiene techo y la memoria DDR4 ya no recibe nuevos productos. AM5 con DDR5 tiene actualización de procesador confirmada por AMD hasta 2027 o más, por eso las opciones 2, 3 y 4 comparten socket y escalan sin cambiar placa ni memoria.",
+      "subtitle": "AM4 con DDR4 es la entrada más barata, pero el procesador tiene techo y la memoria DDR4 ya no recibe nuevos productos. AM5 con DDR5 tiene actualización de procesador confirmada por AMD hasta 2027 o más, por eso las opciones 3, 4 y 5 comparten socket y escalan sin cambiar placa ni memoria.",
       "headers": [
         "Opción",
         "Siguiente tarjeta de video",
@@ -795,39 +795,39 @@
       ],
       "rows": [
         [
-          "**1 · Entrada** (AM4, DDR4)",
+          "**1 · Notebook**",
+          "No admite tarjeta de video.",
+          "No se puede cambiar.",
+          "Soldada, no se amplía.",
+          "Cualquier mejora pasa por comprar un PC."
+        ],
+        [
+          "**5 · Entrada** (AM4, DDR4)",
           "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0, comprobado suficiente incluso para una 9070 XT.",
           "Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de procesador conviene hacerlo cambiando de plataforma.",
           "Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.",
           "Cuando se quiera un procesador superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete."
         ],
         [
-          "**2 · Media** (AM5, B840M)",
-          "RX 9070 XT ($954.990) con la misma fuente de 750 W; RTX 5070 Ti ($1.163.990) o RTX 5080 ($1.766.930) con fuente de 850 W.",
-          "Ryzen 7 7800X3D ($429.990) o Ryzen 7 9850X3D ($549.900), previa actualización de BIOS. Zen 6 se anunció para AM5.",
-          "Segundo módulo de 16 GB DDR5-5600 ($239.995) para 32 GB.",
-          "Nada en el horizonte de 3 a 4 años."
+          "**5 · Entrada** (AM4, DDR4)",
+          "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0, comprobado suficiente incluso para una 9070 XT.",
+          "Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de procesador conviene hacerlo cambiando de plataforma.",
+          "Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.",
+          "Cuando se quiera un procesador superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete."
         ],
         [
-          "**3 · Alta** (AM5, X870)",
-          "RTX 5080 ($1.766.930) con la fuente de 850 W; RTX 5090 ($4.269.205) exige fuente de 1.000 a 1.200 W.",
-          "Ryzen 7 9850X3D ($549.900) o Ryzen 9 9950X3D ($776.990).",
-          "Kit de 2 x 32 GB ($1.191.343) para 64 GB.",
-          "Nada; la placa cubre GPU y SSD de próxima generación."
+          "**5 · Entrada** (AM4, DDR4)",
+          "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0, comprobado suficiente incluso para una 9070 XT.",
+          "Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de procesador conviene hacerlo cambiando de plataforma.",
+          "Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.",
+          "Cuando se quiera un procesador superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete."
         ],
         [
-          "**4 · Estado del arte** (AM5, X870E)",
-          "Próxima generación Nvidia o AMD, con la fuente de 1.200 W ya dimensionada.",
-          "Cualquier Ryzen AM5 futuro (Zen 6) con actualización de BIOS.",
-          "96 GB (2 x 48) o 128 GB (4 x 32).",
-          "Nada; cuatro M.2, USB4 y WiFi 7 ya incluidos."
-        ],
-        [
-          "**5 · Notebook**",
-          "No admite tarjeta de video.",
-          "No se puede cambiar.",
-          "Soldada, no se amplía.",
-          "Cualquier mejora pasa por comprar un PC."
+          "**5 · Entrada** (AM4, DDR4)",
+          "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0, comprobado suficiente incluso para una 9070 XT.",
+          "Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de procesador conviene hacerlo cambiando de plataforma.",
+          "Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.",
+          "Cuando se quiera un procesador superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete."
         ]
       ],
       "note": "**Orden de actualización recomendado:** primero la tarjeta de video (explica 70 % a 80 % de los FPS), después el procesador, luego RAM y almacenamiento, y al final placa y fuente. Al cambiar de tarjeta conviene revisar el largo máximo del gabinete (todos los elegidos admiten tarjetas de 360 mm o más) y la potencia de la fuente."
@@ -840,76 +840,76 @@
       "title": "Las cinco opciones lado a lado",
       "headers": [
         "",
-        "1 · Entrada",
-        "2 · Media",
-        "3 · Alta",
-        "4 · Estado del arte",
-        "5 · Notebook"
+        "1 · Notebook",
+        "2 · Entrada",
+        "3 · Media",
+        "4 · Alta",
+        "5 · Estado del arte"
       ],
       "rows": [
         [
           "Total torre",
+          "$0",
           "$796.050",
           "$1.502.785",
           "$2.587.560",
-          "$7.390.875",
-          "$0"
+          "$7.390.875"
         ],
         [
           "Con monitor sugerido",
+          "$0",
           "$875.950",
           "$1.595.685",
           "$2.732.550",
-          "$8.290.865",
-          "$0"
+          "$8.290.865"
         ],
         [
           "WoW en 1080p",
+          "40 a 60 FPS en calidad baja a media (estimado)",
           "Más de 60 FPS en calidad alta",
           "Más de 144 FPS",
           "Más de 144 FPS, también en 1440p",
-          "Más de 144 FPS en 4K",
-          "40 a 60 FPS en calidad baja a media (estimado)"
+          "Más de 144 FPS en 4K"
         ],
         [
           "Plataforma",
+          "Notebook 2019",
           "AM4, DDR4",
           "AM5, DDR5",
           "AM5, DDR5",
-          "AM5, DDR5",
-          "Notebook 2019"
+          "AM5, DDR5"
         ],
         [
           "Memoria de video",
+          "Compartida",
           "8 GB",
           "12 GB",
           "16 GB",
-          "32 GB",
-          "Compartida"
+          "32 GB"
         ],
         [
           "RAM",
           "16 GB",
           "16 GB",
+          "16 GB",
           "32 GB",
-          "48 GB",
-          "16 GB"
+          "48 GB"
         ],
         [
           "Fuente",
+          "Cargador 65 W",
           "650 W Gold",
           "750 W Gold",
           "850 W Gold",
-          "1200 W Gold ATX 3.1",
-          "Cargador 65 W"
+          "1200 W Gold ATX 3.1"
         ],
         [
           "Upgrade futuro",
+          "Ninguno",
           "Hasta Ryzen 5800X3D y GPU de hasta 250 W",
           "Cualquier Ryzen 7000/9000 y GPU hasta 300 W",
           "Cualquier Ryzen 9000 y GPU hasta 360 W",
-          "Completo",
-          "Ninguno"
+          "Completo"
         ]
       ]
     },
