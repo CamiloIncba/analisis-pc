@@ -1,57 +1,74 @@
 {
   "meta": {
-    "docTitle": "Análisis de hardware para PC gaming en Chile 2026 - INCBA",
+    "docTitle": "PC gaming en Chile 2026: cuatro configuraciones con precios reales",
     "theme": "incba-marca-2026",
     "variant": "dark",
+    "themeToggle": false,
     "noindex": false,
-    "legal": "Análisis preparado por INCBA. Precios tomados de las tiendas publicadas en SoloTodo el 11 de octubre de 2026 (precio oferta, que en varias tiendas corresponde a pago con transferencia). Rendimiento medido por Juan Isaacs (Zona Technosensual) en sus videos de 2025 y 2026. Los precios y el stock cambian a diario; cada componente lleva su enlace para verificar antes de comprar."
+    "legal": "Análisis preparado por Camilo para Felipe. Precios tomados de las tiendas publicadas en SoloTodo el 11 de octubre de 2026 (precio oferta, que en varias tiendas corresponde a pago con transferencia). Rendimiento según benchmarks realizados en juegos actuales durante 2025 y 2026. Los precios y el stock cambian a diario; cada componente lleva su enlace para verificar antes de comprar."
   },
 
   "cover": {
     "logoLight": "incba-logo-light.png",
     "logoDark": "incba-logo-dark.png",
-    "badge": "Análisis de hardware",
-    "title": "PC gaming en Chile 2026",
-    "subtitle": "Cuatro configuraciones con **precios reales de tiendas chilenas** y con el rendimiento **medido juego por juego** por Zona Technosensual. De un equipo para World of Warcraft a 1080p hasta la mejor máquina 4K que se puede comprar en Chile.",
+    "badge": "Análisis de hardware · PC gaming en Chile 2026",
+    "title": "Cuatro configuraciones con precios reales de tiendas chilenas y con el rendimiento medido en diferentes juegos actuales",
+    "subtitle": "Una guía para elegir el PC antes de que salga **WoW Forever**: desde el equipo justo para World of Warcraft hasta la mejor máquina 4K que se vende en Chile, más la opción de seguir con el notebook actual.",
     "meta": [
       { "label": "Precios", "value": "SoloTodo, 11 de octubre de 2026" },
-      { "label": "Benchmarks", "value": "31 videos de Juan Isaacs, 2025 y 2026" },
-      { "label": "Preparado por", "value": "Camilo - INCBA" }
+      { "label": "Rendimiento", "value": "Benchmarks en juegos actuales, 2025 y 2026" },
+      { "label": "Preparado por", "value": "Camilo, para Felipe" }
     ],
     "scrollHint": "DESLIZA PARA VER EL ANÁLISIS"
   },
 
   "sections": [
     {
-      "type": "cards",
+      "type": "gallery",
       "tone": "light",
       "id": "resumen",
       "tag": "Resumen",
-      "title": "Las cuatro configuraciones",
-      "subtitle": "Totales de la torre completa en pesos chilenos, sin monitor, periféricos ni Windows. El monitor recomendado va aparte en cada gama.",
-      "columns": 4,
-      "cards": [
-        { "label": "1", "title": "Gama de entrada · $808.070", "desc": "World of Warcraft a 60+ FPS en 1080p. Ryzen 5 5500 + Radeon RX 7600 8 GB + 16 GB DDR4. Plataforma AM4." },
-        { "label": "2", "title": "Gama media · $1.502.785", "desc": "AAA (Battlefield 6, Baldur's Gate 3, RDR2, GTA 6) a 144+ FPS en 1080p. Ryzen 5 7600X + Radeon RX 9070 GRE 12 GB + 16 GB DDR5. Plataforma AM5." },
-        { "label": "3", "title": "Gama alta · $2.587.560", "desc": "Los mismos AAA a 144+ FPS en 1440p. Ryzen 7 7800X3D + Radeon RX 9070 XT 16 GB + 32 GB DDR5. Plataforma AM5 con X870." },
-        { "label": "4", "title": "Estado del arte · $7.390.875", "desc": "4K con lo mejor que se vende en Chile. Ryzen 7 9850X3D + GeForce RTX 5090 32 GB + 48 GB DDR5-6000. Plataforma AM5 con X870E." }
+      "title": "Las cinco opciones",
+      "subtitle": "Precio de la torre completa en pesos chilenos. No incluye monitor, teclado, mouse ni Windows; el monitor recomendado va aparte en cada gama.",
+      "columns": 3,
+      "cta": "Ver detalle",
+      "items": [
+        { "image": "gabinete-entrada.jpg", "alt": "Gabinete Cougar MX110", "title": "1 · Gama de entrada · $796.050", "desc": "Para World of Warcraft a más de 60 FPS en 1080p.", "href": "#entrada" },
+        { "image": "gabinete-media.jpg", "alt": "Gabinete Antec VCX300", "title": "2 · Gama media · $1.502.785", "desc": "Juegos AAA actuales a más de 144 FPS en 1080p.", "href": "#media" },
+        { "image": "gabinete-alta.jpg", "alt": "Gabinete Airflow Roble Artis", "title": "3 · Gama alta · $2.587.560", "desc": "Los mismos juegos a más de 144 FPS en 1440p.", "href": "#alta" },
+        { "image": "gabinete-arte.jpg", "alt": "Gabinete Hyte Y70", "title": "4 · Estado del arte · $7.390.875", "desc": "4K con los mejores componentes disponibles en Chile.", "href": "#arte" },
+        { "image": "thinkpad-t495s.jpg", "alt": "Lenovo ThinkPad T495s", "title": "5 · Seguir con el notebook · $0", "desc": "El ThinkPad T495s actual, con sus límites para WoW Forever.", "href": "#notebook" }
       ],
       "quote": {
-        "text": "La tarjeta de video explica entre el 70 % y el 80 % de los FPS. A 1440p y 4K el procesador deja de ser cuello de botella; a 1080p competitivo sí marca diferencia.",
-        "who": "Regla repetida en los videos del canal y aplicada en las cuatro gamas"
+        "text": "La tarjeta de video explica entre el 70 % y el 80 % de los FPS. El procesador pesa en 1080p y deja de ser el límite en 1440p y 4K.",
+        "who": "Regla que se repite en todos los benchmarks y que ordena las cinco opciones"
       }
     },
     {
       "type": "cards",
-      "id": "metodo",
-      "tag": "Fuentes y método",
-      "title": "De dónde salen los precios y los FPS",
-      "subtitle": "Todo el análisis se apoya en dos fuentes verificables y en reglas que el propio canal repite en cada armado.",
+      "id": "glosario",
+      "tag": "Para leer este análisis",
+      "title": "Seis conceptos y nada más",
       "columns": 3,
       "cards": [
-        { "icon": "🏷️", "title": "Precios: SoloTodo", "desc": "Snapshot del 11 de octubre de 2026 con 10 categorías de hardware y 317 tiendas. Para cada componente elegido se consultaron todas las tiendas que lo venden y se anota la más barata con stock." },
-        { "icon": "🎬", "title": "Benchmarks: Zona Technosensual", "desc": "Se revisaron los 220 videos del canal y se seleccionaron 31 de hardware de escritorio. De cada uno se leyeron los gráficos de FPS cuadro a cuadro, con promedio y 1 % low, y las condiciones de prueba." },
-        { "icon": "📐", "title": "Reglas de armado", "desc": "La GPU manda. La placa madre no agrega FPS. 16 GB de RAM alcanzan en 2026 y la ampliación a 32 GB se deja para cuando baje el precio. Fuente de 650 W para partir y 750 a 850 W para dejar margen de GPU." }
+        { "icon": "🎞️", "title": "FPS", "desc": "Cuadros por segundo. Más FPS es más fluidez. Con 60 FPS se juega bien; 144 FPS se nota en juegos rápidos." },
+        { "icon": "🎮", "title": "Tarjeta de video (GPU)", "desc": "La pieza que dibuja el juego. Es la que más FPS entrega y la más cara del equipo." },
+        { "icon": "🧠", "title": "Procesador (CPU)", "desc": "Calcula la lógica del juego. En WoW manda en ciudades y raids con mucha gente." },
+        { "icon": "🖥️", "title": "Resolución", "desc": "1080p es el estándar. 1440p y 4K se ven más nítidos y exigen una GPU más cara." },
+        { "icon": "💾", "title": "RAM y SSD", "desc": "La RAM es la memoria de trabajo; 16 GB alcanzan en 2026. El SSD guarda los juegos; 1 TB es el mínimo cómodo." },
+        { "icon": "🔌", "title": "Fuente y plataforma", "desc": "La fuente alimenta todo; se elige con margen. La plataforma (socket AM4 o AM5) define qué piezas se pueden cambiar después." }
+      ]
+    },
+    {
+      "type": "cards",
+      "id": "metodo",
+      "tag": "Fuentes",
+      "title": "De dónde salen los precios y los FPS",
+      "columns": 3,
+      "cards": [
+        { "icon": "🏷️", "title": "Precios: SoloTodo", "desc": "Comparador chileno con 317 tiendas. Para cada componente se anota la tienda más barata con stock al 11 de octubre de 2026." },
+        { "icon": "📊", "title": "Rendimiento: benchmarks", "desc": "FPS medidos en juegos actuales con cada tarjeta y procesador, en 1080p, 1440p y 4K, durante 2025 y 2026." },
+        { "icon": "📐", "title": "Reglas de armado", "desc": "La GPU manda. La placa madre no agrega FPS. 16 GB de RAM alcanzan y se amplían cuando baje el precio. Fuente con margen para cambiar la GPU." }
       ]
     },
     {
@@ -62,10 +79,10 @@
       "title": "Lo que condiciona el mercado chileno en octubre de 2026",
       "columns": 4,
       "cards": [
-        { "icon": "🧠", "title": "RAM en crisis", "desc": "16 GB DDR5-5600 cuestan $239.995 y un kit de 32 GB DDR5-5200 cuesta $499.900. En DDR4, 16 GB cuestan $104.990. La demanda de memoria HBM para centros de datos de IA y tres fabricantes que controlan los chips explican el alza." },
-        { "icon": "🎮", "title": "GPU al alza", "desc": "La RX 9070 XT que costaba $759.900 en enero parte hoy en $954.990. La RTX 5070 Ti real con stock está en $1.163.990, la RTX 5080 en $1.766.930 y la RTX 5090 más barata con tienda confirmada en $4.269.205." },
-        { "icon": "🏆", "title": "Entrada: RX 7600", "desc": "Sigue siendo la mejor relación precio/FPS del segmento según el ranking del canal (RX 7600 100 %, RTX 5050 93,9 %, RX 9050 91,6 %). La RTX 5050 cuesta $51.000 más y agrega DLSS 4 con multiframe." },
-        { "icon": "🔩", "title": "Plataformas", "desc": "AM4 con DDR4 es la vía más barata y llega hasta el Ryzen 5800X3D. AM5 tiene actualización confirmada hasta 2027 o más. LGA1851 rinde muy bien a 1080p pero no recibirá más procesadores." }
+        { "icon": "🧠", "title": "RAM en crisis", "desc": "16 GB DDR5 cuestan $239.995 y 32 GB $499.900. La demanda de memoria para centros de datos de IA disparó el precio." },
+        { "icon": "🎮", "title": "GPU al alza", "desc": "La RX 9070 XT pasó de $759.900 en enero a $954.990. La RTX 5090 más barata con tienda confirmada cuesta $4.269.205." },
+        { "icon": "🏆", "title": "Entrada: RX 7600", "desc": "Sigue siendo la mejor relación precio/FPS del segmento. La RTX 5050 cuesta $51.000 más y agrega DLSS 4." },
+        { "icon": "🔩", "title": "Plataformas", "desc": "AM4 con DDR4 es la entrada más barata. AM5 tiene actualización de procesador confirmada hasta 2027 o más." }
       ]
     },
 
@@ -73,9 +90,9 @@
       "type": "table",
       "tone": "light",
       "id": "entrada",
-      "tag": "Gama de entrada · $808.070",
-      "title": "World of Warcraft a 60+ FPS en 1080p",
-      "subtitle": "WoW exige poco de la GPU y bastante de un núcleo de CPU en ciudades y raids. El canal no prueba WoW, así que el equipo se dimensionó con los juegos más exigentes medidos en esta misma plataforma: con Ryzen 5 5500 y RX 7600 en 1080p ultra, Red Dead Redemption 2 promedia 101 FPS, God of War Ragnarok 95 y Battlefield 6 109. Un juego con el perfil de WoW queda muy por sobre 60 FPS en calidad alta; en raids el límite lo pone el procesador.",
+      "tag": "Opción 1 · Gama de entrada · $796.050",
+      "title": "World of Warcraft a más de 60 FPS en 1080p",
+      "subtitle": "WoW exige poco de la tarjeta de video y bastante de un núcleo del procesador en ciudades y raids. Ningún benchmark cubre WoW, así que el equipo se dimensionó con juegos más pesados medidos en esta misma plataforma: con Ryzen 5 5500 y RX 7600 en 1080p ultra, Red Dead Redemption 2 promedia 101 FPS, God of War Ragnarok 95 FPS y Battlefield 6 109 FPS. Un juego con el perfil de WoW queda muy por sobre 60 FPS en calidad alta; en raids el límite lo pone el procesador.",
       "headers": ["Componente", "Modelo", "Precio", "Tienda más barata"],
       "rows": [
         ["Procesador", "[AMD Ryzen 5 5500](https://www.solotodo.cl/products/137994) (6 núcleos, cooler incluido)", "$92.900", "Notebooksya!"],
@@ -84,28 +101,28 @@
         ["Tarjeta de video", "[ASUS Dual Radeon RX 7600 EVO OC 8 GB](https://www.solotodo.cl/products/270835)", "$318.900", "Sandos"],
         ["SSD", "[Kingston NV3 1 TB NVMe PCIe 4.0](https://www.solotodo.cl/products/253373)", "$151.490", "Notebooksya! / Xtreme Components"],
         ["Fuente", "[MSI MAG 650GN II 650 W 80 Plus Gold](https://www.solotodo.cl/products/394047)", "$45.900", "PC Express"],
-        ["Gabinete", "[Antec VCX300 ARGB](https://www.solotodo.cl/products/365008) (3 ventiladores, vidrio)", "$44.990", "PC Factory"],
-        ["**Total torre**", "", "**$808.070**", ""],
+        ["Gabinete", "[Cougar MX110 RGB](https://www.solotodo.cl/products/277562) (vidrio templado)", "$32.970", "MyShop"],
+        ["**Total torre**", "", "**$796.050**", ""],
         ["Monitor (aparte)", "[Gigabyte GS24F14A 24\" 1080p 175 Hz IPS](https://www.solotodo.cl/products/402413); para competitivo, [Gigabyte GS25F2A 25\" 240 Hz](https://www.solotodo.cl/products/378751) a $92.900", "$79.900", "PC Express"]
       ],
-      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5050 Windforce OC 8 GB](https://www.solotodo.cl/products/359999) a $369.990, total $859.160, con DLSS 4 multiframe. Sin tarjeta de video y con plataforma AM5: Ryzen 5 8500G ($134.990) + ASUS Prime A620M-K ($69.900) + 16 GB DDR5-4800 ($228.990), total $676.260; sus gráficos integrados mueven Counter Strike 2 sobre 100 FPS y Battlefield 6 a 50 FPS en baja, y después reciben cualquier GPU y cualquier Ryzen 7000/9000. Intel: Core i5-12400F ($164.800) + ASUS Prime H610M-K ($59.900), $82.900 más que la base AM4 con mejor margen de CPU."
+      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5050 Windforce OC 8 GB](https://www.solotodo.cl/products/359999) a $369.990, total $847.140, con DLSS 4 multiframe. Sin tarjeta de video y con plataforma AM5: Ryzen 5 8500G ($134.990) + ASUS Prime A620M-K ($69.900) + 16 GB DDR5-4800 ($228.990), total $664.240; sus gráficos integrados mueven Counter Strike 2 sobre 100 FPS y Battlefield 6 a 50 FPS en baja, y después reciben cualquier GPU y cualquier Ryzen 7000/9000. Intel: Core i5-12400F ($164.800) + ASUS Prime H610M-K ($59.900), $82.900 más que la base AM4 con mejor margen de procesador."
     },
     {
       "type": "table",
       "id": "entrada-fps",
-      "tag": "Gama de entrada · rendimiento",
-      "title": "Lo que midió el canal con Ryzen 5 5500 y RX 7600",
-      "subtitle": "1080p, calidad ultra, FSR calidad con generación de frames y trazado de rayos activo. FPS promedio y 1 % low.",
-      "headers": ["Juego", "FPS promedio", "1 % low", "Video"],
+      "tag": "Opción 1 · rendimiento medido",
+      "title": "Benchmarks con Ryzen 5 5500 y RX 7600",
+      "subtitle": "1080p, calidad ultra, FSR calidad con generación de frames y trazado de rayos activo. FPS promedio y 1 % low (los peores momentos).",
+      "headers": ["Juego", "FPS promedio", "1 % low", "Benchmark"],
       "rows": [
-        ["Red Dead Redemption 2 (FSR, sin FG)", "101", "74", "PC de 500 mil, 2025"],
-        ["Battlefield 6", "109", "65", "PC por 700 lucas"],
-        ["God of War Ragnarok", "95", "76", "PC de 500 mil, 2025"],
-        ["The Last of Us Part II", "92", "77", "PC por 700 lucas"],
-        ["Doom The Dark Ages", "101", "76", "PC por 700 lucas"],
-        ["Counter Strike 2 (alta)", "201", "110", "PC por 700 lucas"],
-        ["Valorant (alta)", "335", "112", "PC por 700 lucas"],
-        ["Spider-Man 2 con RT", "33 (71 sin RT)", "26", "PC por 700 lucas"]
+        ["Red Dead Redemption 2 (FSR, sin FG)", "101", "74", "Armado de entrada 2025"],
+        ["Battlefield 6", "109", "65", "Armado de entrada 2026"],
+        ["God of War Ragnarok", "95", "76", "Armado de entrada 2025"],
+        ["The Last of Us Part II", "92", "77", "Armado de entrada 2026"],
+        ["Doom The Dark Ages", "101", "76", "Armado de entrada 2026"],
+        ["Counter Strike 2 (alta)", "201", "110", "Armado de entrada 2026"],
+        ["Valorant (alta)", "335", "112", "Armado de entrada 2026"],
+        ["Spider-Man 2 con RT", "33 (71 sin RT)", "26", "Armado de entrada 2026"]
       ]
     },
 
@@ -113,9 +130,9 @@
       "type": "table",
       "tone": "light",
       "id": "media",
-      "tag": "Gama media · $1.502.785",
-      "title": "AAA a 144+ FPS en 1080p",
-      "subtitle": "Para sostener 144 FPS en Battlefield 6 o Red Dead Redemption 2 en 1080p con calidad alta o ultra hace falta una GPU de la clase RX 9070 GRE y un procesador AM5 actual. La RX 9060 XT de 8 GB, un escalón más abajo, llega a 172 FPS en Doom The Dark Ages y 231 en Delta Force, pero cae a 91 en Expedition 33, 69 en Assassin's Creed Shadows y 52 en Spider-Man 2 por falta de VRAM. Baldur's Gate 3 depende de la CPU en el acto 3, por eso un Ryzen 7000 de 5,3 GHz y no un AM4. GTA 6 aún no tiene versión de PC ni requisitos publicados; el socket AM5 y la fuente de 750 W dejan margen para absorberlo.",
+      "tag": "Opción 2 · Gama media · $1.502.785",
+      "title": "Juegos AAA a más de 144 FPS en 1080p",
+      "subtitle": "Para sostener 144 FPS en Battlefield 6 o Red Dead Redemption 2 en 1080p con calidad alta o ultra hace falta una tarjeta de la clase RX 9070 GRE y un procesador AM5 actual. La RX 9060 XT de 8 GB, un escalón más abajo, llega a 172 FPS en Doom The Dark Ages y 231 FPS en Delta Force, pero cae a 91 FPS en Expedition 33 y 52 FPS en Spider-Man 2 por falta de memoria de video. Baldur's Gate 3 depende del procesador en su acto final, por eso un Ryzen 7000 de 5,3 GHz. GTA 6 aún no tiene versión de PC ni requisitos publicados; el socket AM5 y la fuente de 750 W dejan margen para absorberlo.",
       "headers": ["Componente", "Modelo", "Precio", "Tienda más barata"],
       "rows": [
         ["Procesador", "[AMD Ryzen 5 7600X](https://www.solotodo.cl/products/151869) (6 núcleos, 5,3 GHz, sin cooler)", "$179.990", "Xtreme Components"],
@@ -125,18 +142,18 @@
         ["Tarjeta de video", "[Gigabyte Radeon RX 9070 GRE Gaming OC 12 GB](https://www.solotodo.cl/products/406331)", "$689.990", "DazBog Store / Progaming"],
         ["SSD", "[Kingston NV3 1 TB NVMe PCIe 4.0](https://www.solotodo.cl/products/253373)", "$151.490", "Notebooksya! / Xtreme Components"],
         ["Fuente", "[be quiet! Pure Power 12 750 W 80 Plus Gold](https://www.solotodo.cl/products/358155)", "$62.990", "Dust2"],
-        ["Gabinete", "[Antec VCX300 ARGB](https://www.solotodo.cl/products/365008)", "$44.990", "PC Factory"],
+        ["Gabinete", "[Antec VCX300 ARGB](https://www.solotodo.cl/products/365008) (3 ventiladores, vidrio)", "$44.990", "PC Factory"],
         ["**Total torre**", "", "**$1.502.785**", ""],
-        ["Monitor (aparte)", "[Gigabyte GS25F2A 25\" 1080p 240 Hz IPS](https://www.solotodo.cl/products/378751), el que el canal usó para explicar por qué 1080p sigue siendo el estándar competitivo; en 27\", [Xiaomi G27i 2026 165 Hz](https://www.solotodo.cl/products/366907) a $114.990", "$92.900", "Sandos"]
+        ["Monitor (aparte)", "[Gigabyte GS25F2A 25\" 1080p 240 Hz IPS](https://www.solotodo.cl/products/378751); en 27\", [Xiaomi G27i 2026 165 Hz](https://www.solotodo.cl/products/366907) a $114.990", "$92.900", "Sandos"]
       ],
-      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5070 Eagle OC 12 GB](https://www.solotodo.cl/products/273016) a $899.990, total $1.712.785, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: [ASUS Dual RX 9060 XT 16 GB](https://www.solotodo.cl/products/355722) a $549.990, total $1.362.785, cerca de 20 % menos que la GRE pero con 16 GB de VRAM. El 7600X cuesta $36.910 menos que el Ryzen 5 7600 con cooler y es más rápido; con el cooler elegido sigue siendo más barato."
+      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5070 Eagle OC 12 GB](https://www.solotodo.cl/products/273016) a $899.990, total $1.712.785, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: [ASUS Dual RX 9060 XT 16 GB](https://www.solotodo.cl/products/355722) a $549.990, total $1.362.785, cerca de 20 % menos que la GRE pero con 16 GB de memoria de video. El 7600X cuesta $36.910 menos que el Ryzen 5 7600 con cooler y es más rápido; con el cooler elegido sigue siendo más barato."
     },
     {
       "type": "table",
       "id": "media-fps",
-      "tag": "Gama media · rendimiento",
-      "title": "Lo que midió el canal con la RX 9070 GRE",
-      "subtitle": "1440p, calidad ultra, FSR 4 calidad con generación de frames, con Ryzen 7 9850X3D. En 1080p estos valores suben y el límite pasa a ser la CPU.",
+      "tag": "Opción 2 · rendimiento medido",
+      "title": "Benchmarks con la RX 9070 GRE",
+      "subtitle": "1440p, calidad ultra, FSR 4 calidad con generación de frames, con Ryzen 7 9850X3D. En 1080p estos valores suben y el límite pasa a ser el procesador.",
       "headers": ["Juego", "FPS promedio", "1 % low"],
       "rows": [
         ["Battlefield 6", "155", "53 (superó los 12 GB de VRAM en 1440p ultra)"],
@@ -155,9 +172,9 @@
       "type": "table",
       "tone": "light",
       "id": "alta",
-      "tag": "Gama alta · $2.587.560",
-      "title": "AAA a 144+ FPS en 1440p",
-      "subtitle": "El canal midió exactamente este objetivo con la RX 9070 XT y un Ryzen 5 7600: 270 FPS en Battlefield 6, 242 en God of War Ragnarok, 244 en The Last of Us Part II y 201 en Horizon Forbidden West, todo en 1440p ultra con FSR y generación de frames. Red Dead Redemption 2 queda en 123 FPS en ultra, que no tiene generación de frames, y supera los 144 en calidad alta. Los únicos títulos bajo 100 son los que usan path tracing, que ninguna GPU por debajo de la RTX 5080 mueve a 144 FPS. El Ryzen 7 7800X3D mejora los mínimos y es la CPU que hace que Baldur's Gate 3 y los competitivos escalen a 144+ en todo momento.",
+      "tag": "Opción 3 · Gama alta · $2.587.560",
+      "title": "Juegos AAA a más de 144 FPS en 1440p",
+      "subtitle": "Este objetivo se midió directamente con la RX 9070 XT y un Ryzen 5 7600: 270 FPS en Battlefield 6, 242 FPS en God of War Ragnarok, 244 FPS en The Last of Us Part II y 201 FPS en Horizon Forbidden West, todo en 1440p ultra con FSR y generación de frames. Red Dead Redemption 2 queda en 123 FPS en ultra (no tiene generación de frames) y supera los 144 FPS en calidad alta. Los únicos títulos bajo 100 FPS son los que usan path tracing, que ninguna tarjeta por debajo de la RTX 5080 mueve a 144 FPS. El Ryzen 7 7800X3D mejora los mínimos y hace que Baldur's Gate 3 y los competitivos escalen a 144 FPS en todo momento.",
       "headers": ["Componente", "Modelo", "Precio", "Tienda más barata"],
       "rows": [
         ["Procesador", "[AMD Ryzen 7 7800X3D](https://www.solotodo.cl/products/200671) (8 núcleos, 96 MB L3)", "$429.990", "Xtreme Components"],
@@ -169,16 +186,16 @@
         ["Fuente", "[MSI MAG A850GN PCIE5 850 W 80 Plus Gold](https://www.solotodo.cl/products/394045)", "$69.900", "PC Express"],
         ["Gabinete", "[Airflow Roble Artis Black/Wood](https://www.solotodo.cl/products/367704) (4 ventiladores, USB-C)", "$89.900", "Nice One"],
         ["**Total torre**", "", "**$2.587.560**", ""],
-        ["Monitor (aparte)", "[Samsung Odyssey G5 G53F 27\" 1440p 200 Hz IPS](https://www.solotodo.cl/products/367652); opción OLED probada por el canal, [Gigabyte MO27Q28G 27\" 280 Hz Tandem WOLED](https://www.solotodo.cl/products/378752) a $549.900", "$144.990", "Tecnomas.cl"]
+        ["Monitor (aparte)", "[Samsung Odyssey G5 G53F 27\" 1440p 200 Hz IPS](https://www.solotodo.cl/products/367652); opción OLED, [Gigabyte MO27Q28G 27\" 280 Hz Tandem WOLED](https://www.solotodo.cl/products/378752) a $549.900", "$144.990", "Tecnomas.cl"]
       ],
-      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5070 Ti Windforce OC SFF 16 GB](https://www.solotodo.cl/products/269489) a $1.163.990, total $2.796.560; con DLSS 4 y multiframe x4 entrega 280 FPS en Doom The Dark Ages con full RT y 400 en The Finals, la opción si se quiere path tracing a 144 FPS. CPU más barata: Ryzen 7 9700X ($329.990), $100.000 menos y render de video 30 % más rápido. Con un solo módulo de 16 GB DDR5-5600 el total baja a $2.327.655 y se completa después."
+      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5070 Ti Windforce OC SFF 16 GB](https://www.solotodo.cl/products/269489) a $1.163.990, total $2.796.560; con DLSS 4 y multiframe x4 entrega 280 FPS en Doom The Dark Ages con full RT y 400 FPS en The Finals, la opción si se quiere path tracing a 144 FPS. Procesador más barato: Ryzen 7 9700X ($329.990), $100.000 menos. Con un solo módulo de 16 GB DDR5-5600 el total baja a $2.327.655 y se completa después."
     },
     {
       "type": "table",
       "id": "alta-fps",
-      "tag": "Gama alta · rendimiento",
-      "title": "Lo que midió el canal con RX 9070 XT y Ryzen 5 7600",
-      "subtitle": "Calidad ultra en cada juego, FSR y generación de frames activos. FPS promedio en 1440p y, como referencia, en 2160p.",
+      "tag": "Opción 3 · rendimiento medido",
+      "title": "Benchmarks con RX 9070 XT y Ryzen 5 7600",
+      "subtitle": "Calidad ultra en cada juego, FSR y generación de frames activos. FPS promedio en 1440p y, como referencia, en 2160p (4K).",
       "headers": ["Juego", "1440p", "2160p"],
       "rows": [
         ["Battlefield 6", "270", "121"],
@@ -199,30 +216,30 @@
       "type": "table",
       "tone": "light",
       "id": "arte",
-      "tag": "Estado del arte · $7.390.875",
+      "tag": "Opción 4 · Estado del arte · $7.390.875",
       "title": "4K con lo mejor que se vende en Chile",
-      "subtitle": "La única GPU que promedia sobre 144 FPS en 4K es la RTX 5090: 151 FPS de media en 15 juegos frente a 112 de la RTX 4090 y 101 de la RTX 5080, según los gráficos que el canal reprodujo en su review de la 5080. En Cyberpunk 4K con RT ultra da 80 FPS y con DLSS 4 multiframe supera los 200. El Ryzen 7 9850X3D es hoy el procesador más rápido para juegos según todas las pruebas del canal; a 4K la diferencia con un 7800X3D es de 2 % a 6 %, pero en esta gama el objetivo es tener los mejores mínimos. La memoria va a 48 GB DDR5-6000 CL36, el punto óptimo de AM5 que el canal usa en su banco de pruebas, y el almacenamiento a 4 TB PCIe 5.0.",
+      "subtitle": "La única tarjeta que promedia sobre 144 FPS en 4K es la RTX 5090: 151 FPS de media en 15 juegos, frente a 112 FPS de la RTX 4090 y 101 FPS de la RTX 5080. En Cyberpunk 4K con RT ultra da 80 FPS y con DLSS 4 multiframe supera los 200 FPS. El Ryzen 7 9850X3D es hoy el procesador más rápido para juegos en todos los benchmarks; a 4K la diferencia con un 7800X3D es de 2 % a 6 %, pero en esta gama el objetivo es tener los mejores mínimos. La memoria va a 48 GB DDR5-6000, el punto óptimo de AM5, y el almacenamiento a 4 TB PCIe 5.0.",
       "headers": ["Componente", "Modelo", "Precio", "Tienda más barata"],
       "rows": [
         ["Procesador", "[AMD Ryzen 7 9850X3D](https://www.solotodo.cl/products/382839) (8 núcleos, 3D V-Cache 2ª gen.)", "$549.900", "Sandos"],
-        ["Cooler", "[Thermalright Frozen Magic 360 Digital ARGB V2](https://www.solotodo.cl/products/280233) (AIO 360)", "$71.990", "TYT Gamer Chile"],
-        ["Placa madre", "[Gigabyte X870E AORUS Elite WiFi 7](https://www.solotodo.cl/products/256222) (AM5, ATX, PCIe 5.0, M.2 Gen5, USB4)", "$349.990", "MegaBytes / MegaDrive"],
+        ["Cooler", "[Thermalright Frozen Magic 360 Digital ARGB V2](https://www.solotodo.cl/products/280233) (líquida 360)", "$71.990", "TYT Gamer Chile"],
+        ["Placa madre", "[Gigabyte X870E AORUS Elite WiFi 7](https://www.solotodo.cl/products/256222) (AM5, ATX, PCIe 5.0, USB4)", "$349.990", "MegaBytes / MegaDrive"],
         ["Memoria", "[Corsair Vengeance 48 GB (2 x 24) DDR5-6000 CL36](https://www.solotodo.cl/products/382889)", "$799.990", "MyShop"],
         ["Tarjeta de video", "[Gigabyte AORUS GeForce RTX 5090 Stealth Ice 32 GB](https://www.solotodo.cl/products/395177)", "$4.269.205", "Invasión Gamer (SoloTodo referencia $4.035.110)"],
-        ["SSD", "[Kingston FURY Renegade G5 4 TB PCIe 5.0](https://www.solotodo.cl/products/273935) (14.800 MB/s)", "$944.900", "Centrale"],
+        ["SSD", "[Kingston FURY Renegade G5 4 TB PCIe 5.0](https://www.solotodo.cl/products/273935)", "$944.900", "Centrale"],
         ["Fuente", "[be quiet! Pure Power 13 M 1200 W 80 Plus Gold, ATX 3.1](https://www.solotodo.cl/products/385343)", "$155.900", "Sandos"],
         ["Gabinete", "[Hyte Y70](https://www.solotodo.cl/products/259907) (panel envolvente, GPU vertical)", "$249.000", "Nice One"],
         ["**Total torre**", "", "**$7.390.875**", ""],
-        ["Monitor (aparte)", "[Samsung Odyssey OLED G8 G81SF 32\" 4K 240 Hz](https://www.solotodo.cl/products/276535), calificado por el canal como probablemente el mejor panel 4K de 32 pulgadas disponible; opción IPS [MSI MAG 321UPD 32\" 4K 144 Hz](https://www.solotodo.cl/products/407322) a $408.990", "$899.990", "Falabella, Paris y Ripley Marketplace"]
+        ["Monitor (aparte)", "[Samsung Odyssey OLED G8 G81SF 32\" 4K 240 Hz](https://www.solotodo.cl/products/276535); opción IPS [MSI MAG 321UPD 32\" 4K 144 Hz](https://www.solotodo.cl/products/407322) a $408.990", "$899.990", "Falabella, Paris y Ripley Marketplace"]
       ],
-      "note": "**Alternativas.** 4K sensato: [MSI RTX 5080 Inspire 3X OC 16 GB](https://www.solotodo.cl/products/266473) a $1.766.930, total $4.888.600; el canal la probó en Doom The Dark Ages 4K con 86 FPS nativos, 139 con DLSS calidad y FG x4 y 157 a 170 con DLSS rendimiento x4. Procesador para trabajo y juego: Ryzen 9 9950X3D ($776.990). RAM 64 GB: Kingston Fury Beast RGB 2 x 32 DDR5-5600 ($1.191.343). Almacenamiento: Kingston NV3 4 TB PCIe 4.0 ($543.990), $400.000 menos sin impacto en FPS. ASUS ROG Astral RTX 5090 OC ($5.915.232) para el modelo tope de refrigeración y silencio."
+      "note": "**Alternativas.** 4K sensato: [MSI RTX 5080 Inspire 3X OC 16 GB](https://www.solotodo.cl/products/266473) a $1.766.930, total $4.888.600; en Doom The Dark Ages 4K rinde 86 FPS nativos, 139 FPS con DLSS calidad y FG x4 y 157 a 170 FPS con DLSS rendimiento x4. Procesador para trabajo y juego: Ryzen 9 9950X3D ($776.990). RAM 64 GB: Kingston Fury Beast RGB 2 x 32 DDR5-5600 ($1.191.343). Almacenamiento: Kingston NV3 4 TB PCIe 4.0 ($543.990), $400.000 menos sin impacto en FPS."
     },
     {
       "type": "table",
       "id": "arte-fps",
-      "tag": "Estado del arte · rendimiento",
-      "title": "Referencias en 4K citadas por el canal",
-      "subtitle": "Gráficos reproducidos en la review de la RTX 5080 y mediciones propias del canal con la 5080 en Doom The Dark Ages. FPS promedio y 1 % low.",
+      "tag": "Opción 4 · rendimiento medido",
+      "title": "Benchmarks en 4K",
+      "subtitle": "FPS promedio y 1 % low con RTX 5090, RTX 4090 y RTX 5080.",
       "headers": ["Prueba", "RTX 5090", "RTX 4090", "RTX 5080"],
       "rows": [
         ["Media de 15 juegos en 4K", "151", "112", "101"],
@@ -231,7 +248,27 @@
         ["Spider-Man Remastered 4K RT", "128", "128", "128"],
         ["Alan Wake 2 1440p RT alto", "105 / 89", "89 / 78", "67 / 58"],
         ["3DMark DLSS 4K rendimiento + FG", "244,85", "171,13", "166,95"],
-        ["Doom The Dark Ages 4K (5080): nativo / DLSS calidad + FG x4 / DLSS rendimiento x4", "", "", "86 / 139 / 157 a 170"]
+        ["Doom The Dark Ages 4K: nativo / DLSS calidad + FG x4 / DLSS rendimiento x4", "", "", "86 / 139 / 157 a 170"]
+      ]
+    },
+
+    {
+      "type": "table",
+      "tone": "light",
+      "id": "notebook",
+      "tag": "Opción 5 · Seguir con el notebook · $0",
+      "title": "Lenovo ThinkPad T495s, el equipo actual",
+      "subtitle": "Ningún benchmark de este análisis cubre este notebook, así que lo que sigue es una estimación a partir de su potencia relativa: sus gráficos integrados Vega 10 rinden cerca de la mitad que los integrados del Ryzen 5 8500G, que sí se midieron (Counter Strike 2 sobre 100 FPS en calidad media y Battlefield 6 en 50 FPS en baja), y una fracción pequeña de la RX 7600 de la gama de entrada.",
+      "headers": ["Aspecto", "Qué tiene", "Qué significa para WoW"],
+      "rows": [
+        ["Procesador", "AMD Ryzen 7 3700U (4 núcleos, 2019, diseñado para bajo consumo)", "Cumple en mundo abierto; se queda corto en raids y ciudades llenas."],
+        ["Gráficos", "Radeon Vega 10 integrados en el procesador", "WoW actual en 1080p con calidad baja a media (preset 2 a 3): 40 a 60 FPS en mundo abierto y bajo 30 FPS en raids. Estimación, sin benchmark propio."],
+        ["Memoria", "16 GB DDR4 soldados", "Suficiente para WoW; sin posibilidad de ampliar."],
+        ["Pantalla", "14\" 1080p 60 Hz", "Tope de 60 FPS en pantalla; un monitor externo no cambia la potencia."],
+        ["Temperatura", "Chasis delgado de 16 mm", "En sesiones largas baja la velocidad para no sobrecalentarse y los FPS caen."],
+        ["WoW Forever", "Mayor exigencia gráfica prevista", "La experiencia bajaría a calidad mínima o 720p."],
+        ["Upgrade", "Solo el SSD se puede cambiar", "Sin camino de mejora: ni gráficos ni memoria ni procesador."],
+        ["**Costo**", "", "**$0**, ya está en casa. Útil como respaldo o para jugar fuera; la gama de entrada ($796.050) lo supera por un margen muy amplio."]
       ]
     },
 
@@ -240,16 +277,17 @@
       "tone": "dark",
       "id": "upgrade",
       "tag": "Camino de actualización",
-      "title": "Hasta dónde crece cada pack",
-      "subtitle": "AM4 con DDR4 es la entrada más barata, pero el procesador tiene techo y la memoria DDR4 ya no recibe nuevos productos. AM5 con DDR5 tiene actualización de CPU confirmada por AMD hasta 2027 o más, por eso las gamas media, alta y estado del arte comparten socket y escalan sin cambiar placa ni memoria.",
-      "headers": ["Pack", "Siguiente GPU", "Techo de CPU en la misma placa", "RAM", "Qué obliga a cambiar la plataforma"],
+      "title": "¿Hasta dónde se puede hacer upgrade en el futuro?",
+      "subtitle": "AM4 con DDR4 es la entrada más barata, pero el procesador tiene techo y la memoria DDR4 ya no recibe nuevos productos. AM5 con DDR5 tiene actualización de procesador confirmada por AMD hasta 2027 o más, por eso las opciones 2, 3 y 4 comparten socket y escalan sin cambiar placa ni memoria.",
+      "headers": ["Opción", "Siguiente tarjeta de video", "Techo de procesador en la misma placa", "RAM", "Qué obliga a cambiar la plataforma"],
       "rows": [
-        ["**Entrada** (AM4, DDR4)", "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0 x16, que el canal comprobó suficiente incluso para una 9070 XT.", "Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de CPU conviene hacerlo cambiando de plataforma.", "Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.", "Cuando se quiera una CPU superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete."],
-        ["**Media** (AM5, B840M)", "RX 9070 XT ($954.990) con la misma fuente de 750 W; RTX 5070 Ti ($1.163.990) o RTX 5080 ($1.766.930) con fuente de 850 W. PCIe 4.0 x16 y dos M.2.", "Ryzen 7 7800X3D ($429.990) o Ryzen 7 9850X3D ($549.900), previa actualización de BIOS. Zen 6 se anunció para AM5.", "Segundo módulo de 16 GB DDR5-5600 ($239.995) para 32 GB.", "Nada en el horizonte de 3 a 4 años. La placa es micro ATX y sin PCIe 5.0, que hoy no cambia los FPS."],
-        ["**Alta** (AM5, X870)", "RTX 5080 ($1.766.930) con la fuente de 850 W; RTX 5090 ($4.269.205) exige fuente de 1.000 a 1.200 W con conector 12V-2x6. PCIe 5.0 x16 y USB4.", "Ryzen 7 9850X3D ($549.900) o Ryzen 9 9950X3D ($776.990) para trabajo y juego.", "Kit de 2 x 32 GB ($1.191.343) para 64 GB; los cuatro zócalos admiten combinar con el kit actual a menor frecuencia.", "Nada; la placa cubre GPU y SSD de próxima generación."],
-        ["**Estado del arte** (AM5, X870E)", "Próxima generación Nvidia o AMD por PCIe 5.0, con la fuente de 1.200 W ya dimensionada.", "Cualquier Ryzen AM5 futuro (Zen 6) con actualización de BIOS.", "96 GB (2 x 48) o 128 GB (4 x 32) para trabajo profesional.", "Nada; cuatro M.2 (uno Gen5), USB4 y WiFi 7 ya incluidos."]
+        ["**1 · Entrada** (AM4, DDR4)", "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0, comprobado suficiente incluso para una 9070 XT.", "Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de procesador conviene hacerlo cambiando de plataforma.", "Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.", "Cuando se quiera un procesador superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete."],
+        ["**2 · Media** (AM5, B840M)", "RX 9070 XT ($954.990) con la misma fuente de 750 W; RTX 5070 Ti ($1.163.990) o RTX 5080 ($1.766.930) con fuente de 850 W.", "Ryzen 7 7800X3D ($429.990) o Ryzen 7 9850X3D ($549.900), previa actualización de BIOS. Zen 6 se anunció para AM5.", "Segundo módulo de 16 GB DDR5-5600 ($239.995) para 32 GB.", "Nada en el horizonte de 3 a 4 años."],
+        ["**3 · Alta** (AM5, X870)", "RTX 5080 ($1.766.930) con la fuente de 850 W; RTX 5090 ($4.269.205) exige fuente de 1.000 a 1.200 W.", "Ryzen 7 9850X3D ($549.900) o Ryzen 9 9950X3D ($776.990).", "Kit de 2 x 32 GB ($1.191.343) para 64 GB.", "Nada; la placa cubre GPU y SSD de próxima generación."],
+        ["**4 · Estado del arte** (AM5, X870E)", "Próxima generación Nvidia o AMD, con la fuente de 1.200 W ya dimensionada.", "Cualquier Ryzen AM5 futuro (Zen 6) con actualización de BIOS.", "96 GB (2 x 48) o 128 GB (4 x 32).", "Nada; cuatro M.2, USB4 y WiFi 7 ya incluidos."],
+        ["**5 · Notebook**", "No admite tarjeta de video.", "No se puede cambiar.", "Soldada, no se amplía.", "Cualquier mejora pasa por comprar un PC."]
       ],
-      "note": "**Orden de actualización recomendado por el canal:** primero la tarjeta de video (explica 70 % a 80 % de los FPS), después el procesador, luego RAM y almacenamiento, y al final placa y fuente. Al cambiar de GPU conviene revisar el largo máximo del gabinete (todos los elegidos admiten tarjetas de 360 mm o más) y la potencia de la fuente."
+      "note": "**Orden de actualización recomendado:** primero la tarjeta de video (explica 70 % a 80 % de los FPS), después el procesador, luego RAM y almacenamiento, y al final placa y fuente. Al cambiar de tarjeta conviene revisar el largo máximo del gabinete (todos los elegidos admiten tarjetas de 360 mm o más) y la potencia de la fuente."
     },
 
     {
@@ -257,16 +295,17 @@
       "tone": "light",
       "id": "comparativa",
       "tag": "Comparativa",
-      "title": "Las cuatro gamas lado a lado",
-      "headers": ["", "Entrada", "Media", "Alta", "Estado del arte"],
+      "title": "Las cinco opciones lado a lado",
+      "headers": ["", "1 · Entrada", "2 · Media", "3 · Alta", "4 · Estado del arte", "5 · Notebook"],
       "rows": [
-        ["Total torre", "$808.070", "$1.502.785", "$2.587.560", "$7.390.875"],
-        ["Con monitor sugerido", "$887.970", "$1.595.685", "$2.732.550", "$8.290.865"],
-        ["Plataforma", "AM4, DDR4", "AM5, DDR5", "AM5, DDR5", "AM5, DDR5"],
-        ["VRAM", "8 GB", "12 GB", "16 GB", "32 GB"],
-        ["RAM", "16 GB", "16 GB", "32 GB", "48 GB"],
-        ["Fuente", "650 W Gold", "750 W Gold", "850 W Gold", "1200 W Gold ATX 3.1"],
-        ["Vía de actualización", "Hasta Ryzen 5800X3D y GPU de hasta 250 W", "Cualquier Ryzen 7000/9000 y GPU hasta 300 W", "Cualquier Ryzen 9000 y GPU hasta 360 W", "Completa"]
+        ["Total torre", "$796.050", "$1.502.785", "$2.587.560", "$7.390.875", "$0"],
+        ["Con monitor sugerido", "$875.950", "$1.595.685", "$2.732.550", "$8.290.865", "$0"],
+        ["WoW en 1080p", "Más de 60 FPS en calidad alta", "Más de 144 FPS", "Más de 144 FPS, también en 1440p", "Más de 144 FPS en 4K", "40 a 60 FPS en calidad baja a media (estimado)"],
+        ["Plataforma", "AM4, DDR4", "AM5, DDR5", "AM5, DDR5", "AM5, DDR5", "Notebook 2019"],
+        ["Memoria de video", "8 GB", "12 GB", "16 GB", "32 GB", "Compartida"],
+        ["RAM", "16 GB", "16 GB", "32 GB", "48 GB", "16 GB"],
+        ["Fuente", "650 W Gold", "750 W Gold", "850 W Gold", "1200 W Gold ATX 3.1", "Cargador 65 W"],
+        ["Upgrade futuro", "Hasta Ryzen 5800X3D y GPU de hasta 250 W", "Cualquier Ryzen 7000/9000 y GPU hasta 300 W", "Cualquier Ryzen 9000 y GPU hasta 360 W", "Completo", "Ninguno"]
       ]
     },
     {
@@ -276,21 +315,20 @@
       "title": "Antes de comprar",
       "columns": 4,
       "cards": [
-        { "icon": "⏱️", "title": "Comprar pronto y en pocas tiendas", "desc": "El canal recomienda cotizar y decidir rápido mientras la RAM sigue subiendo, y concentrar la compra en una o dos tiendas para reducir despachos y pedir la actualización de BIOS de la placa AM5 al comprarla (obligatoria para Ryzen 9000 en placas con firmware antiguo)." },
-        { "icon": "📦", "title": "Stock y forma de pago", "desc": "Los precios de SoloTodo cambian a diario y varias ofertas corresponden a pago con transferencia. Cada componente de esta página lleva el enlace al producto para verificar antes de pagar." },
-        { "icon": "🖥️", "title": "El monitor acompaña a los FPS", "desc": "165 a 240 Hz en 1080p, 200 a 280 Hz en 1440p y 144 a 240 Hz en 4K. Un monitor 4K de 240 Hz solo se aprovecha con la RTX 5090 o con la 5080 usando DLSS 4." },
-        { "icon": "🕹️", "title": "GTA 6", "desc": "Sin versión de PC anunciada ni requisitos publicados a la fecha. Las gamas media y alta quedan con socket AM5 y fuente con margen para absorber un cambio de GPU cuando se conozcan." }
+        { "icon": "⏱️", "title": "Decidir pronto", "desc": "La RAM sigue subiendo. Conviene cotizar y cerrar rápido, en una o dos tiendas para pagar menos despachos." },
+        { "icon": "🔧", "title": "Pedir la BIOS actualizada", "desc": "En las opciones con AM5, pedir en la tienda que la placa venga con la BIOS al día. Es obligatorio para los Ryzen 9000." },
+        { "icon": "📦", "title": "Verificar stock y precio", "desc": "Los precios cambian a diario y varias ofertas son con transferencia. Cada componente tiene su enlace para revisar antes de pagar." },
+        { "icon": "🖥️", "title": "El monitor acompaña a los FPS", "desc": "165 a 240 Hz en 1080p, 200 a 280 Hz en 1440p y 144 a 240 Hz en 4K. Un monitor de 60 Hz desperdicia los FPS de sobra." }
       ]
     },
     {
       "type": "cta",
       "id": "contacto",
-      "title": "¿Armamos el tuyo?",
-      "subtitle": "INCBA asesora la selección de componentes, el armado y la puesta a punto. Los precios de esta página se refrescan desde SoloTodo a pedido.",
+      "title": "¿Dudas antes de comprar?",
+      "subtitle": "Cualquier componente de esta página se puede revisar o reemplazar antes de cerrar la compra. Los precios se refrescan desde SoloTodo cuando haga falta.",
       "contacts": [
-        { "label": "Email", "value": "camilo@incba.com.ar", "href": "mailto:camilo@incba.com.ar" },
-        { "label": "Empresa", "value": "INCBA" },
-        { "label": "Fuentes", "value": "SoloTodo y Zona Technosensual" }
+        { "label": "Camilo", "value": "camilo@incba.com.ar", "href": "mailto:camilo@incba.com.ar" },
+        { "label": "Fuentes", "value": "SoloTodo y benchmarks en juegos actuales" }
       ],
       "validity": "📅 Precios del 11 de octubre de 2026",
       "logo": "incba-logo-light.png"
