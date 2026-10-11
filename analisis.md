@@ -301,6 +301,7 @@ el largo máximo del gabinete (todos los elegidos admiten tarjetas de 360 mm o m
 
 ## 9. Anexos y cómo actualizar
 
+- Página publicada: https://camiloincba.github.io/analisis-pc/ (repositorio CamiloIncba/analisis-pc; se genera desde `site/propuesta.json` con la skill propuesta-web del incba-kit).
 - `data/youtube/benchmarks.md`: todos los FPS leídos de los gráficos, por video, con condiciones de prueba.
 - `data/youtube/text/<id>.md`: transcripción y descripción de cada uno de los 31 videos; `_indice.md` resume fechas y títulos.
 - `data/youtube/frames/<id>/charts_sheets/`: hojas de contacto con los gráficos detectados en cada video.
