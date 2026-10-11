@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análisis de hardware para PC gaming en Chile 2026 - INCBA</title>
+<style>
+/* ===== THEME (identidad visual - intercambiable) ===== */
+/* ============================================================
+   THEME: INCBA segun el Manual de Marca (theme por defecto)
+   ------------------------------------------------------------
+   Fuente: "Manual de marca INCBA.pdf" (INCBA/docs/).
+
+     Primarios    Azul Marino   #192343   Verde Turquesa #5AB9A7
+     Secundarios  Gris Claro    #F2F4F7   Coral (acento) #E8836B
+                  Gris Medio    #8A94A6   Azul Cielo     #A8C5D6
+                  Gris Oscuro   #3D4C63   Negro          #000000
+     Tipografia   Montserrat (titulos) · Open Sans (cuerpo)
+
+   Criterios del manual aplicados:
+     - El coral es el color de acento: botones y llamadas a la accion.
+     - Los grises llevan textos, fondos y jerarquias tipograficas.
+     - El azul cielo aporta suavidad en fondos e ilustraciones.
+     - Sobre el logotipo no se aplican sombras, degradados ni efectos,
+       por eso --logo-shadow queda en none en las dos variantes.
+
+   Los unicos valores fuera del manual son los tintes intermedios del
+   azul marino que necesitan las superficies (#223055, #1E2A4D, #121A35),
+   los mismos que ya usa el brochure.
+   ============================================================ */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap");
+
+:root, html.dark {
+  --font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Open Sans", "Segoe UI", system-ui, sans-serif;
+
+  /* Turquesa como color vivo de la marca, coral como acento de llamada */
+  --primary: #5AB9A7; --primary-light: #A8C5D6; --primary-rgb: 90, 185, 167;
+  --blue: #A8C5D6; --blue-rgb: 168, 197, 214;
+  --accent: #E8836B; --accent-dark: #D06A52; --accent-rgb: 232, 131, 107;
+
+  /* Azul marino de fondo, con sus tintes para tarjetas y franjas */
+  --bg: #192343; --surface: #223055; --surface-2: #1E2A4D;
+  --text: #F2F4F7; --muted: #A8C5D6; --heading: #FFFFFF;
+  --border: rgba(168, 197, 214, .2);
+  --th-bg: #192343; --th-fg: #FFFFFF; --warning: #E8836B;
+
+  /* Secciones claras: gris claro de fondo, azul marino de texto */
+  --tone-fg: #192343; --tone-muted: #8A94A6; --tone-light: #FFFFFF;
+  --tone-gray: #F2F4F7; --tone-card: #FFFFFF; --tone-border: rgba(138, 148, 166, .3);
+
+  /* Secciones oscuras */
+  --hero-gradient: linear-gradient(-45deg, #121A35, #192343, #1E2A4D, #121A35);
+  --dark-gradient: linear-gradient(-45deg, #121A35, #192343, #1E2A4D, #121A35);
+  --dark-solid: #121A35;
+  --on-dark-strong: #FFFFFF; --on-dark-soft: #F2F4F7;
+  --on-dark: #A8C5D6; --on-dark-muted: #8A94A6;
+
+  /* Adornos: turquesa, coral y azul cielo, sin salir de la paleta */
+  --orb-1: rgba(90, 185, 167, .16);
+  --orb-2: rgba(232, 131, 107, .10);
+  --orb-3: rgba(168, 197, 214, .10);
+  --title-gradient: linear-gradient(135deg, #5AB9A7, #A8C5D6, #5AB9A7);
+  --bar-gradient: linear-gradient(90deg, #192343, #5AB9A7, #192343);
+  --bar-rgb: 25, 35, 67;
+  --badge-bg: linear-gradient(135deg, rgba(90, 185, 167, .22), rgba(168, 197, 214, .18));
+  --badge-fg: #5AB9A7;
+  --logo-shadow: none;
+  --logo-footer-opacity: 1;
+  --logo-light-display: block;
+  --logo-dark-display: none;
+
+  /* Niveles de riesgo: ajenos a la identidad, son semaforo de severidad */
+  --crit: #EF4444; --high: #F97316; --med: #EAB308; --low: #3B82F6;
+}
+
+html.light {
+  /* Sobre blanco el azul marino toma el rol de color de texto y filetes:
+     el turquesa no alcanza contraste suficiente para texto pequeno. */
+  --primary: #192343; --primary-light: #5AB9A7; --primary-rgb: 25, 35, 67;
+  --accent: #E8836B; --accent-dark: #D06A52;
+  --bg: #F2F4F7; --surface: #FFFFFF; --surface-2: #E9EDF3;
+  --text: #3D4C63; --muted: #8A94A6; --heading: #192343;
+  --border: rgba(138, 148, 166, .3);
+  --th-bg: #192343; --th-fg: #FFFFFF; --warning: #D06A52;
+  --tone-fg: #192343; --tone-muted: #8A94A6; --tone-light: #FFFFFF;
+  --tone-gray: #F2F4F7; --tone-card: #FFFFFF; --tone-border: rgba(138, 148, 166, .3);
+  --hero-gradient: linear-gradient(-45deg, #F2F4F7, #FFFFFF, #E9EDF3, #F2F4F7);
+  --orb-1: rgba(90, 185, 167, .18);
+  --orb-2: rgba(232, 131, 107, .12);
+  --orb-3: rgba(168, 197, 214, .22);
+  --title-gradient: linear-gradient(135deg, #192343, #5AB9A7, #192343);
+  --badge-bg: linear-gradient(135deg, rgba(90, 185, 167, .16), rgba(168, 197, 214, .18));
+  --badge-fg: #192343;
+  --logo-shadow: none;
+  --logo-footer-opacity: 1;
+  --logo-light-display: none;
+  --logo-dark-display: block;
+}
+
+/* ===== PLANTILLA (estructura - intercambiable) ===== */
+/* Estructura de la propuesta web INCBA.
+   Solo usa tokens definidos por el theme (themes/*.css). Sin colores fijos
+   salvo sombras y transparencias neutras. */
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  /* ===== THEME TOKENS (4 temas) ===== */
+
+  body{ font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; transition:background .35s,color .35s; }
+
+  @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+  @keyframes floatX{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-18px)}}
+  @keyframes pulseGlow{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.75;transform:scale(1.05)}}
+  @keyframes fadeInUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes borderGlow{0%,100%{border-color:rgba(var(--primary-rgb),.3)}50%{border-color:rgba(var(--accent-rgb),.5)}}
+  @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  /* ===== THEME TOGGLE ===== */
+  .theme-toggle{ position:fixed; top:16px; right:16px; z-index:300; display:flex; align-items:center; gap:10px; }
+  .theme-toggle-track{ position:relative; width:7rem; height:2.1rem; border-radius:2rem; border:1px solid var(--border); background:var(--surface-2); cursor:pointer; }
+  .theme-toggle-thumb{ position:absolute; top:50%; margin-top:-.78rem; left:0; width:1.56rem; height:1.56rem; border-radius:50%; background:var(--surface); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,.35); transition:transform .32s cubic-bezier(.4,0,.2,1); }
+  .theme-toggle-thumb[data-pos="0"]{ transform:translateX(.3rem); } .theme-toggle-thumb[data-pos="1"]{ transform:translateX(1.95rem); }
+  .theme-toggle-thumb[data-pos="2"]{ transform:translateX(3.6rem); } .theme-toggle-thumb[data-pos="3"]{ transform:translateX(5.25rem); }
+  .theme-toggle-label{ font-size:12px; font-weight:600; color:var(--muted); }
+  @media(max-width:680px){ .theme-toggle-label{ display:none; } }
+
+  /* ===== COVER ===== */
+  .hero{ position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:64px 24px; overflow:hidden;
+    background:var(--hero-gradient); background-size:400% 400%; }
+  .orb{ position:absolute; border-radius:50%; filter:blur(80px); z-index:0; pointer-events:none; }
+  .orb-1{ width:500px; height:500px; background:var(--orb-1); top:-10%; right:-5%; animation:float 8s ease-in-out infinite; }
+  .orb-2{ width:400px; height:400px; background:var(--orb-2); bottom:-10%; left:-5%; animation:float 10s ease-in-out infinite 2s; }
+  .orb-3{ width:300px; height:300px; background:var(--orb-3); top:40%; left:50%; animation:float 12s ease-in-out infinite 4s; }
+  .hero-inner{ position:relative; z-index:2; max-width:980px; }
+  .cover-logo{ height:66px; width:auto; margin:0 auto 30px; display:block; filter:var(--logo-shadow); animation:fadeInUp .8s ease both; }
+  .cover-logo.logo-light{ display:var(--logo-light-display); } .cover-logo.logo-dark{ display:var(--logo-dark-display); }
+  .cover-badge{ display:inline-block; background:var(--badge-bg); border:1px solid rgba(var(--primary-rgb),.4); color:var(--badge-fg); padding:10px 26px; border-radius:100px; font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; margin:0 0 26px; animation:fadeInUp .8s ease .2s both, borderGlow 4s ease infinite; }
+  .cover-title{ font-family:var(--font-display); font-size:clamp(46px,8.5vw,84px); font-weight:700; line-height:1; margin:0 0 20px; background-image:var(--title-gradient); animation:fadeInUp .8s ease .4s both; -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .cover-subtitle{ font-size:clamp(17px,2.4vw,22px); font-weight:300; color:var(--muted); margin:0 auto 34px; max-width:660px; line-height:1.6; animation:fadeInUp .8s ease .6s both; }
+  .cover-subtitle strong{ color:var(--text); font-weight:600; }
+  /* Logo del cliente junto al título de portada (cover.titleLogo). */
+  .cover-title--logo{ display:flex; align-items:center; justify-content:center; gap:.22em; }
+  .cover-title-logo{ height:.9em; width:auto; flex:0 0 auto; -webkit-text-fill-color:initial; }
+  .cover-divider{ width:80px; height:3px; background:linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius:3px; margin:0 auto 34px; animation:fadeInUp .8s ease .8s both; }
+  .cover-meta{ display:flex; justify-content:center; gap:50px; flex-wrap:wrap; animation:fadeInUp .8s ease 1s both; }
+  .cover-meta-label{ font-size:10px; text-transform:uppercase; letter-spacing:2px; color:var(--muted); margin-bottom:8px; opacity:.85; }
+  .cover-meta-value{ font-size:15px; font-weight:600; color:var(--heading); }
+  .scroll-hint{ position:absolute; bottom:26px; left:50%; transform:translateX(-50%); color:var(--muted); font-size:12px; letter-spacing:2px; z-index:2; animation:floatX 2.6s ease-in-out infinite; opacity:.7; }
+  @media(max-width:640px){ .cover-title{ font-size:46px; } .cover-logo{ height:52px; } .cover-meta{ gap:24px; } }
+
+  /* tooltip: el globo es un nodo unico #tip-bubble posicionado por JS con
+     position:fixed, porque table.data recorta con overflow:hidden cualquier
+     absoluto interno. Se muestra con hover y tambien con foco de teclado. */
+  .tip{ cursor:help; }
+  #tip-bubble{ position:fixed; z-index:400; max-width:320px; background:var(--th-bg); color:var(--th-fg);
+    border:1px solid var(--border); border-radius:10px; padding:10px 14px; font-size:12.5px; font-weight:400;
+    line-height:1.55; text-align:left; letter-spacing:normal; text-transform:none;
+    box-shadow:0 12px 32px rgba(0,0,0,.30); opacity:0; visibility:hidden; transform:translateY(4px);
+    transition:opacity .18s ease, transform .18s ease; pointer-events:none; }
+  #tip-bubble.on{ opacity:1; visibility:visible; transform:translateY(0); }
+
+  /* ===== SECTIONS ===== */
+  .section{ padding:90px 24px; background:var(--tone-gray); color:var(--tone-fg); }
+  .section.light{ background:var(--tone-light); }
+  .section.dark{ position:relative; overflow:hidden; color:var(--on-dark-strong);
+    background:var(--dark-gradient); background-size:400% 400%; }
+  .inner{ max-width:1080px; margin:0 auto; position:relative; z-index:2; }
+
+  .section-tag{ display:inline-flex; align-items:center; gap:10px; font-size:12px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:var(--primary); margin-bottom:16px; }
+  /* Punto antes del rótulo: una línea corta se leía como guion largo. */
+  .section-tag::before{ content:''; width:7px; height:7px; flex:0 0 7px; background:var(--primary); border-radius:50%; }
+  .section-title{ font-family:var(--font-display); font-size:clamp(28px,4.2vw,44px); font-weight:700; line-height:1.15; margin-bottom:18px; color:var(--tone-fg); }
+  .section.dark .section-title{ color:var(--on-dark-strong); }
+  .section-subtitle{ font-size:clamp(15px,2vw,18px); color:var(--tone-muted); max-width:720px; line-height:1.6; margin-bottom:46px; }
+  .section.dark .section-subtitle{ color:var(--on-dark); }
+  /* parrafos del bloque text: heredan el estilo del subtitulo pero sin
+     sus 46px de separacion, que entre parrafos consecutivos es excesiva */
+  .text-par{ margin-bottom:14px; }
+  .text-par:last-child{ margin-bottom:0; }
+  .center{ text-align:center; } .center .section-tag{ justify-content:center; } .center .section-subtitle{ margin-left:auto; margin-right:auto; }
+
+  /* cards / grids */
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .grid-3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:22px; }
+  .grid-4{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; }
+  @media(max-width:720px){ .grid-2{ grid-template-columns:1fr; } }
+  .card{ background:var(--tone-card); border:1px solid var(--tone-border); border-radius:20px; padding:30px; position:relative; overflow:hidden; transition:all .4s cubic-bezier(.25,.46,.45,.94); }
+  .card::before{ content:''; position:absolute; top:0; left:0; right:0; height:3px; background:var(--bar-gradient); opacity:0; transition:opacity .4s; }
+  .card:hover{ transform:translateY(-6px); box-shadow:0 20px 60px rgba(var(--bar-rgb),.16); border-color:rgba(var(--bar-rgb),.28); }
+  .card:hover::before{ opacity:1; }
+  .section.dark .card{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); backdrop-filter:blur(10px); }
+  .section.dark .card:hover{ background:rgba(255,255,255,.12); box-shadow:0 20px 60px rgba(0,0,0,.4); border-color:rgba(59,91,217,.55); }
+  .card-icon{ width:56px; height:56px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:26px; margin-bottom:18px; background:linear-gradient(135deg,rgba(var(--primary-rgb),.12),rgba(var(--blue-rgb),.08)); transition:transform .3s; }
+  .card:hover .card-icon{ transform:scale(1.1); }
+  .section.dark .card-icon{ background:linear-gradient(135deg,rgba(var(--primary-rgb),.3),rgba(var(--accent-rgb),.15)); }
+  .card-title{ font-family:var(--font-display); font-size:17px; font-weight:700; margin-bottom:9px; color:var(--tone-fg); }
+  .section.dark .card-title{ color:var(--on-dark-strong); }
+  .card-desc{ font-size:13.5px; color:var(--tone-muted); line-height:1.6; }
+  .section.dark .card-desc{ color:var(--on-dark); }
+  .card .scope-h{ display:inline-block; margin-bottom:12px; font-size:11px; font-weight:700; color:var(--primary); letter-spacing:1px; text-transform:uppercase; }
+  .card .tag-opt{ display:inline-block; margin-top:10px; font-size:11px; font-weight:700; color:var(--muted); border:1px solid var(--tone-border); padding:2px 8px; border-radius:20px; }
+
+  /* boxes */
+  .box{ border-radius:14px; padding:18px 22px; margin:22px 0 0; font-size:14px; border:1px solid; }
+  .box.info{ background:rgba(var(--primary-rgb),.06); border-color:rgba(var(--primary-rgb),.18); color:var(--tone-fg); }
+  .section.dark .box.info{ color:var(--on-dark-soft); background:rgba(255,255,255,.05); border-color:rgba(255,255,255,.12); }
+  .box.info strong{ color:var(--primary); }
+  .quote{ border-left:3px solid var(--primary); padding:16px 24px; margin:30px 0 0; max-width:760px; text-align:left; font-style:italic; color:var(--tone-fg); font-size:16px; line-height:1.6; background:rgba(var(--primary-rgb),.06); border-radius:0 12px 12px 0; }
+  .quote .who{ display:block; font-style:normal; font-size:13px; color:var(--primary); margin-top:10px; font-weight:600; }
+  .section.dark .quote{ color:var(--on-dark-soft); background:rgba(255,255,255,.05); }
+
+  table.data{ border-collapse:collapse; width:100%; margin:0; font-size:13px; border-radius:12px; overflow:hidden; border:1px solid var(--tone-border); background:var(--tone-card); }
+  table.data th{ background:var(--th-bg); color:var(--th-fg); padding:11px 12px; text-align:left; font-size:11px; letter-spacing:.5px; text-transform:uppercase; font-weight:600; }
+  table.data td{ padding:10px 12px; border-bottom:1px solid var(--tone-border); color:var(--tone-muted); }
+  table.data td strong{ color:var(--tone-fg); }
+  table.data tr:last-child td{ border-bottom:none; }
+  table.data tbody tr:nth-child(even){ background:color-mix(in srgb,var(--tone-gray) 50%, transparent); }
+
+  /* diagram */
+  /* Galería con enlaces */
+  .gallery{ display:grid; gap:22px; margin-top:6px; }
+  .gallery.cols-2{ grid-template-columns:repeat(2,minmax(0,1fr)); } .gallery.cols-3{ grid-template-columns:repeat(3,minmax(0,1fr)); } .gallery.cols-4{ grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .gallery-item{ display:flex; flex-direction:column; background:var(--tone-card); border:1px solid var(--tone-border); border-radius:18px; overflow:hidden; text-decoration:none; color:var(--tone-fg); transition:transform .3s, box-shadow .3s, border-color .3s; }
+  a.gallery-item:hover, a.gallery-item:focus-visible{ transform:translateY(-5px); box-shadow:0 18px 48px rgba(var(--bar-rgb),.18); border-color:rgba(var(--bar-rgb),.35); }
+  .gallery-img{ display:block; aspect-ratio:16/10; overflow:hidden; background:var(--dark-solid); }
+  .gallery-img img{ width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition:transform .5s; }
+  a.gallery-item:hover .gallery-img img{ transform:scale(1.03); }
+  .gallery-text{ display:flex; flex-direction:column; gap:6px; padding:16px 18px 18px; }
+  .gallery-text strong{ font-family:var(--font-display); font-size:16px; font-weight:700; }
+  .gallery-text > span{ font-size:13.5px; line-height:1.5; color:var(--tone-muted); }
+  .gallery-text .gallery-cta{ margin-top:4px; font-size:13px; font-weight:700; color:var(--primary); }
+  .section.dark .gallery-item{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); }
+  @media(max-width:980px){ .gallery.cols-3, .gallery.cols-4{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+  @media(max-width:640px){ .gallery.cols-2, .gallery.cols-3, .gallery.cols-4{ grid-template-columns:1fr; } }
+  .diagram-wrap{ margin:10px 0 0; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:var(--dark-solid); }
+  .diagram-wrap img{ width:100%; display:block; }
+  .diagram-cap{ text-align:center; font-size:13px; color:var(--on-dark-muted); margin-top:14px; }
+  .img-modal{ display:none; position:fixed; inset:0; z-index:500; background:rgba(0,0,0,.93); align-items:center; justify-content:center; padding:24px; cursor:zoom-out; animation:fadeIn .25s ease; }
+  .img-modal.open{ display:flex; }
+  .img-modal img{ max-width:96vw; max-height:92vh; object-fit:contain; border-radius:8px; box-shadow:0 20px 80px rgba(0,0,0,.6); }
+  .img-modal-close{ position:fixed; top:16px; right:24px; color:var(--on-dark-strong); font-size:30px; font-weight:700; line-height:1; cursor:pointer; z-index:501; }
+
+  /* flow (integración) */
+  .flow{ display:flex; align-items:stretch; gap:16px; flex-wrap:wrap; margin-top:10px; }
+  .flow-col{ flex:1; min-width:280px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:26px; }
+  .flow-col h4{ font-family:var(--font-display); font-size:18px; color:var(--on-dark-strong); margin-bottom:6px; }
+  .flow-col .sub{ font-size:13px; color:var(--on-dark-muted); margin-bottom:16px; }
+  .flow-col ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .flow-col li{ display:flex; gap:10px; font-size:13.5px; color:var(--on-dark); align-items:flex-start; } .flow-col li b{ color:var(--accent); }
+
+  /* timeline (cronograma) */
+  .crono-wrap{ display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+  @media(max-width:820px){ .crono-wrap{ grid-template-columns:1fr; } }
+  .timeline{ position:relative; padding-left:40px; }
+  .timeline::before{ content:''; position:absolute; left:14px; top:0; bottom:0; width:3px; background:linear-gradient(180deg,var(--primary),var(--blue),var(--accent)); border-radius:3px; }
+  .timeline-item{ position:relative; padding-bottom:32px; padding-left:30px; transition:transform .3s; }
+  .timeline-item:hover{ transform:translateX(6px); } .timeline-item:last-child{ padding-bottom:0; }
+  .timeline-dot{ position:absolute; left:-33px; top:2px; width:28px; height:28px; border-radius:50%; background:var(--tone-card); border:3px solid var(--primary); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:var(--primary); }
+  .timeline-item:last-child .timeline-dot{ border-color:var(--accent); background:var(--accent); color:var(--on-dark-strong); }
+  .timeline-date{ font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--primary); margin-bottom:5px; }
+  .timeline-title{ font-family:var(--font-display); font-size:17px; font-weight:700; margin-bottom:5px; color:var(--tone-fg); }
+  .timeline-desc{ font-size:13.5px; color:var(--tone-muted); line-height:1.5; }
+  .side-card{ background:var(--tone-card); border:1px solid var(--tone-border); border-radius:18px; padding:24px; }
+  .side-card + .side-card{ margin-top:20px; }
+  .side-card h4{ font-family:var(--font-display); font-size:18px; color:var(--tone-fg); margin-bottom:16px; }
+  .side-card ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .side-card li{ display:flex; gap:10px; font-size:14px; color:var(--tone-muted); } .side-card li b{ color:var(--accent); }
+
+  /* vision hub */
+  .vision-hub{ display:flex; align-items:center; justify-content:center; gap:0; margin:30px 0; flex-wrap:wrap; }
+  .vision-spokes{ display:flex; flex-direction:column; gap:14px; flex:1 1 0; min-width:250px; max-width:380px; }
+  .vision-spoke{ display:flex; align-items:center; gap:12px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); padding:12px 18px; border-radius:12px; min-width:0; transition:all .3s; }
+  .vision-spoke:hover{ background:rgba(255,255,255,.12); border-color:rgba(var(--primary-rgb),.4); transform:translateX(4px); }
+  .vision-spoke-icon{ font-size:20px; } .vision-spoke-text{ font-size:14px; font-weight:600; color:var(--on-dark-soft); }
+  .vision-line{ width:60px; height:2px; background:linear-gradient(90deg,rgba(var(--primary-rgb),.6),rgba(var(--accent-rgb),.3)); flex-shrink:0; }
+  .vision-line.right{ background:linear-gradient(90deg,rgba(var(--accent-rgb),.3),rgba(var(--primary-rgb),.6)); }
+  .vision-center{ width:170px; height:170px; border-radius:50%; background:linear-gradient(135deg,var(--primary),var(--blue)); display:flex; flex-direction:column; align-items:center; justify-content:center; box-shadow:0 0 60px rgba(var(--primary-rgb),.4); animation:pulseGlow 3s ease infinite; flex-shrink:0; margin:10px; text-align:center; padding:10px; }
+  .vision-center-icon{ font-size:40px; } .vision-center-label{ font-size:12px; font-weight:700; letter-spacing:1px; text-transform:uppercase; margin-top:6px; color:rgba(255,255,255,.95); }
+  /* variante con logo: circulo blanco para logos con fondo opaco */
+  .vision-center.has-img{ width:200px; height:200px; background:#FFFFFF; }
+  .vision-center-img{ max-width:64%; max-height:80px; object-fit:contain; }
+  .vision-center.has-img .vision-center-label{ color:#0F172A; font-size:10px; letter-spacing:.5px; }
+  @media(max-width:820px){ .vision-hub{ flex-direction:column; } .vision-line{ width:2px; height:30px; } }
+  .vision-bottom{ display:flex; flex-direction:column; align-items:center; margin-top:-6px; }
+  .vision-bottom .vision-line.vert{ width:2px; height:44px; background:linear-gradient(180deg,rgba(var(--primary-rgb),.6),rgba(var(--accent-rgb),.3)); }
+  .vision-bottom .vision-spokes{ flex:0 0 auto; min-width:0; max-width:none; margin-top:10px; }
+  .vision-note{ text-align:center; margin:36px auto 0; padding:20px 30px; border-radius:16px; background:rgba(255,255,255,.04); border:1px dashed rgba(255,255,255,.15); font-size:14px; color:var(--on-dark); line-height:1.6; max-width:760px; }
+  .vision-note strong{ color:var(--accent); }
+
+  /* team */
+  .team-card{ text-align:center; }
+  .team-photo{ width:120px; height:120px; border-radius:50%; object-fit:cover; object-position:center 20%; margin:0 auto 18px; display:block; border:3px solid rgba(var(--primary-rgb),.5); box-shadow:0 0 30px rgba(var(--primary-rgb),.25); }
+  .team-name{ font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--on-dark-strong); margin-bottom:4px; }
+  .team-role{ font-size:12px; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
+  .team-desc{ font-size:14px; color:var(--on-dark); line-height:1.55; }
+
+  /* pricing */
+  .price-card{ background:var(--tone-card); border:2px solid var(--tone-border); border-radius:24px; padding:46px; text-align:center; max-width:560px; margin:0 auto 36px; position:relative; overflow:hidden; transition:all .4s ease; }
+  .price-card:hover{ transform:translateY(-4px); box-shadow:0 20px 60px rgba(var(--primary-rgb),.1); border-color:rgba(var(--primary-rgb),.3); }
+  .price-card::before{ content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--primary),var(--blue),var(--accent)); background-size:200% 100%; animation:shimmer 6s linear infinite reverse; }
+  .price-label{ font-size:13px; text-transform:uppercase; letter-spacing:2px; color:var(--tone-muted); font-weight:600; margin-bottom:12px; }
+  .price-amount{ font-family:var(--font-display); font-size:clamp(54px,9vw,72px); font-weight:800; color:var(--tone-fg); line-height:1; }
+  .price-currency{ font-size:28px; font-weight:600; vertical-align:super; color:var(--primary); margin-right:6px; }
+  .price-period{ font-size:15px; color:var(--tone-muted); margin:6px 0 0; }
+  .price-features{ list-style:none; text-align:left; display:flex; flex-direction:column; gap:13px; margin-top:28px; border-top:1px solid var(--tone-border); padding-top:28px; }
+  .price-features li{ display:flex; align-items:flex-start; gap:12px; font-size:14.5px; color:var(--tone-fg); }
+  .price-features li .check{ color:var(--accent); font-weight:700; font-size:17px; }
+
+  .pay-toggle{ display:flex; justify-content:center; margin-bottom:24px; }
+  .pay-toggle .tg{ display:inline-flex; background:var(--tone-card); border:1px solid var(--tone-border); border-radius:40px; padding:5px; }
+  .pay-toggle button{ font-family:var(--font-body); font-size:14px; font-weight:600; border:none; background:transparent; color:var(--tone-muted); padding:10px 22px; border-radius:30px; cursor:pointer; transition:all .25s; }
+  .pay-toggle button.active{ background:linear-gradient(135deg,var(--primary),var(--primary-light)); color:var(--on-dark-strong); box-shadow:0 4px 14px rgba(var(--primary-rgb),.3); }
+  .pay-view{ display:none; animation:fadeIn .4s ease; } .pay-view.active{ display:block; }
+  .pay-head{ font-family:var(--font-display); font-size:20px; font-weight:700; text-align:center; margin-bottom:18px; color:var(--tone-fg); }
+  table.miles{ width:100%; max-width:720px; margin:0 auto; border-collapse:separate; border-spacing:0 8px; }
+  table.miles th{ text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:var(--tone-muted); padding:6px 20px; font-weight:600; }
+  table.miles td{ background:var(--tone-card); padding:16px 20px; font-size:14.5px; color:var(--tone-muted); border-top:1px solid var(--tone-border); border-bottom:1px solid var(--tone-border); }
+  table.miles td:first-child{ border-radius:12px 0 0 12px; border-left:1px solid var(--tone-border); font-weight:600; color:var(--tone-fg); }
+  table.miles td:last-child{ border-radius:0 12px 12px 0; border-right:1px solid var(--tone-border); }
+  /* Celulares: las tablas se compactan y las palabras largas pueden cortarse, para que ninguna
+     tabla quede más ancha que la pantalla (también corría el selector de tema fuera de la vista). */
+  @media(max-width:640px){
+    table.data{ font-size:12px; }
+    table.data th{ padding:9px 8px; font-size:10px; letter-spacing:.3px; }
+    table.data td{ padding:8px; }
+    table.data th, table.data td{ hyphens:auto; }
+    /* Tablas de cuatro columnas o más: conservan un ancho legible y se deslizan dentro de su recuadro. */
+    .table-scroll{ overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:12px; }
+    table.data.wide{ min-width:600px; }
+    table.miles th{ padding:6px 8px; letter-spacing:.5px; }
+    table.miles td{ padding:12px 8px; font-size:13px; }
+  }
+  .m-pct{ font-family:var(--font-display); font-weight:700; color:var(--primary); font-size:18px; }
+  .m-amt{ font-family:var(--font-display); font-weight:700; color:var(--tone-fg); font-size:15px; }
+  .fine-print{ margin:36px auto 0; max-width:720px; padding:22px 28px; background:rgba(234,179,8,.08); border:1px solid rgba(234,179,8,.25); border-radius:16px; font-size:13px; color:var(--tone-muted); line-height:1.7; }
+  .fine-print-title{ font-weight:700; color:var(--warning); margin-bottom:8px; font-size:12px; text-transform:uppercase; letter-spacing:1px; }
+  .fine-print ul{ list-style:none; display:flex; flex-direction:column; gap:6px; }
+
+  /* CTA */
+  .cta-title{ font-family:var(--font-display); font-size:clamp(40px,7vw,58px); font-weight:800; text-align:center; margin-bottom:18px; background:var(--title-gradient); -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent; }
+  .cta-subtitle{ text-align:center; font-size:18px; color:var(--on-dark); max-width:600px; margin:0 auto 40px; line-height:1.6; }
+  .contact-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:600px; margin:0 auto 30px; }
+  .contact-item{ text-align:center; padding:24px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.1); border-radius:16px; transition:all .3s; }
+  .contact-item:hover{ background:rgba(255,255,255,.08); border-color:rgba(var(--primary-rgb),.3); }
+  .contact-item .label{ font-size:10px; text-transform:uppercase; letter-spacing:2px; color:var(--on-dark-muted); margin-bottom:8px; }
+  .contact-item a, .contact-item span{ color:var(--on-dark-strong); text-decoration:none; font-weight:600; font-size:14px; }
+  .contact-item a:hover{ color:var(--primary-light); }
+  .validity-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); padding:10px 24px; border-radius:100px; font-size:13px; font-weight:600; color:var(--on-dark-strong); margin-top:8px; }
+  .footer-logo{ display:block; height:44px; width:auto; margin:34px auto 0; opacity:var(--logo-footer-opacity); transition:opacity .3s; }
+  .footer-logo:hover{ opacity:1; }
+  @media(max-width:640px){ .contact-grid{ grid-template-columns:1fr; } }
+  .footer-legal{ background:var(--surface); color:var(--muted); text-align:center; padding:22px; font-size:12px; border-top:1px solid var(--border); }
+
+  /* ===== SEVERIDADES (auditorias y pentest) ===== */
+  .sev-summary{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 26px; }
+  .sev-card{ flex:1; min-width:120px; border-radius:14px; padding:18px; text-align:center; color:var(--on-dark-strong); }
+  .sev-card .n{ font-family:var(--font-display); font-size:38px; font-weight:700; line-height:1; }
+  .sev-card .t{ font-size:12px; margin-top:6px; opacity:.95; font-weight:600; letter-spacing:.5px; }
+  .sev-card.crit{ background:var(--crit); } .sev-card.high{ background:var(--high); }
+  .sev-card.med{ background:var(--med); color:#3a2c00; } .sev-card.low{ background:var(--low); }
+  .sev{ display:inline-block; padding:2px 9px; border-radius:20px; font-size:11px; font-weight:700; color:var(--on-dark-strong); white-space:nowrap; }
+  .sev.crit{ background:var(--crit); } .sev.high{ background:var(--high); }
+  .sev.med{ background:var(--med); color:#3a2c00; } .sev.low{ background:var(--low); }
+
+  /* Logo del cliente en la portada (co-branding) */
+  .cover-client-logo{ height:32px; width:auto; display:block; margin-top:2px; }
+  .cover-client-logo.on-dark{ display:var(--logo-light-display); }
+  .cover-client-logo.on-light{ display:var(--logo-dark-display); }
+
+  /* Empresas que confían (marquee) */
+  .clients-marquee{ position:relative; overflow:hidden; margin-top:6px; padding:18px 0; -webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent); }
+  .clients-track{ display:flex; gap:24px; width:max-content; animation:marquee 60s linear infinite; }
+  .clients-marquee:hover .clients-track{ animation-play-state:paused; }
+  @keyframes marquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  .client-chip{ flex:0 0 auto; height:88px; width:200px; background:var(--tone-card); border:1px solid var(--tone-border); border-radius:16px; display:flex; align-items:center; justify-content:center; padding:0 22px; transition:transform .3s, box-shadow .3s; }
+  .client-chip:hover{ transform:translateY(-4px); box-shadow:0 14px 40px rgba(var(--bar-rgb),.28); }
+  .client-chip img{ max-height:40px; max-width:156px; width:auto; object-fit:contain; }
+  .section.dark .client-chip{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.12); backdrop-filter:blur(6px); }
+  .section.dark .client-chip:hover{ background:rgba(255,255,255,.12); box-shadow:0 14px 40px rgba(0,0,0,.45); }
+
+  /* pendientes (modo revisión) */
+
+
+</style>
+</head>
+<body>
+
+<div class="theme-toggle">
+  <div class="theme-toggle-track" style="width:3.81rem" onclick="nextTheme()" role="button" aria-label="Cambiar tema">
+    <div class="theme-toggle-thumb" id="th-thumb" data-pos="0">🌙</div>
+  </div>
+  <span class="theme-toggle-label" id="th-label">Oscuro</span>
+</div>
+
+<section class="hero">
+  <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
+  <div class="hero-inner">
+    <img class="cover-logo logo-light" src="assets/incba-logo-light.png" alt="INCBA"><img class="cover-logo logo-dark" src="assets/incba-logo-dark.png" alt="INCBA">
+    <div class="cover-badge">Análisis de hardware</div>
+    <h1 class="cover-title">PC gaming en Chile 2026</h1>
+    <p class="cover-subtitle">Cuatro configuraciones con <strong>precios reales de tiendas chilenas</strong> y con el rendimiento <strong>medido juego por juego</strong> por Zona Technosensual. De un equipo para World of Warcraft a 1080p hasta la mejor máquina 4K que se puede comprar en Chile.</p>
+    <div class="cover-divider"></div>
+    <div class="cover-meta">
+      <div><div class="cover-meta-label">Precios</div><div class="cover-meta-value">SoloTodo, 11 de octubre de 2026</div></div>
+      <div><div class="cover-meta-label">Benchmarks</div><div class="cover-meta-value">31 videos de Juan Isaacs, 2025 y 2026</div></div>
+      <div><div class="cover-meta-label">Preparado por</div><div class="cover-meta-value">Camilo - INCBA</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint">DESLIZA PARA VER EL ANÁLISIS</div>
+</section>
+
+<section class="section light" id="resumen">
+  <div class="inner reveal">
+    <div class="section-tag">Resumen</div>
+    <h2 class="section-title">Las cuatro configuraciones</h2>
+    <p class="section-subtitle">Totales de la torre completa en pesos chilenos, sin monitor, periféricos ni Windows. El monitor recomendado va aparte en cada gama.</p>
+    <div class="grid-4">
+      <div class="card"><span class="scope-h">1</span><div class="card-title">Gama de entrada · $808.070</div><div class="card-desc">World of Warcraft a 60+ FPS en 1080p. Ryzen 5 5500 + Radeon RX 7600 8 GB + 16 GB DDR4. Plataforma AM4.</div></div>
+      <div class="card"><span class="scope-h">2</span><div class="card-title">Gama media · $1.502.785</div><div class="card-desc">AAA (Battlefield 6, Baldur's Gate 3, RDR2, GTA 6) a 144+ FPS en 1080p. Ryzen 5 7600X + Radeon RX 9070 GRE 12 GB + 16 GB DDR5. Plataforma AM5.</div></div>
+      <div class="card"><span class="scope-h">3</span><div class="card-title">Gama alta · $2.587.560</div><div class="card-desc">Los mismos AAA a 144+ FPS en 1440p. Ryzen 7 7800X3D + Radeon RX 9070 XT 16 GB + 32 GB DDR5. Plataforma AM5 con X870.</div></div>
+      <div class="card"><span class="scope-h">4</span><div class="card-title">Estado del arte · $7.390.875</div><div class="card-desc">4K con lo mejor que se vende en Chile. Ryzen 7 9850X3D + GeForce RTX 5090 32 GB + 48 GB DDR5-6000. Plataforma AM5 con X870E.</div></div>
+    </div>
+    <div class="quote">La tarjeta de video explica entre el 70 % y el 80 % de los FPS. A 1440p y 4K el procesador deja de ser cuello de botella; a 1080p competitivo sí marca diferencia.<span class="who">Regla repetida en los videos del canal y aplicada en las cuatro gamas</span></div>
+  </div>
+</section>
+
+<section class="section" id="metodo">
+  <div class="inner reveal">
+    <div class="section-tag">Fuentes y método</div>
+    <h2 class="section-title">De dónde salen los precios y los FPS</h2>
+    <p class="section-subtitle">Todo el análisis se apoya en dos fuentes verificables y en reglas que el propio canal repite en cada armado.</p>
+    <div class="grid-3">
+      <div class="card"><div class="card-icon">🏷️</div><div class="card-title">Precios: SoloTodo</div><div class="card-desc">Snapshot del 11 de octubre de 2026 con 10 categorías de hardware y 317 tiendas. Para cada componente elegido se consultaron todas las tiendas que lo venden y se anota la más barata con stock.</div></div>
+      <div class="card"><div class="card-icon">🎬</div><div class="card-title">Benchmarks: Zona Technosensual</div><div class="card-desc">Se revisaron los 220 videos del canal y se seleccionaron 31 de hardware de escritorio. De cada uno se leyeron los gráficos de FPS cuadro a cuadro, con promedio y 1 % low, y las condiciones de prueba.</div></div>
+      <div class="card"><div class="card-icon">📐</div><div class="card-title">Reglas de armado</div><div class="card-desc">La GPU manda. La placa madre no agrega FPS. 16 GB de RAM alcanzan en 2026 y la ampliación a 32 GB se deja para cuando baje el precio. Fuente de 650 W para partir y 750 a 850 W para dejar margen de GPU.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="contexto">
+  <div class="inner reveal">
+    <div class="section-tag">Contexto</div>
+    <h2 class="section-title">Lo que condiciona el mercado chileno en octubre de 2026</h2>
+    <div class="grid-4">
+      <div class="card"><div class="card-icon">🧠</div><div class="card-title">RAM en crisis</div><div class="card-desc">16 GB DDR5-5600 cuestan $239.995 y un kit de 32 GB DDR5-5200 cuesta $499.900. En DDR4, 16 GB cuestan $104.990. La demanda de memoria HBM para centros de datos de IA y tres fabricantes que controlan los chips explican el alza.</div></div>
+      <div class="card"><div class="card-icon">🎮</div><div class="card-title">GPU al alza</div><div class="card-desc">La RX 9070 XT que costaba $759.900 en enero parte hoy en $954.990. La RTX 5070 Ti real con stock está en $1.163.990, la RTX 5080 en $1.766.930 y la RTX 5090 más barata con tienda confirmada en $4.269.205.</div></div>
+      <div class="card"><div class="card-icon">🏆</div><div class="card-title">Entrada: RX 7600</div><div class="card-desc">Sigue siendo la mejor relación precio/FPS del segmento según el ranking del canal (RX 7600 100 %, RTX 5050 93,9 %, RX 9050 91,6 %). La RTX 5050 cuesta $51.000 más y agrega DLSS 4 con multiframe.</div></div>
+      <div class="card"><div class="card-icon">🔩</div><div class="card-title">Plataformas</div><div class="card-desc">AM4 con DDR4 es la vía más barata y llega hasta el Ryzen 5800X3D. AM5 tiene actualización confirmada hasta 2027 o más. LGA1851 rinde muy bien a 1080p pero no recibirá más procesadores.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section light" id="entrada">
+  <div class="inner reveal">
+    <div class="section-tag">Gama de entrada · $808.070</div>
+    <h2 class="section-title">World of Warcraft a 60+ FPS en 1080p</h2>
+    <p class="section-subtitle">WoW exige poco de la GPU y bastante de un núcleo de CPU en ciudades y raids. El canal no prueba WoW, así que el equipo se dimensionó con los juegos más exigentes medidos en esta misma plataforma: con Ryzen 5 5500 y RX 7600 en 1080p ultra, Red Dead Redemption 2 promedia 101 FPS, God of War Ragnarok 95 y Battlefield 6 109. Un juego con el perfil de WoW queda muy por sobre 60 FPS en calidad alta; en raids el límite lo pone el procesador.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Componente</th><th>Modelo</th><th>Precio</th><th>Tienda más barata</th></tr></thead>
+      <tbody>
+        <tr><td>Procesador</td><td><a href="https://www.solotodo.cl/products/137994">AMD Ryzen 5 5500</a> (6 núcleos, cooler incluido)</td><td>$92.900</td><td>Notebooksya!</td></tr>
+        <tr><td>Placa madre</td><td><a href="https://www.solotodo.cl/products/206282">Gigabyte A520M K V2</a> (AM4, micro ATX)</td><td>$48.900</td><td>DazBog Store / Sandos</td></tr>
+        <tr><td>Memoria</td><td><a href="https://www.solotodo.cl/products/401444">Norvm 16 GB DDR4-3200</a> (1 módulo)</td><td>$104.990</td><td>Tecnomas.cl</td></tr>
+        <tr><td>Tarjeta de video</td><td><a href="https://www.solotodo.cl/products/270835">ASUS Dual Radeon RX 7600 EVO OC 8 GB</a></td><td>$318.900</td><td>Sandos</td></tr>
+        <tr><td>SSD</td><td><a href="https://www.solotodo.cl/products/253373">Kingston NV3 1 TB NVMe PCIe 4.0</a></td><td>$151.490</td><td>Notebooksya! / Xtreme Components</td></tr>
+        <tr><td>Fuente</td><td><a href="https://www.solotodo.cl/products/394047">MSI MAG 650GN II 650 W 80 Plus Gold</a></td><td>$45.900</td><td>PC Express</td></tr>
+        <tr><td>Gabinete</td><td><a href="https://www.solotodo.cl/products/365008">Antec VCX300 ARGB</a> (3 ventiladores, vidrio)</td><td>$44.990</td><td>PC Factory</td></tr>
+        <tr><td><strong>Total torre</strong></td><td></td><td><strong>$808.070</strong></td><td></td></tr>
+        <tr><td>Monitor (aparte)</td><td><a href="https://www.solotodo.cl/products/402413">Gigabyte GS24F14A 24&quot; 1080p 175 Hz IPS</a>; para competitivo, <a href="https://www.solotodo.cl/products/378751">Gigabyte GS25F2A 25&quot; 240 Hz</a> a $92.900</td><td>$79.900</td><td>PC Express</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box info"><strong>Alternativas.</strong> Nvidia: <a href="https://www.solotodo.cl/products/359999">Gigabyte RTX 5050 Windforce OC 8 GB</a> a $369.990, total $859.160, con DLSS 4 multiframe. Sin tarjeta de video y con plataforma AM5: Ryzen 5 8500G ($134.990) + ASUS Prime A620M-K ($69.900) + 16 GB DDR5-4800 ($228.990), total $676.260; sus gráficos integrados mueven Counter Strike 2 sobre 100 FPS y Battlefield 6 a 50 FPS en baja, y después reciben cualquier GPU y cualquier Ryzen 7000/9000. Intel: Core i5-12400F ($164.800) + ASUS Prime H610M-K ($59.900), $82.900 más que la base AM4 con mejor margen de CPU.</div>
+  </div>
+</section>
+
+<section class="section" id="entrada-fps">
+  <div class="inner reveal">
+    <div class="section-tag">Gama de entrada · rendimiento</div>
+    <h2 class="section-title">Lo que midió el canal con Ryzen 5 5500 y RX 7600</h2>
+    <p class="section-subtitle">1080p, calidad ultra, FSR calidad con generación de frames y trazado de rayos activo. FPS promedio y 1 % low.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Juego</th><th>FPS promedio</th><th>1 % low</th><th>Video</th></tr></thead>
+      <tbody>
+        <tr><td>Red Dead Redemption 2 (FSR, sin FG)</td><td>101</td><td>74</td><td>PC de 500 mil, 2025</td></tr>
+        <tr><td>Battlefield 6</td><td>109</td><td>65</td><td>PC por 700 lucas</td></tr>
+        <tr><td>God of War Ragnarok</td><td>95</td><td>76</td><td>PC de 500 mil, 2025</td></tr>
+        <tr><td>The Last of Us Part II</td><td>92</td><td>77</td><td>PC por 700 lucas</td></tr>
+        <tr><td>Doom The Dark Ages</td><td>101</td><td>76</td><td>PC por 700 lucas</td></tr>
+        <tr><td>Counter Strike 2 (alta)</td><td>201</td><td>110</td><td>PC por 700 lucas</td></tr>
+        <tr><td>Valorant (alta)</td><td>335</td><td>112</td><td>PC por 700 lucas</td></tr>
+        <tr><td>Spider-Man 2 con RT</td><td>33 (71 sin RT)</td><td>26</td><td>PC por 700 lucas</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section light" id="media">
+  <div class="inner reveal">
+    <div class="section-tag">Gama media · $1.502.785</div>
+    <h2 class="section-title">AAA a 144+ FPS en 1080p</h2>
+    <p class="section-subtitle">Para sostener 144 FPS en Battlefield 6 o Red Dead Redemption 2 en 1080p con calidad alta o ultra hace falta una GPU de la clase RX 9070 GRE y un procesador AM5 actual. La RX 9060 XT de 8 GB, un escalón más abajo, llega a 172 FPS en Doom The Dark Ages y 231 en Delta Force, pero cae a 91 en Expedition 33, 69 en Assassin's Creed Shadows y 52 en Spider-Man 2 por falta de VRAM. Baldur's Gate 3 depende de la CPU en el acto 3, por eso un Ryzen 7000 de 5,3 GHz y no un AM4. GTA 6 aún no tiene versión de PC ni requisitos publicados; el socket AM5 y la fuente de 750 W dejan margen para absorberlo.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Componente</th><th>Modelo</th><th>Precio</th><th>Tienda más barata</th></tr></thead>
+      <tbody>
+        <tr><td>Procesador</td><td><a href="https://www.solotodo.cl/products/151869">AMD Ryzen 5 7600X</a> (6 núcleos, 5,3 GHz, sin cooler)</td><td>$179.990</td><td>Xtreme Components</td></tr>
+        <tr><td>Cooler</td><td><a href="https://www.solotodo.cl/products/158446">Thermalright Assassin X 120 Refined SE ARGB</a></td><td>$23.900</td><td>Centrale</td></tr>
+        <tr><td>Placa madre</td><td><a href="https://www.solotodo.cl/products/356069">MSI B840M Gaming WiFi 6E</a> (AM5, micro ATX, 2 M.2)</td><td>$109.440</td><td>Winpy</td></tr>
+        <tr><td>Memoria</td><td><a href="https://www.solotodo.cl/products/252385">Kingston 16 GB DDR5-5600</a> (1 módulo)</td><td>$239.995</td><td>SP Digital</td></tr>
+        <tr><td>Tarjeta de video</td><td><a href="https://www.solotodo.cl/products/406331">Gigabyte Radeon RX 9070 GRE Gaming OC 12 GB</a></td><td>$689.990</td><td>DazBog Store / Progaming</td></tr>
+        <tr><td>SSD</td><td><a href="https://www.solotodo.cl/products/253373">Kingston NV3 1 TB NVMe PCIe 4.0</a></td><td>$151.490</td><td>Notebooksya! / Xtreme Components</td></tr>
+        <tr><td>Fuente</td><td><a href="https://www.solotodo.cl/products/358155">be quiet! Pure Power 12 750 W 80 Plus Gold</a></td><td>$62.990</td><td>Dust2</td></tr>
+        <tr><td>Gabinete</td><td><a href="https://www.solotodo.cl/products/365008">Antec VCX300 ARGB</a></td><td>$44.990</td><td>PC Factory</td></tr>
+        <tr><td><strong>Total torre</strong></td><td></td><td><strong>$1.502.785</strong></td><td></td></tr>
+        <tr><td>Monitor (aparte)</td><td><a href="https://www.solotodo.cl/products/378751">Gigabyte GS25F2A 25&quot; 1080p 240 Hz IPS</a>, el que el canal usó para explicar por qué 1080p sigue siendo el estándar competitivo; en 27&quot;, <a href="https://www.solotodo.cl/products/366907">Xiaomi G27i 2026 165 Hz</a> a $114.990</td><td>$92.900</td><td>Sandos</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box info"><strong>Alternativas.</strong> Nvidia: <a href="https://www.solotodo.cl/products/273016">Gigabyte RTX 5070 Eagle OC 12 GB</a> a $899.990, total $1.712.785, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: <a href="https://www.solotodo.cl/products/355722">ASUS Dual RX 9060 XT 16 GB</a> a $549.990, total $1.362.785, cerca de 20 % menos que la GRE pero con 16 GB de VRAM. El 7600X cuesta $36.910 menos que el Ryzen 5 7600 con cooler y es más rápido; con el cooler elegido sigue siendo más barato.</div>
+  </div>
+</section>
+
+<section class="section" id="media-fps">
+  <div class="inner reveal">
+    <div class="section-tag">Gama media · rendimiento</div>
+    <h2 class="section-title">Lo que midió el canal con la RX 9070 GRE</h2>
+    <p class="section-subtitle">1440p, calidad ultra, FSR 4 calidad con generación de frames, con Ryzen 7 9850X3D. En 1080p estos valores suben y el límite pasa a ser la CPU.</p>
+    <div class="table-scroll"><table class="data">
+      <thead><tr><th>Juego</th><th>FPS promedio</th><th>1 % low</th></tr></thead>
+      <tbody>
+        <tr><td>Battlefield 6</td><td>155</td><td>53 (superó los 12 GB de VRAM en 1440p ultra)</td></tr>
+        <tr><td>God of War Ragnarok</td><td>155</td><td>101</td></tr>
+        <tr><td>The Last of Us Part II</td><td>225</td><td>174</td></tr>
+        <tr><td>Resident Evil Requiem</td><td>134</td><td>90</td></tr>
+        <tr><td>Pragmata</td><td>158</td><td>130</td></tr>
+        <tr><td>The Finals</td><td>230</td><td>170</td></tr>
+        <tr><td>Overwatch 2</td><td>258</td><td>221</td></tr>
+        <tr><td>Counter Strike 2</td><td>395 a 457</td><td></td></tr>
+        <tr><td>Doom The Dark Ages (nativo, RT, sin reescalado)</td><td>76 (171 con FSR y FG)</td><td>33</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section light" id="alta">
+  <div class="inner reveal">
+    <div class="section-tag">Gama alta · $2.587.560</div>
+    <h2 class="section-title">AAA a 144+ FPS en 1440p</h2>
+    <p class="section-subtitle">El canal midió exactamente este objetivo con la RX 9070 XT y un Ryzen 5 7600: 270 FPS en Battlefield 6, 242 en God of War Ragnarok, 244 en The Last of Us Part II y 201 en Horizon Forbidden West, todo en 1440p ultra con FSR y generación de frames. Red Dead Redemption 2 queda en 123 FPS en ultra, que no tiene generación de frames, y supera los 144 en calidad alta. Los únicos títulos bajo 100 son los que usan path tracing, que ninguna GPU por debajo de la RTX 5080 mueve a 144 FPS. El Ryzen 7 7800X3D mejora los mínimos y es la CPU que hace que Baldur's Gate 3 y los competitivos escalen a 144+ en todo momento.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Componente</th><th>Modelo</th><th>Precio</th><th>Tienda más barata</th></tr></thead>
+      <tbody>
+        <tr><td>Procesador</td><td><a href="https://www.solotodo.cl/products/200671">AMD Ryzen 7 7800X3D</a> (8 núcleos, 96 MB L3)</td><td>$429.990</td><td>Xtreme Components</td></tr>
+        <tr><td>Cooler</td><td><a href="https://www.solotodo.cl/products/155066">Deepcool AK400</a> (torre 120 mm)</td><td>$37.990</td><td>DazBog Store</td></tr>
+        <tr><td>Placa madre</td><td><a href="https://www.solotodo.cl/products/256193">ASRock X870 Pro RS</a> (AM5, ATX, PCIe 5.0, USB4)</td><td>$237.900</td><td>Nice One</td></tr>
+        <tr><td>Memoria</td><td><a href="https://www.solotodo.cl/products/149227">Corsair Vengeance RGB 32 GB (2 x 16) DDR5-5200</a></td><td>$499.900</td><td>Natcom</td></tr>
+        <tr><td>Tarjeta de video</td><td><a href="https://www.solotodo.cl/products/276343">ASUS Prime Radeon RX 9070 XT OC 16 GB</a></td><td>$954.990</td><td>PC Factory</td></tr>
+        <tr><td>SSD</td><td><a href="https://www.solotodo.cl/products/279707">Kingston NV3 2 TB NVMe PCIe 4.0</a></td><td>$266.990</td><td>Tecnomas.cl</td></tr>
+        <tr><td>Fuente</td><td><a href="https://www.solotodo.cl/products/394045">MSI MAG A850GN PCIE5 850 W 80 Plus Gold</a></td><td>$69.900</td><td>PC Express</td></tr>
+        <tr><td>Gabinete</td><td><a href="https://www.solotodo.cl/products/367704">Airflow Roble Artis Black/Wood</a> (4 ventiladores, USB-C)</td><td>$89.900</td><td>Nice One</td></tr>
+        <tr><td><strong>Total torre</strong></td><td></td><td><strong>$2.587.560</strong></td><td></td></tr>
+        <tr><td>Monitor (aparte)</td><td><a href="https://www.solotodo.cl/products/367652">Samsung Odyssey G5 G53F 27&quot; 1440p 200 Hz IPS</a>; opción OLED probada por el canal, <a href="https://www.solotodo.cl/products/378752">Gigabyte MO27Q28G 27&quot; 280 Hz Tandem WOLED</a> a $549.900</td><td>$144.990</td><td>Tecnomas.cl</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box info"><strong>Alternativas.</strong> Nvidia: <a href="https://www.solotodo.cl/products/269489">Gigabyte RTX 5070 Ti Windforce OC SFF 16 GB</a> a $1.163.990, total $2.796.560; con DLSS 4 y multiframe x4 entrega 280 FPS en Doom The Dark Ages con full RT y 400 en The Finals, la opción si se quiere path tracing a 144 FPS. CPU más barata: Ryzen 7 9700X ($329.990), $100.000 menos y render de video 30 % más rápido. Con un solo módulo de 16 GB DDR5-5600 el total baja a $2.327.655 y se completa después.</div>
+  </div>
+</section>
+
+<section class="section" id="alta-fps">
+  <div class="inner reveal">
+    <div class="section-tag">Gama alta · rendimiento</div>
+    <h2 class="section-title">Lo que midió el canal con RX 9070 XT y Ryzen 5 7600</h2>
+    <p class="section-subtitle">Calidad ultra en cada juego, FSR y generación de frames activos. FPS promedio en 1440p y, como referencia, en 2160p.</p>
+    <div class="table-scroll"><table class="data">
+      <thead><tr><th>Juego</th><th>1440p</th><th>2160p</th></tr></thead>
+      <tbody>
+        <tr><td>Battlefield 6</td><td>270</td><td>121</td></tr>
+        <tr><td>Red Dead Redemption 2</td><td>123</td><td>61</td></tr>
+        <tr><td>God of War Ragnarok</td><td>242</td><td>174</td></tr>
+        <tr><td>The Last of Us Part II Remastered</td><td>244</td><td>161</td></tr>
+        <tr><td>Horizon Forbidden West</td><td>201</td><td>80</td></tr>
+        <tr><td>Warhammer 40K Space Marine 2</td><td>201</td><td>118</td></tr>
+        <tr><td>Marvel Rivals</td><td>163</td><td>92</td></tr>
+        <tr><td>The Finals</td><td>171 (315 en 1080p)</td><td>84</td></tr>
+        <tr><td>Counter Strike 2</td><td>224 (380 en 1080p)</td><td>192</td></tr>
+        <tr><td>Cyberpunk 2077 con path tracing</td><td>82</td><td>38 (72 sin PT)</td></tr>
+        <tr><td>Doom The Dark Ages con path tracing</td><td>64</td><td>42 (70 sin PT)</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section light" id="arte">
+  <div class="inner reveal">
+    <div class="section-tag">Estado del arte · $7.390.875</div>
+    <h2 class="section-title">4K con lo mejor que se vende en Chile</h2>
+    <p class="section-subtitle">La única GPU que promedia sobre 144 FPS en 4K es la RTX 5090: 151 FPS de media en 15 juegos frente a 112 de la RTX 4090 y 101 de la RTX 5080, según los gráficos que el canal reprodujo en su review de la 5080. En Cyberpunk 4K con RT ultra da 80 FPS y con DLSS 4 multiframe supera los 200. El Ryzen 7 9850X3D es hoy el procesador más rápido para juegos según todas las pruebas del canal; a 4K la diferencia con un 7800X3D es de 2 % a 6 %, pero en esta gama el objetivo es tener los mejores mínimos. La memoria va a 48 GB DDR5-6000 CL36, el punto óptimo de AM5 que el canal usa en su banco de pruebas, y el almacenamiento a 4 TB PCIe 5.0.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Componente</th><th>Modelo</th><th>Precio</th><th>Tienda más barata</th></tr></thead>
+      <tbody>
+        <tr><td>Procesador</td><td><a href="https://www.solotodo.cl/products/382839">AMD Ryzen 7 9850X3D</a> (8 núcleos, 3D V-Cache 2ª gen.)</td><td>$549.900</td><td>Sandos</td></tr>
+        <tr><td>Cooler</td><td><a href="https://www.solotodo.cl/products/280233">Thermalright Frozen Magic 360 Digital ARGB V2</a> (AIO 360)</td><td>$71.990</td><td>TYT Gamer Chile</td></tr>
+        <tr><td>Placa madre</td><td><a href="https://www.solotodo.cl/products/256222">Gigabyte X870E AORUS Elite WiFi 7</a> (AM5, ATX, PCIe 5.0, M.2 Gen5, USB4)</td><td>$349.990</td><td>MegaBytes / MegaDrive</td></tr>
+        <tr><td>Memoria</td><td><a href="https://www.solotodo.cl/products/382889">Corsair Vengeance 48 GB (2 x 24) DDR5-6000 CL36</a></td><td>$799.990</td><td>MyShop</td></tr>
+        <tr><td>Tarjeta de video</td><td><a href="https://www.solotodo.cl/products/395177">Gigabyte AORUS GeForce RTX 5090 Stealth Ice 32 GB</a></td><td>$4.269.205</td><td>Invasión Gamer (SoloTodo referencia $4.035.110)</td></tr>
+        <tr><td>SSD</td><td><a href="https://www.solotodo.cl/products/273935">Kingston FURY Renegade G5 4 TB PCIe 5.0</a> (14.800 MB/s)</td><td>$944.900</td><td>Centrale</td></tr>
+        <tr><td>Fuente</td><td><a href="https://www.solotodo.cl/products/385343">be quiet! Pure Power 13 M 1200 W 80 Plus Gold, ATX 3.1</a></td><td>$155.900</td><td>Sandos</td></tr>
+        <tr><td>Gabinete</td><td><a href="https://www.solotodo.cl/products/259907">Hyte Y70</a> (panel envolvente, GPU vertical)</td><td>$249.000</td><td>Nice One</td></tr>
+        <tr><td><strong>Total torre</strong></td><td></td><td><strong>$7.390.875</strong></td><td></td></tr>
+        <tr><td>Monitor (aparte)</td><td><a href="https://www.solotodo.cl/products/276535">Samsung Odyssey OLED G8 G81SF 32&quot; 4K 240 Hz</a>, calificado por el canal como probablemente el mejor panel 4K de 32 pulgadas disponible; opción IPS <a href="https://www.solotodo.cl/products/407322">MSI MAG 321UPD 32&quot; 4K 144 Hz</a> a $408.990</td><td>$899.990</td><td>Falabella, Paris y Ripley Marketplace</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box info"><strong>Alternativas.</strong> 4K sensato: <a href="https://www.solotodo.cl/products/266473">MSI RTX 5080 Inspire 3X OC 16 GB</a> a $1.766.930, total $4.888.600; el canal la probó en Doom The Dark Ages 4K con 86 FPS nativos, 139 con DLSS calidad y FG x4 y 157 a 170 con DLSS rendimiento x4. Procesador para trabajo y juego: Ryzen 9 9950X3D ($776.990). RAM 64 GB: Kingston Fury Beast RGB 2 x 32 DDR5-5600 ($1.191.343). Almacenamiento: Kingston NV3 4 TB PCIe 4.0 ($543.990), $400.000 menos sin impacto en FPS. ASUS ROG Astral RTX 5090 OC ($5.915.232) para el modelo tope de refrigeración y silencio.</div>
+  </div>
+</section>
+
+<section class="section" id="arte-fps">
+  <div class="inner reveal">
+    <div class="section-tag">Estado del arte · rendimiento</div>
+    <h2 class="section-title">Referencias en 4K citadas por el canal</h2>
+    <p class="section-subtitle">Gráficos reproducidos en la review de la RTX 5080 y mediciones propias del canal con la 5080 en Doom The Dark Ages. FPS promedio y 1 % low.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Prueba</th><th>RTX 5090</th><th>RTX 4090</th><th>RTX 5080</th></tr></thead>
+      <tbody>
+        <tr><td>Media de 15 juegos en 4K</td><td>151</td><td>112</td><td>101</td></tr>
+        <tr><td>Cyberpunk 2077 4K RT ultra, reescalado calidad</td><td>80 / 64</td><td>64 / 53</td><td>50 / 41</td></tr>
+        <tr><td>Black Myth Wukong 4K very high RT</td><td>62 / 50</td><td>44 / 36</td><td>39 / 29</td></tr>
+        <tr><td>Spider-Man Remastered 4K RT</td><td>128</td><td>128</td><td>128</td></tr>
+        <tr><td>Alan Wake 2 1440p RT alto</td><td>105 / 89</td><td>89 / 78</td><td>67 / 58</td></tr>
+        <tr><td>3DMark DLSS 4K rendimiento + FG</td><td>244,85</td><td>171,13</td><td>166,95</td></tr>
+        <tr><td>Doom The Dark Ages 4K (5080): nativo / DLSS calidad + FG x4 / DLSS rendimiento x4</td><td></td><td></td><td>86 / 139 / 157 a 170</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section dark" id="upgrade">
+  <div class="inner reveal">
+    <div class="section-tag">Camino de actualización</div>
+    <h2 class="section-title">Hasta dónde crece cada pack</h2>
+    <p class="section-subtitle">AM4 con DDR4 es la entrada más barata, pero el procesador tiene techo y la memoria DDR4 ya no recibe nuevos productos. AM5 con DDR5 tiene actualización de CPU confirmada por AMD hasta 2027 o más, por eso las gamas media, alta y estado del arte comparten socket y escalan sin cambiar placa ni memoria.</p>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th>Pack</th><th>Siguiente GPU</th><th>Techo de CPU en la misma placa</th><th>RAM</th><th>Qué obliga a cambiar la plataforma</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Entrada</strong> (AM4, DDR4)</td><td>RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0 x16, que el canal comprobó suficiente incluso para una 9070 XT.</td><td>Ryzen 7 5700X ($228.310) o Ryzen 7 5800X3D ($437.900). Socket cerrado: el 5800X3D cuesta más que un 7600X con placa AM5, por eso el salto de CPU conviene hacerlo cambiando de plataforma.</td><td>Segundo módulo de 16 GB DDR4 ($104.990) para 32 GB en doble canal.</td><td>Cuando se quiera una CPU superior al 5800X3D: placa AM5 ($109.440) + Ryzen 5 7600X ($179.990) + 16 GB DDR5 ($239.995), cerca de $530.000, reutilizando GPU, SSD, fuente y gabinete.</td></tr>
+        <tr><td><strong>Media</strong> (AM5, B840M)</td><td>RX 9070 XT ($954.990) con la misma fuente de 750 W; RTX 5070 Ti ($1.163.990) o RTX 5080 ($1.766.930) con fuente de 850 W. PCIe 4.0 x16 y dos M.2.</td><td>Ryzen 7 7800X3D ($429.990) o Ryzen 7 9850X3D ($549.900), previa actualización de BIOS. Zen 6 se anunció para AM5.</td><td>Segundo módulo de 16 GB DDR5-5600 ($239.995) para 32 GB.</td><td>Nada en el horizonte de 3 a 4 años. La placa es micro ATX y sin PCIe 5.0, que hoy no cambia los FPS.</td></tr>
+        <tr><td><strong>Alta</strong> (AM5, X870)</td><td>RTX 5080 ($1.766.930) con la fuente de 850 W; RTX 5090 ($4.269.205) exige fuente de 1.000 a 1.200 W con conector 12V-2x6. PCIe 5.0 x16 y USB4.</td><td>Ryzen 7 9850X3D ($549.900) o Ryzen 9 9950X3D ($776.990) para trabajo y juego.</td><td>Kit de 2 x 32 GB ($1.191.343) para 64 GB; los cuatro zócalos admiten combinar con el kit actual a menor frecuencia.</td><td>Nada; la placa cubre GPU y SSD de próxima generación.</td></tr>
+        <tr><td><strong>Estado del arte</strong> (AM5, X870E)</td><td>Próxima generación Nvidia o AMD por PCIe 5.0, con la fuente de 1.200 W ya dimensionada.</td><td>Cualquier Ryzen AM5 futuro (Zen 6) con actualización de BIOS.</td><td>96 GB (2 x 48) o 128 GB (4 x 32) para trabajo profesional.</td><td>Nada; cuatro M.2 (uno Gen5), USB4 y WiFi 7 ya incluidos.</td></tr>
+      </tbody>
+    </table></div>
+    <div class="box info"><strong>Orden de actualización recomendado por el canal:</strong> primero la tarjeta de video (explica 70 % a 80 % de los FPS), después el procesador, luego RAM y almacenamiento, y al final placa y fuente. Al cambiar de GPU conviene revisar el largo máximo del gabinete (todos los elegidos admiten tarjetas de 360 mm o más) y la potencia de la fuente.</div>
+  </div>
+</section>
+
+<section class="section light" id="comparativa">
+  <div class="inner reveal">
+    <div class="section-tag">Comparativa</div>
+    <h2 class="section-title">Las cuatro gamas lado a lado</h2>
+    <div class="table-scroll"><table class="data wide">
+      <thead><tr><th></th><th>Entrada</th><th>Media</th><th>Alta</th><th>Estado del arte</th></tr></thead>
+      <tbody>
+        <tr><td>Total torre</td><td>$808.070</td><td>$1.502.785</td><td>$2.587.560</td><td>$7.390.875</td></tr>
+        <tr><td>Con monitor sugerido</td><td>$887.970</td><td>$1.595.685</td><td>$2.732.550</td><td>$8.290.865</td></tr>
+        <tr><td>Plataforma</td><td>AM4, DDR4</td><td>AM5, DDR5</td><td>AM5, DDR5</td><td>AM5, DDR5</td></tr>
+        <tr><td>VRAM</td><td>8 GB</td><td>12 GB</td><td>16 GB</td><td>32 GB</td></tr>
+        <tr><td>RAM</td><td>16 GB</td><td>16 GB</td><td>32 GB</td><td>48 GB</td></tr>
+        <tr><td>Fuente</td><td>650 W Gold</td><td>750 W Gold</td><td>850 W Gold</td><td>1200 W Gold ATX 3.1</td></tr>
+        <tr><td>Vía de actualización</td><td>Hasta Ryzen 5800X3D y GPU de hasta 250 W</td><td>Cualquier Ryzen 7000/9000 y GPU hasta 300 W</td><td>Cualquier Ryzen 9000 y GPU hasta 360 W</td><td>Completa</td></tr>
+      </tbody>
+    </table></div>
+  </div>
+</section>
+
+<section class="section" id="recomendaciones">
+  <div class="inner reveal">
+    <div class="section-tag">Recomendaciones</div>
+    <h2 class="section-title">Antes de comprar</h2>
+    <div class="grid-4">
+      <div class="card"><div class="card-icon">⏱️</div><div class="card-title">Comprar pronto y en pocas tiendas</div><div class="card-desc">El canal recomienda cotizar y decidir rápido mientras la RAM sigue subiendo, y concentrar la compra en una o dos tiendas para reducir despachos y pedir la actualización de BIOS de la placa AM5 al comprarla (obligatoria para Ryzen 9000 en placas con firmware antiguo).</div></div>
+      <div class="card"><div class="card-icon">📦</div><div class="card-title">Stock y forma de pago</div><div class="card-desc">Los precios de SoloTodo cambian a diario y varias ofertas corresponden a pago con transferencia. Cada componente de esta página lleva el enlace al producto para verificar antes de pagar.</div></div>
+      <div class="card"><div class="card-icon">🖥️</div><div class="card-title">El monitor acompaña a los FPS</div><div class="card-desc">165 a 240 Hz en 1080p, 200 a 280 Hz en 1440p y 144 a 240 Hz en 4K. Un monitor 4K de 240 Hz solo se aprovecha con la RTX 5090 o con la 5080 usando DLSS 4.</div></div>
+      <div class="card"><div class="card-icon">🕹️</div><div class="card-title">GTA 6</div><div class="card-desc">Sin versión de PC anunciada ni requisitos publicados a la fecha. Las gamas media y alta quedan con socket AM5 y fuente con margen para absorber un cambio de GPU cuando se conozcan.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section dark" id="contacto">
+  <div class="orb orb-1"></div>
+  <div class="inner reveal center">
+    <h2 class="cta-title">¿Armamos el tuyo?</h2>
+    <p class="cta-subtitle">INCBA asesora la selección de componentes, el armado y la puesta a punto. Los precios de esta página se refrescan desde SoloTodo a pedido.</p>
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="label">Email</div>
+        <a href="mailto:camilo@incba.com.ar">camilo@incba.com.ar</a>
+      </div>
+      <div class="contact-item">
+        <div class="label">Empresa</div>
+        <span>INCBA</span>
+      </div>
+      <div class="contact-item">
+        <div class="label">Fuentes</div>
+        <span>SoloTodo y Zona Technosensual</span>
+      </div>
+    </div>
+    <div class="validity-badge">📅 Precios del 11 de octubre de 2026</div>
+    <img class="footer-logo" src="assets/incba-logo-light.png" alt="INCBA">
+  </div>
+</section>
+
+<div class="footer-legal">Análisis preparado por INCBA. Precios tomados de las tiendas publicadas en SoloTodo el 11 de octubre de 2026 (precio oferta, que en varias tiendas corresponde a pago con transferencia). Rendimiento medido por Juan Isaacs (Zona Technosensual) en sus videos de 2025 y 2026. Los precios y el stock cambian a diario; cada componente lleva su enlace para verificar antes de comprar.</div>
+
+<div class="img-modal" id="imgModal" onclick="closeDiagram()">
+  <span class="img-modal-close" aria-label="Cerrar">✕</span>
+  <img id="imgModalImg" src="" alt="">
+</div>
+
+<script>
+(function () {
+  /* --- selector de tema --- */
+  var TEMAS = [{"id":"dark","icono":"🌙","nombre":"Oscuro"},{"id":"light","icono":"☀️","nombre":"Claro"}];
+  var KEY = "incba-propuesta-tema";
+  var i = Math.max(0, TEMAS.findIndex(function (t) { return t.id === (localStorage.getItem(KEY) || "dark"); }));
+  function aplicar(n) {
+    i = (n + TEMAS.length) % TEMAS.length;
+    document.documentElement.className = TEMAS[i].id;
+    localStorage.setItem(KEY, TEMAS[i].id);
+    var thumb = document.getElementById("th-thumb"), label = document.getElementById("th-label");
+    if (thumb) { thumb.dataset.pos = String(i); thumb.textContent = TEMAS[i].icono; }
+    if (label) label.textContent = TEMAS[i].nombre;
+  }
+  window.nextTheme = function () { aplicar(i + 1); };
+  if (TEMAS.length > 1 && document.querySelector(".theme-toggle")) aplicar(i);
+
+  /* --- marquesina de clientes: se duplica la pista para el bucle continuo --- */
+  document.querySelectorAll('.clients-track[data-loop]').forEach(function (t) {
+    t.innerHTML += t.innerHTML;
+  });
+
+  /* --- aparicion progresiva de secciones --- */
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("visible"); io.unobserve(e.target); } });
+  }, { threshold: .12 });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+
+  /* --- tooltips --- */
+  (function () {
+    var tips = document.querySelectorAll(".tip");
+    if (!tips.length) return;
+    var b = document.createElement("div"); b.id = "tip-bubble"; b.setAttribute("role", "tooltip");
+    document.body.appendChild(b);
+    function show(el) {
+      b.textContent = el.getAttribute("data-tip"); b.classList.add("on");
+      var r = el.getBoundingClientRect(), w = b.offsetWidth, h = b.offsetHeight;
+      var x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
+      var y = r.top - h - 10; if (y < 8) y = r.bottom + 10;
+      b.style.left = x + "px"; b.style.top = y + "px";
+    }
+    function hide() { b.classList.remove("on"); }
+    tips.forEach(function (el) {
+      el.addEventListener("mouseenter", function () { show(el); });
+      el.addEventListener("mouseleave", hide);
+      el.addEventListener("focus", function () { show(el); });
+      el.addEventListener("blur", hide);
+    });
+    window.addEventListener("scroll", hide, { passive: true });
+  })();
+
+  /* --- planes de pago --- */
+  window.showPay = function (n) {
+    document.querySelectorAll(".pay-view").forEach(function (v, k) { v.classList.toggle("active", k === n); });
+    document.querySelectorAll(".pay-toggle button").forEach(function (b, k) { b.classList.toggle("active", k === n); });
+  };
+
+  /* --- diagrama ampliable --- */
+  window.openDiagram = function (src) {
+    document.getElementById("imgModalImg").src = src;
+    document.getElementById("imgModal").classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+  window.closeDiagram = function () {
+    document.getElementById("imgModal").classList.remove("open");
+    document.body.style.overflow = "";
+  };
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") window.closeDiagram(); });
+})();
+</script>
+</body>
+</html>
