@@ -70,8 +70,8 @@
         },
         {
           "image": "gabinete-arte.jpg",
-          "alt": "Gabinete Hyte Y70",
-          "title": "5 · Estado del arte · $7.390.875",
+          "alt": "Gabinete Cooler Master Elite 681",
+          "title": "5 · Estado del arte · $7.216.865",
           "desc": "4K con los mejores componentes disponibles en Chile.",
           "href": "#arte"
         }
@@ -649,7 +649,7 @@
       "type": "table",
       "tone": "light",
       "id": "arte",
-      "tag": "Opción 5 · Estado del arte · $7.390.875",
+      "tag": "Opción 5 · Estado del arte · $7.216.865",
       "title": "4K con lo mejor que se vende en Chile",
       "subtitle": "La única tarjeta que promedia sobre 144 FPS en 4K es la RTX 5090: 151 FPS de media en 15 juegos, frente a 112 FPS de la RTX 4090 y 101 FPS de la RTX 5080. En Cyberpunk 4K con RT ultra da 80 FPS y con DLSS 4 multiframe supera los 200 FPS. El Ryzen 7 9850X3D es hoy el procesador más rápido para juegos en todos los benchmarks; a 4K la diferencia con un 7800X3D es de 2 % a 6 %, pero en esta gama el objetivo es tener los mejores mínimos. La memoria va a 48 GB DDR5-6000, el punto óptimo de AM5, y el almacenamiento a 4 TB PCIe 5.0.",
       "headers": [
@@ -703,14 +703,14 @@
         ],
         [
           "Gabinete",
-          "[Hyte Y70](https://www.solotodo.cl/products/259907) (panel envolvente, GPU vertical)",
-          "$249.000",
-          "Nice One"
+          "[Cooler Master Elite 681 Black](https://www.solotodo.cl/products/360214) (ATX, 4 ventiladores ARGB, vidrio templado, GPU hasta 410 mm)",
+          "$74.990",
+          "PC Factory"
         ],
         [
           "**Total torre**",
           "",
-          "**$7.390.875**",
+          "**$7.216.865**",
           ""
         ],
         [
@@ -720,7 +720,7 @@
           "Falabella, Paris y Ripley Marketplace"
         ]
       ],
-      "note": "**Alternativas.** 4K sensato: [MSI RTX 5080 Inspire 3X OC 16 GB](https://www.solotodo.cl/products/266473) a $1.766.930, total $4.888.600; en Doom The Dark Ages 4K rinde 86 FPS nativos, 139 FPS con DLSS calidad y FG x4 y 157 a 170 FPS con DLSS rendimiento x4. Procesador para trabajo y juego: Ryzen 9 9950X3D ($776.990). RAM 64 GB: Kingston Fury Beast RGB 2 x 32 DDR5-5600 ($1.191.343). Almacenamiento: Kingston NV3 4 TB PCIe 4.0 ($543.990), $400.000 menos sin impacto en FPS."
+      "note": "**Alternativas.** 4K sensato: [MSI RTX 5080 Inspire 3X OC 16 GB](https://www.solotodo.cl/products/266473) a $1.766.930, total $4.714.590; en Doom The Dark Ages 4K rinde 86 FPS nativos, 139 FPS con DLSS calidad y FG x4 y 157 a 170 FPS con DLSS rendimiento x4. Procesador para trabajo y juego: Ryzen 9 9950X3D ($776.990). RAM 64 GB: Kingston Fury Beast RGB 2 x 32 DDR5-5600 ($1.191.343). Almacenamiento: Kingston NV3 4 TB PCIe 4.0 ($543.990), $400.000 menos sin impacto en FPS."
     },
     {
       "type": "table",
@@ -853,7 +853,7 @@
           "$796.050",
           "$1.502.785",
           "$2.587.560",
-          "$7.390.875"
+          "$7.216.865"
         ],
         [
           "Con monitor sugerido",
@@ -861,7 +861,7 @@
           "$875.950",
           "$1.595.685",
           "$2.732.550",
-          "$8.290.865"
+          "$8.116.855"
         ],
         [
           "WoW en 1080p",
