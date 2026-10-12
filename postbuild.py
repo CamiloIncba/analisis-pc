@@ -29,7 +29,6 @@ extra = """
 })();
 </script>
 """
-s = s.replace('<div class="gallery cols-3">', '<div class="gallery cols-5">', 1)  # resumen: cinco opciones en una fila
 if ".fps{" not in s:
     s = s.replace("</body>", extra + "</body>")
 io.open(p, "w", encoding="utf-8").write(s)

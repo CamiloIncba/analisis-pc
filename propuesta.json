@@ -798,7 +798,7 @@
       "title": "¿Hasta dónde se puede hacer upgrade en el futuro?",
       "subtitle": "AM4 con DDR4 es la entrada más barata, pero el procesador tiene techo y la memoria DDR4 ya no recibe nuevos productos. AM5 con DDR5 tiene actualización de procesador confirmada por AMD hasta 2027 o más, por eso las gamas media, alta y el estado del arte comparten socket y escalan sin cambiar placa ni memoria.",
       "headers": [
-        "Opción",
+        "Equipo",
         "Siguiente tarjeta de video",
         "Techo de procesador en la misma placa",
         "RAM",
