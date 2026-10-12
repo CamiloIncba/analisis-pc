@@ -415,30 +415,26 @@ html.light {
     <h2 class="section-title">Las tres gamas</h2>
     <p class="section-subtitle">De menor a mayor rendimiento. Precio de la torre completa en pesos chilenos, sin monitor, teclado, mouse ni Windows; el monitor recomendado va aparte en cada gama.</p>
     <div class="gallery cols-3">
-      <a class="gallery-item" href="#entrada" target="_blank" rel="noopener"><span class="gallery-img"><img src="assets/gabinete-entrada.jpg" alt="Gabinete Cougar MX110" loading="lazy"></span>
+      <a class="gallery-item" href="#entrada"><span class="gallery-img"><img src="assets/gabinete-entrada.jpg" alt="Gabinete Cougar MX110" loading="lazy"></span>
         <span class="gallery-text"><strong>Gama de entrada · $796.050</strong><span>Para World of Warcraft a más de 60 FPS en 1080p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
-      <a class="gallery-item" href="#media" target="_blank" rel="noopener"><span class="gallery-img"><img src="assets/gabinete-media.jpg" alt="Gabinete Antec VCX300" loading="lazy"></span>
+      <a class="gallery-item" href="#media"><span class="gallery-img"><img src="assets/gabinete-media.jpg" alt="Gabinete Antec VCX300" loading="lazy"></span>
         <span class="gallery-text"><strong>Gama media · $1.502.785</strong><span>Juegos AAA actuales a más de 144 FPS en 1080p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
-      <a class="gallery-item" href="#alta" target="_blank" rel="noopener"><span class="gallery-img"><img src="assets/gabinete-alta.jpg" alt="Gabinete Airflow Roble Artis" loading="lazy"></span>
+      <a class="gallery-item" href="#alta"><span class="gallery-img"><img src="assets/gabinete-alta.jpg" alt="Gabinete Airflow Roble Artis" loading="lazy"></span>
         <span class="gallery-text"><strong>Gama alta · $2.587.560</strong><span>Los mismos juegos a más de 144 FPS en 1440p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
     </div>
-  </div>
-</section>
-
-<section class="section" id="tener-en-cuenta">
-  <div class="inner reveal">
-    <div class="section-tag">Para tener en cuenta</div>
-    <h2 class="section-title">Los dos extremos</h2>
-    <p class="section-subtitle">Dos referencias que ayudan a ubicar las tres gamas: lo mínimo que hoy corre World of Warcraft y lo máximo que se puede comprar en Chile.</p>
-    <div class="gallery cols-2">
-      <a class="gallery-item" href="#notebook" target="_blank" rel="noopener"><span class="gallery-img"><img src="assets/notebook-ideapad5.jpg" alt="Lenovo IdeaPad 5 2-in-1 14AHP9" loading="lazy"></span>
+<div class="section-sub"><h3>Para tener en cuenta</h3><p>Dos referencias que ayudan a ubicar las tres gamas: lo mínimo que hoy corre World of Warcraft y lo máximo que se puede comprar en Chile.</p></div>
+<div class="gallery cols-2">
+      <a class="gallery-item" href="#notebook"><span class="gallery-img"><img src="assets/notebook-ideapad5.jpg" alt="Lenovo IdeaPad 5 2-in-1 14AHP9" loading="lazy"></span>
         <span class="gallery-text"><strong>Lo más barato que corre WoW · $599.991</strong><span>Un notebook con gráficos integrados Radeon, del tipo que Camilo usa para jugar WoW y le basta.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
-      <a class="gallery-item" href="#arte" target="_blank" rel="noopener"><span class="gallery-img"><img src="assets/gabinete-arte.jpg" alt="Gabinete Cooler Master Elite 681" loading="lazy"></span>
+      <a class="gallery-item" href="#arte"><span class="gallery-img"><img src="assets/gabinete-arte.jpg" alt="Gabinete Cooler Master Elite 681" loading="lazy"></span>
         <span class="gallery-text"><strong>Lo más potente que el dinero puede comprar en Chile - Estado del arte · $7.216.865</strong><span>4K con los mejores componentes disponibles: Ryzen 7 9850X3D y GeForce RTX 5090.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
     </div>
     <div class="quote">La tarjeta de video es la que hace casi todo el trabajo: de ella salen 7 u 8 de cada 10 cuadros por segundo. El procesador importa cuando se juega en 1080p; en 1440p y 4K ya casi no se nota.<span class="who">Con esta regla se ordenaron las cinco opciones</span></div>
+  
   </div>
 </section>
+
+
 
 <section class="section" id="glosario">
   <div class="inner reveal">
@@ -830,6 +826,30 @@ html.light {
     document.body.style.overflow = "";
   };
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") window.closeDiagram(); });
+})();
+</script>
+
+<style>.section-sub{margin-top:48px;padding-top:28px;border-top:1px solid var(--tone-border)}.section-sub h3{font-family:var(--font-display);font-size:22px;font-weight:700;margin:0 0 8px;color:var(--tone-fg)}.section-sub p{font-size:15px;line-height:1.6;color:var(--tone-muted);margin:0 0 22px;max-width:760px}.fps{color:#5AB9A7;font-weight:700;white-space:nowrap}</style>
+<script>
+(function(){
+  var re=/(\d[\d.,]*\s*\+?(?:\s*(?:a|y|\/)\s*\d[\d.,]*)?\s*FPS)/g;
+  function wrap(node){
+    if(node.nodeType===3){
+      if(!re.test(node.nodeValue)) return; re.lastIndex=0;
+      var span=document.createElement('span');
+      span.innerHTML=node.nodeValue.replace(/[&<>]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];}).replace(re,'<span class="fps">$1</span>');
+      node.parentNode.replaceChild(span,node);
+    } else if(node.nodeType===1 && !/^(SCRIPT|STYLE)$/.test(node.tagName) && !node.classList.contains('fps')){
+      Array.prototype.slice.call(node.childNodes).forEach(wrap);
+    }
+  }
+  wrap(document.body);
+  /* tablas de rendimiento: toda celda numerica (salvo la primera columna) es una cantidad de FPS */
+  document.querySelectorAll('section[id$="-fps"] table tr').forEach(function(tr){
+    Array.prototype.slice.call(tr.children).slice(1).forEach(function(td){
+      if(td.tagName==='TD' && /^\s*\d/.test(td.textContent) && !td.querySelector('.fps')) td.classList.add('fps');
+    });
+  });
 })();
 </script>
 </body>
