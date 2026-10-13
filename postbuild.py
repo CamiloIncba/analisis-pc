@@ -60,7 +60,7 @@ s = re.sub(r'(<a class="gallery-item" href="#[^"]*") target="_blank" rel="noopen
 
 # 2b. video embebido: el parrafo [[VIDEO:id]] se reemplaza por un iframe responsivo
 s = re.sub(r'<p[^>]*>\[\[VIDEO:([A-Za-z0-9_-]+)\]\]</p>',
-           r'<div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/" title="World of Warcraft: Forever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>', s)
+           r'<div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/dvueCoFTkCk" title="World of Warcraft: Forever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>', s)
 
 # 3. estilos y script
 if ".fps{" not in s:
