@@ -59,7 +59,7 @@ if m:
 s = re.sub(r'(<a class="gallery-item" href="#[^"]*") target="_blank" rel="noopener"', r'\1', s)
 
 # 2b. video embebido: el parrafo [[VIDEO:id]] se reemplaza por un iframe responsivo
-s = re.sub(r'<p>\[\[VIDEO:([A-Za-z0-9_-]+)\]\]</p>',
+s = re.sub(r'<p[^>]*>\[\[VIDEO:([A-Za-z0-9_-]+)\]\]</p>',
            r'<div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/" title="World of Warcraft: Forever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>', s)
 
 # 3. estilos y script
