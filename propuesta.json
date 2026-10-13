@@ -12,7 +12,7 @@
     "logoDark": "incba-logo-dark.png",
     "badge": "PC gaming en Chile 2026",
     "title": "Análisis de Hardware",
-    "subtitle": "Una guía para elegir el PC antes de que salga **WoW Forever**: desde el notebook más barato que corre World of Warcraft hasta la mejor máquina 4K que se vende en Chile.",
+    "subtitle": "Una guía para elegir el PC antes de que salga **WoW Forever**: desde el equipo justo para World of Warcraft hasta la mejor máquina 4K que se vende en Chile.",
     "meta": [
       {
         "label": "Precios",
@@ -67,18 +67,11 @@
       "type": "gallery",
       "id": "tener-en-cuenta",
       "tag": "Para tener en cuenta",
-      "title": "Los dos extremos",
-      "subtitle": "Dos referencias que ayudan a ubicar las tres gamas: lo mínimo que hoy corre World of Warcraft y lo máximo que se puede comprar en Chile.",
+      "title": "El extremo superior",
+      "subtitle": "Una referencia que ayuda a ubicar las tres gamas: lo máximo que hoy se puede comprar en Chile para jugar.",
       "columns": 2,
       "cta": "Ver detalle",
       "items": [
-        {
-          "image": "notebook-ideapad5.jpg",
-          "alt": "Lenovo IdeaPad 5 2-in-1 14AHP9",
-          "title": "Lo más barato que corre WoW · $599.991",
-          "desc": "Un notebook con gráficos integrados Radeon, del tipo que Camilo usa para jugar WoW y le basta.",
-          "href": "#notebook"
-        },
         {
           "image": "gabinete-arte.jpg",
           "alt": "Gabinete Cooler Master Elite 681",
@@ -737,61 +730,6 @@
     },
     {
       "type": "table",
-      "tone": "light",
-      "id": "notebook",
-      "tag": "Lo más barato que corre WoW · $599.991",
-      "title": "Lenovo IdeaPad 5 2-in-1 14AHP9",
-      "subtitle": "Camilo juega WoW en un notebook de trabajo de 2019 (Ryzen 7 3700U con gráficos Vega 10) y le alcanza. Ese modelo ya no se vende en Chile; este es su equivalente actual en el mismo rango de precio, con gráficos integrados Radeon 780M, entre dos y tres veces más rápidos. Ningún benchmark de este análisis mide este notebook: la estimación sale de los gráficos integrados Radeon 740M que sí se midieron en un PC de escritorio (Counter Strike 2 sobre 100 FPS en calidad media y Battlefield 6 en 50 FPS en baja), y el 780M tiene el triple de unidades gráficas.",
-      "headers": [
-        "Aspecto",
-        "Qué tiene",
-        "Qué significa para WoW"
-      ],
-      "rows": [
-        [
-          "Precio",
-          "[$599.991 en Lenovo Chile (outlet)](https://www.solotodo.cl/products/279676), equipo completo con pantalla, teclado y Windows 11",
-          "No necesita monitor ni periféricos para empezar."
-        ],
-        [
-          "Procesador",
-          "AMD Ryzen 7 8845HS (8 núcleos, 2024)",
-          "Sobra para WoW, incluso en raids y ciudades llenas."
-        ],
-        [
-          "Gráficos",
-          "Radeon 780M integrados",
-          "WoW en 1080p con calidad alta: 60 a 90 FPS en mundo abierto y 40 a 60 FPS en raids. Estimación, sin benchmark propio."
-        ],
-        [
-          "Memoria",
-          "16 GB LPDDR5X soldados",
-          "Suficiente para WoW; no se amplía."
-        ],
-        [
-          "Pantalla",
-          "14\" 1920x1200 táctil, 60 Hz, bisagra 360°",
-          "Tope de 60 FPS en pantalla; sirve como tablet y para trabajar."
-        ],
-        [
-          "WoW Forever",
-          "Mayor exigencia gráfica prevista",
-          "Debería seguir jugable bajando a calidad media."
-        ],
-        [
-          "Upgrade",
-          "Solo el SSD se puede cambiar",
-          "Sin camino de mejora en gráficos, memoria ni procesador."
-        ],
-        [
-          "**Alternativas con pantalla de 144 Hz**",
-          "[HP Victus 15 (Ryzen 5 8645HS, Radeon 760M, 8 GB)](https://www.solotodo.cl/products/355283) a $699.990 en ABC; [ASUS TUF A15 (Ryzen 7 8845HS, Radeon 780M, 8 GB)](https://www.solotodo.cl/products/404360) a $749.990 en PC Factory",
-          "Mismos gráficos con pantalla rápida, pero 8 GB de RAM: conviene ampliar a 16 GB."
-        ]
-      ]
-    },
-    {
-      "type": "table",
       "tone": "dark",
       "id": "upgrade",
       "tag": "Camino de actualización",
@@ -805,13 +743,6 @@
         "Qué obliga a cambiar la plataforma"
       ],
       "rows": [
-        [
-          "**Notebook**",
-          "No admite tarjeta de video dedicada.",
-          "No se puede cambiar.",
-          "Soldada, no se amplía.",
-          "Solo el SSD se puede cambiar; cualquier mejora pasa por un PC de escritorio."
-        ],
         [
           "**Estado del arte** (AM4, DDR4)",
           "RX 9060 XT 16 GB ($549.990) o RX 9070 GRE ($689.990) con la fuente de 650 W; RX 9070 XT ($954.990) exige fuente de 750 W. La A520M es PCIe 3.0, comprobado suficiente incluso para una 9070 XT.",
@@ -851,7 +782,6 @@
       "title": "Las cinco opciones lado a lado",
       "headers": [
         "",
-        "Notebook",
         "Entrada",
         "Media",
         "Alta",
@@ -860,7 +790,6 @@
       "rows": [
         [
           "Total torre",
-          "$599.991 (completo, con pantalla)",
           "$796.050",
           "$1.502.785",
           "$2.587.560",
@@ -868,7 +797,6 @@
         ],
         [
           "Con monitor sugerido",
-          "$599.991",
           "$875.950",
           "$1.595.685",
           "$2.732.550",
@@ -876,7 +804,6 @@
         ],
         [
           "WoW en 1080p",
-          "60 a 90 FPS en calidad alta (estimado)",
           "Más de 60 FPS en calidad alta",
           "Más de 144 FPS",
           "Más de 144 FPS, también en 1440p",
@@ -884,7 +811,6 @@
         ],
         [
           "Plataforma",
-          "Notebook 2024, Ryzen 7 8845HS",
           "AM4, DDR4",
           "AM5, DDR5",
           "AM5, DDR5",
@@ -892,7 +818,6 @@
         ],
         [
           "Memoria de video",
-          "Compartida",
           "8 GB",
           "12 GB",
           "16 GB",
@@ -902,13 +827,11 @@
           "RAM",
           "16 GB",
           "16 GB",
-          "16 GB",
           "32 GB",
           "48 GB"
         ],
         [
           "Fuente",
-          "Cargador incluido",
           "650 W Gold",
           "750 W Gold",
           "850 W Gold",
@@ -916,7 +839,6 @@
         ],
         [
           "Upgrade futuro",
-          "Solo el SSD",
           "Hasta Ryzen 5800X3D y GPU de hasta 250 W",
           "Cualquier Ryzen 7000/9000 y GPU hasta 300 W",
           "Cualquier Ryzen 9000 y GPU hasta 360 W",
