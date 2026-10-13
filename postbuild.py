@@ -17,6 +17,7 @@ CSS = (".section-sub{margin-top:48px;padding-top:28px;border-top:1px solid var(-
        "#resumen .gallery.cols-2{max-width:calc(66.666% - 5px)}#resumen .section-sub{margin-top:26px;padding-top:18px}#resumen .section-sub h3{font-size:18px}"
        "#resumen .section-sub p{font-size:14px;margin:0 0 14px}#resumen .section-subtitle{margin-bottom:14px}"
        "@media(max-width:980px){#resumen .gallery.cols-2{max-width:none}#resumen .gallery-img{aspect-ratio:16/9}}"
+       ".video-wrap{position:relative;width:100%;max-width:900px;margin:8px auto 28px;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#000;box-shadow:0 18px 48px rgba(0,0,0,.35)}.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}"
        ".fps{color:#5AB9A7;font-weight:700;white-space:nowrap}")
 
 JS = r"""
@@ -56,6 +57,10 @@ if m:
 
 # 2. enlaces internos de las galerias en la misma pestaña
 s = re.sub(r'(<a class="gallery-item" href="#[^"]*") target="_blank" rel="noopener"', r'\1', s)
+
+# 2b. video embebido: el parrafo [[VIDEO:id]] se reemplaza por un iframe responsivo
+s = re.sub(r'<p>\[\[VIDEO:([A-Za-z0-9_-]+)\]\]</p>',
+           r'<div class="video-wrap"><iframe src="https://www.youtube-nocookie.com/embed/" title="World of Warcraft: Forever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>', s)
 
 # 3. estilos y script
 if ".fps{" not in s:

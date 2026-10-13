@@ -876,23 +876,16 @@
       ]
     },
     {
-      "type": "cta",
-      "id": "contacto",
-      "title": "¿Dudas antes de comprar?",
-      "subtitle": "Cualquier componente de esta página se puede revisar o reemplazar antes de cerrar la compra. Los precios se refrescan desde SoloTodo cuando haga falta.",
-      "contacts": [
-        {
-          "label": "Camilo",
-          "value": "camilo@incba.com.ar",
-          "href": "mailto:camilo@incba.com.ar"
-        },
-        {
-          "label": "Fuentes",
-          "value": "SoloTodo y benchmarks en juegos actuales"
-        }
-      ],
-      "validity": "📅 Precios del 11 de octubre de 2026",
-      "logo": "incba-logo-light.png"
+      "type": "text",
+      "tone": "dark",
+      "id": "wow-forever",
+      "tag": "WoW Forever",
+      "title": "Qué es World of Warcraft: Forever",
+      "subtitle": "Sale el 4 de noviembre de 2026. Es la versión de Azeroth pensada para quien llega por primera vez, para quien lleva años jugando y para quien lo dejó en algún momento y quiere volver. En este video oficial de cuatro minutos se explica qué es y en qué se diferencia del WoW moderno y del Classic.",
+      "paragraphs": [
+        "[[VIDEO:dvueCoFTkCk]]",
+        "Cualquiera de las cuatro configuraciones de esta página lo mueve con holgura; la diferencia está en la resolución y los FPS que quieras, y en cuánto margen de actualización dejas para los años que vienen."
+      ]
     }
   ]
 }
