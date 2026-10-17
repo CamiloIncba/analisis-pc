@@ -146,6 +146,10 @@ html.light {
   /* Logo del cliente junto al título de portada (cover.titleLogo). */
   .cover-title--logo{ display:flex; align-items:center; justify-content:center; gap:.22em; }
   .cover-title-logo{ height:.9em; width:auto; flex:0 0 auto; -webkit-text-fill-color:initial; }
+  /* titleLogoPosition: "top": logo del cliente centrado sobre el título; conviene cuando el título ocupa más de una línea */
+  .cover-title--logo-top{ flex-direction:column; gap:.4em; }
+  .cover-title--logo-top .cover-title-logo{ height:1.1em; }
+  .cover-title--logo-top > span{ text-align:center; }
   .cover-divider{ width:80px; height:3px; background:linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius:3px; margin:0 auto 34px; animation:fadeInUp .8s ease .8s both; }
   .cover-meta{ display:flex; justify-content:center; gap:50px; flex-wrap:wrap; animation:fadeInUp .8s ease 1s both; }
   .cover-meta-label{ font-size:10px; text-transform:uppercase; letter-spacing:2px; color:var(--muted); margin-bottom:8px; opacity:.85; }
@@ -157,12 +161,13 @@ html.light {
      position:fixed, porque table.data recorta con overflow:hidden cualquier
      absoluto interno. Se muestra con hover y tambien con foco de teclado. */
   .tip{ cursor:help; }
-  #tip-bubble{ position:fixed; z-index:400; max-width:320px; background:var(--th-bg); color:var(--th-fg);
-    border:1px solid var(--border); border-radius:10px; padding:10px 14px; font-size:12.5px; font-weight:400;
-    line-height:1.55; text-align:left; letter-spacing:normal; text-transform:none;
-    box-shadow:0 12px 32px rgba(0,0,0,.30); opacity:0; visibility:hidden; transform:translateY(4px);
-    transition:opacity .18s ease, transform .18s ease; pointer-events:none; }
-  #tip-bubble.on{ opacity:1; visibility:visible; transform:translateY(0); }
+  #tip-bubble{ position:fixed; z-index:400; max-width:320px; background:var(--tip-bg,#fafafa); color:var(--tip-fg,#18181b);
+    border-radius:6px; padding:6px 12px; font-family:var(--font-body); font-size:12px; line-height:1.45; font-weight:500;
+    box-shadow:0 4px 16px rgba(0,0,0,.28); opacity:0; transform:scale(.96); transform-origin:bottom center; pointer-events:none;
+    transition:opacity .12s ease, transform .12s ease; }
+  #tip-bubble.on{ opacity:1; transform:scale(1); }
+  #tip-bubble::after{ content:''; position:absolute; left:50%; bottom:-4px; width:8px; height:8px; background:inherit; transform:translateX(-50%) rotate(45deg); border-radius:1px; }
+  #tip-bubble.below{ transform-origin:top center; } #tip-bubble.below::after{ bottom:auto; top:-4px; }
 
   /* ===== SECTIONS ===== */
   .section{ padding:90px 24px; background:var(--tone-gray); color:var(--tone-fg); }
@@ -270,6 +275,118 @@ html.light {
   .side-card h4{ font-family:var(--font-display); font-size:18px; color:var(--tone-fg); margin-bottom:16px; }
   .side-card ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
   .side-card li{ display:flex; gap:10px; font-size:14px; color:var(--tone-muted); } .side-card li b{ color:var(--accent); }
+  /* cronograma dentro de una seccion oscura: los tokens del tono claro no se leen sobre el degradado */
+  .section.dark .timeline-title{ color:var(--on-dark-strong); }
+  .section.dark .timeline-desc{ color:var(--on-dark); }
+  .section.dark .side-card{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); backdrop-filter:blur(10px); }
+  .section.dark .side-card h4{ color:var(--on-dark-strong); }
+  .section.dark .side-card li{ color:var(--on-dark); }
+
+  /* selector de módulos (bloque `modules`) */
+  .modules-grid{ display:grid; gap:18px; }
+  .modules-grid.cols-1{ grid-template-columns:1fr; } .modules-grid.cols-2{ grid-template-columns:1fr 1fr; } .modules-grid.cols-3{ grid-template-columns:repeat(3,1fr); }
+  @media(max-width:720px){ .modules-grid.cols-2, .modules-grid.cols-3{ grid-template-columns:1fr; } }
+  .module-card{ display:flex; gap:16px; align-items:flex-start; background:var(--tone-card); border:1px solid var(--tone-border); border-radius:18px; padding:22px; cursor:pointer; position:relative; transition:all .3s; }
+  .module-card:hover{ transform:translateY(-3px); box-shadow:0 14px 40px rgba(var(--bar-rgb),.14); border-color:rgba(var(--bar-rgb),.3); }
+  .module-card.on{ border-color:var(--primary); box-shadow:0 0 0 2px rgba(var(--primary-rgb),.25); }
+  .module-check{ position:absolute; opacity:0; width:0; height:0; }
+  .module-box{ flex:0 0 22px; width:22px; height:22px; border-radius:7px; border:2px solid var(--tone-border); margin-top:2px; display:flex; align-items:center; justify-content:center; transition:all .2s; }
+  .module-card.on .module-box{ background:var(--primary); border-color:var(--primary); }
+  .module-card.on .module-box::after{ content:'✓'; color:#fff; font-size:13px; font-weight:700; line-height:1; }
+  .module-card.quote .module-box{ border-style:dashed; }
+  .module-card.quote.on{ border-color:var(--accent); box-shadow:0 0 0 2px rgba(var(--accent-rgb),.25); }
+  .module-card.quote.on .module-box{ background:var(--accent); border-color:var(--accent); border-style:solid; }
+  .module-body{ display:flex; flex-direction:column; gap:6px; min-width:0; }
+  .module-title{ font-family:var(--font-display); font-size:16px; font-weight:700; color:var(--tone-fg); }
+  .module-desc{ font-size:13.5px; color:var(--tone-muted); line-height:1.55; }
+  .module-when{ font-size:12.5px; color:var(--tone-muted); line-height:1.5; } .module-when b{ color:var(--tone-fg); font-weight:600; }
+  .module-meta{ display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
+  .module-badge{ display:inline-block; font-size:11px; font-weight:700; letter-spacing:.5px; padding:3px 10px; border-radius:20px; border:1px solid var(--tone-border); color:var(--tone-muted); }
+  .module-badge.price{ color:var(--tone-muted); font-weight:600; letter-spacing:0; }
+  .module-badge.quote{ border-style:dashed; }
+  .modules-sep{ grid-column:1 / -1; display:flex; align-items:center; gap:14px; margin:8px 0 2px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--tone-muted); }
+  .modules-sep::before, .modules-sep::after{ content:''; flex:1; height:1px; background:var(--tone-border); }
+  .section.dark .modules-sep{ color:var(--on-dark-muted); } .section.dark .modules-sep::before, .section.dark .modules-sep::after{ background:rgba(255,255,255,.14); }
+  .modules-summary{ margin-top:26px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; background:var(--tone-card); border:1px solid var(--tone-border); border-radius:16px; padding:16px 22px; }
+  .modules-summary-text{ font-size:15px; color:var(--tone-muted); } .modules-summary-text b{ color:var(--tone-fg); font-family:var(--font-display); font-size:19px; }
+  .modules-summary-link{ font-weight:700; color:var(--primary); text-decoration:none; }
+  .section.dark .module-card, .section.dark .modules-summary{ background:rgba(255,255,255,.06); border-color:rgba(255,255,255,.1); }
+  .section.dark .module-card.on{ border-color:var(--primary); }
+  .section.dark .module-title, .section.dark .modules-summary-text b, .section.dark .module-when b{ color:var(--on-dark-strong); }
+  .section.dark .module-desc, .section.dark .module-when, .section.dark .modules-summary-text, .section.dark .module-badge{ color:var(--on-dark); }
+  .section.dark .module-box{ border-color:rgba(255,255,255,.35); }
+  /* desglose dinámico en la inversión y fase de módulos en el cronograma */
+  /* retorno de la inversión: segunda tabla con su propio subtítulo */
+  .roi-tools{ display:flex; justify-content:flex-end; margin:-18px 0 14px; }
+  .roi-compare{ display:inline-flex; align-items:center; gap:8px; font-family:var(--font-body); font-size:12.5px; font-weight:600; color:var(--tone-muted); background:transparent; border:1px solid var(--tone-border); border-radius:8px; padding:7px 12px; cursor:pointer; text-align:left; transition:color .15s, border-color .15s, background .15s; }
+  .roi-compare:hover, .roi-compare:focus-visible{ color:var(--tone-fg); border-color:rgba(var(--primary-rgb),.6); background:rgba(var(--primary-rgb),.06); outline:none; }
+  .roi-compare.on{ color:var(--primary); border-color:rgba(var(--primary-rgb),.6); background:rgba(var(--primary-rgb),.08); }
+  .roi-compare svg{ flex:none; }
+  .section.dark .roi-compare{ color:var(--on-dark-soft); border-color:rgba(255,255,255,.14); } .section.dark .roi-compare:hover{ color:var(--on-dark-strong); }
+  @media(max-width:640px){ .roi-tools{ justify-content:flex-start; margin-top:-10px; } }
+  /* prototipo navegable incrustado (bloque mockup) */
+  .mk-nav{ display:flex; flex-wrap:wrap; gap:14px 28px; margin-bottom:12px; }
+  .mk-group{ display:flex; flex-direction:column; gap:8px; min-width:0; }
+  .mk-group-label{ font-size:11px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--tone-muted); }
+  .mk-pills{ display:flex; flex-wrap:wrap; gap:6px; }
+  .mk-pill{ font-family:var(--font-body); font-size:13px; font-weight:600; color:var(--tone-muted); background:transparent; border:1px solid var(--tone-border); border-radius:999px; padding:6px 13px; cursor:pointer; transition:color .15s, border-color .15s, background .15s; }
+  .mk-pill:hover, .mk-pill:focus-visible{ color:var(--tone-fg); border-color:rgba(var(--primary-rgb),.6); outline:none; }
+  .mk-pill.on{ color:var(--on-dark-strong); background:var(--primary); border-color:var(--primary); }
+  .mk-desc{ font-size:14px; color:var(--tone-muted); min-height:1.6em; margin:4px 0 16px; line-height:1.6; }
+  .mk-stage{ border-radius:14px; overflow:hidden; border:1px solid var(--tone-border); box-shadow:0 18px 50px rgba(0,0,0,.18); background:#0f141c; }
+  .mk-bar{ display:flex; align-items:center; gap:12px; padding:8px 12px; background:#161b24; border-bottom:1px solid rgba(255,255,255,.08); color:#c7cdd8; }
+  .mk-dots{ display:flex; gap:6px; flex:none; } .mk-dots i{ width:10px; height:10px; border-radius:50%; background:#3a4150; display:block; }
+  .mk-dots i:nth-child(1){ background:#ff5f57; } .mk-dots i:nth-child(2){ background:#febc2e; } .mk-dots i:nth-child(3){ background:#28c840; }
+  .mk-title{ flex:1; min-width:0; text-align:center; font-size:12px; color:#9aa3b2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .mk-tools{ display:flex; align-items:center; gap:6px; flex:none; }
+  .mk-device{ display:inline-flex; border:1px solid rgba(255,255,255,.12); border-radius:8px; overflow:hidden; }
+  .mk-device button, .mk-icon{ display:inline-flex; align-items:center; gap:6px; font-family:var(--font-body); font-size:12px; font-weight:600; color:#9aa3b2; background:transparent; border:none; padding:6px 10px; cursor:pointer; }
+  .mk-device button + button{ border-left:1px solid rgba(255,255,255,.12); }
+  .mk-device button.on{ color:#fff; background:rgba(var(--primary-rgb),.35); }
+  .mk-icon{ border:1px solid rgba(255,255,255,.12); border-radius:8px; padding:6px 8px; }
+  .mk-device button:hover, .mk-icon:hover, .mk-device button:focus-visible, .mk-icon:focus-visible{ color:#fff; outline:none; }
+  .mk-viewport{ position:relative; overflow:hidden; background:#0f141c; min-height:240px; transition:height .2s ease; }
+  .mk-frame{ position:absolute; top:0; left:0; border:0; background:#fff; transform-origin:0 0; display:block; }
+  .mk-viewport.phone .mk-frame{ position:relative; margin:28px auto 0; border-radius:26px; box-shadow:0 0 0 9px #05070b, 0 0 0 10px rgba(255,255,255,.12), 0 20px 50px rgba(0,0,0,.5); }
+  .mk-loading{ display:flex; align-items:center; justify-content:center; height:240px; padding:0 24px; text-align:center; font-size:13px; color:#9aa3b2; }
+  .mk-stage:fullscreen{ border-radius:0; display:flex; flex-direction:column; } .mk-stage:fullscreen .mk-viewport{ flex:1; height:auto !important; }
+  .mk-stage:fullscreen .mk-frame{ position:static; } .mk-stage:fullscreen .mk-device{ display:none; }
+  .mk-stage:-webkit-full-screen{ display:flex; flex-direction:column; } .mk-stage:-webkit-full-screen .mk-viewport{ flex:1; height:auto !important; }
+  .section.dark .mk-pill.on{ color:var(--on-dark-strong); }
+  @media(max-width:700px){
+    .mk-nav{ flex-direction:column; gap:12px; }
+    /* width:0 + min-width:100%: la fila no aporta su ancho intrínseco a la página y se desplaza dentro de su columna */
+    .mk-pills{ flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; scrollbar-width:thin; width:0; min-width:100%; }
+    .mk-pill{ white-space:nowrap; flex:none; }
+    .mk-device, .mk-title{ display:none; } .mk-tools{ margin-left:auto; }
+    .mk-frame{ position:relative; }
+  }
+  /* costo acumulado con los años en columnas: cifras alineadas a la derecha, favorables destacadas */
+  .roi-acc.years th, .roi-acc.years td{ text-align:right; white-space:nowrap; }
+  .roi-acc.years th:first-child, .roi-acc.years td:first-child{ text-align:left; white-space:normal; }
+  .roi-acc.years td.good{ color:var(--primary); font-weight:700; }
+  .roi-acc.years td.diff:empty::after{ content:'·'; color:var(--tone-border); }
+  /* partidas opcionales del recurrente: casilla pequeña dentro de la celda */
+  .roi-opt{ display:flex; align-items:center; gap:8px; margin-top:8px; cursor:pointer; font-size:12.5px; color:var(--tone-muted); position:relative; }
+  .roi-opt:hover{ color:var(--tone-fg); }
+  .roi-opt-check{ position:absolute; opacity:0; width:0; height:0; }
+  .roi-opt-box{ flex:none; width:16px; height:16px; border-radius:4px; border:1.5px solid var(--tone-border); display:inline-flex; align-items:center; justify-content:center; transition:all .15s; }
+  .roi-opt-check:checked + .roi-opt-box{ background:var(--primary); border-color:var(--primary); }
+  .roi-opt-check:checked + .roi-opt-box::after{ content:'✓'; color:#fff; font-size:10px; font-weight:700; line-height:1; }
+  .roi-opt-check:focus-visible + .roi-opt-box{ outline:2px solid rgba(var(--primary-rgb),.5); outline-offset:2px; }
+  .section.dark .roi-opt{ color:var(--on-dark-soft); } .section.dark .roi-opt-box{ border-color:rgba(255,255,255,.35); }
+  .roi-sub{ font-family:var(--font-display); font-size:clamp(18px,2.2vw,22px); font-weight:700; color:var(--tone-fg); margin:38px 0 6px; letter-spacing:-.2px; }
+  .roi-sub-text{ font-size:14px; color:var(--tone-muted); line-height:1.6; max-width:720px; margin:0 0 16px; }
+  .section.dark .roi-sub{ color:var(--on-dark-strong); } .section.dark .roi-sub-text{ color:var(--on-dark); }
+  .price-breakdown{ list-style:none; text-align:left; margin-top:22px; border-top:1px solid var(--tone-border); padding-top:18px; display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--tone-muted); }
+  .price-breakdown:empty{ display:none; }
+  .price-breakdown li{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; } .price-breakdown li b{ color:var(--tone-fg); white-space:nowrap; }
+  .price-breakdown b.amt{ display:grid; grid-template-columns:1ch auto 6ch; gap:.45ch; font-variant-numeric:tabular-nums; }
+  .price-breakdown b.amt em{ font-style:normal; } .price-breakdown b.amt .op{ text-align:center; color:var(--tone-muted); } .price-breakdown b.amt .cur{ color:var(--tone-muted); font-weight:600; } .price-breakdown b.amt .num{ text-align:right; }
+  .price-breakdown li.total{ border-top:1px dashed var(--tone-border); padding-top:8px; margin-top:4px; font-weight:700; color:var(--tone-fg); }
+  .timeline-item.modules-phase .timeline-dot{ border-color:var(--accent); color:var(--accent); }
+  .timeline-item.modules-phase .timeline-desc{ color:var(--tone-fg); }
+  .section.dark .timeline-item.modules-phase .timeline-desc{ color:var(--on-dark-strong); }
 
   /* vision hub */
   .vision-hub{ display:flex; align-items:center; justify-content:center; gap:0; margin:30px 0; flex-wrap:wrap; }
@@ -289,13 +406,21 @@ html.light {
   .vision-bottom{ display:flex; flex-direction:column; align-items:center; margin-top:-6px; }
   .vision-bottom .vision-line.vert{ width:2px; height:44px; background:linear-gradient(180deg,rgba(var(--primary-rgb),.6),rgba(var(--accent-rgb),.3)); }
   .vision-bottom .vision-spokes{ flex:0 0 auto; min-width:0; max-width:none; margin-top:10px; }
+  .vision-bottom-title{ margin-top:14px; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--on-dark-muted); }
+  .vision-bottom .vision-spokes.cols-2{ display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:900px; width:100%; }
+  .vision-bottom .vision-spokes.cols-2 .vision-spoke{ align-items:flex-start; }
+  .vision-bottom .vision-spokes.cols-2 .vision-spoke-text{ font-weight:500; line-height:1.55; color:var(--on-dark); }
+  .vision-bottom .vision-spokes.cols-2 .vision-spoke-text strong{ color:var(--on-dark-strong); }
+  @media(max-width:720px){ .vision-bottom .vision-spokes.cols-2{ grid-template-columns:1fr; } }
   .vision-note{ text-align:center; margin:36px auto 0; padding:20px 30px; border-radius:16px; background:rgba(255,255,255,.04); border:1px dashed rgba(255,255,255,.15); font-size:14px; color:var(--on-dark); line-height:1.6; max-width:760px; }
   .vision-note strong{ color:var(--accent); }
 
   /* team */
   .team-card{ text-align:center; }
-  .team-photo{ width:120px; height:120px; border-radius:50%; object-fit:cover; object-position:center 20%; margin:0 auto 18px; display:block; border:3px solid rgba(var(--primary-rgb),.5); box-shadow:0 0 30px rgba(var(--primary-rgb),.25); }
+  .team-photo{ width:var(--team-photo,120px); height:var(--team-photo,120px); border-radius:50%; object-fit:cover; object-position:center 20%; margin:0 auto 18px; display:block; border:3px solid rgba(var(--primary-rgb),.5); box-shadow:0 0 30px rgba(var(--primary-rgb),.25); }
   .team-name{ font-family:var(--font-display); font-size:19px; font-weight:700; color:var(--on-dark-strong); margin-bottom:4px; }
+  /* con cuatro tarjetas el nombre baja a 18px para que los nombres largos no partan en dos líneas y desalineen la reseña */
+  .grid-4 .team-name{ font-size:18px; }
   .team-role{ font-size:12px; font-weight:700; color:var(--primary-light); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; }
   .team-desc{ font-size:14px; color:var(--on-dark); line-height:1.55; }
 
@@ -351,10 +476,13 @@ html.light {
   .contact-item a, .contact-item span{ color:var(--on-dark-strong); text-decoration:none; font-weight:600; font-size:14px; }
   .contact-item a:hover{ color:var(--primary-light); }
   .validity-badge{ display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15); padding:10px 24px; border-radius:100px; font-size:13px; font-weight:600; color:var(--on-dark-strong); margin-top:8px; }
-  .footer-logo{ display:block; height:44px; width:auto; margin:34px auto 0; opacity:var(--logo-footer-opacity); transition:opacity .3s; }
+  /* logo con eslogan: se dimensiona por ancho para que el eslogan se lea */
+  .footer-logo{ display:block; width:150px; max-width:80%; height:auto; margin:34px auto 0; opacity:var(--logo-footer-opacity); transition:opacity .3s; }
   .footer-logo:hover{ opacity:1; }
   @media(max-width:640px){ .contact-grid{ grid-template-columns:1fr; } }
-  .footer-legal{ background:var(--surface); color:var(--muted); text-align:center; padding:22px; font-size:12px; border-top:1px solid var(--border); }
+  /* el pie deja espacio a los lados para que el botón de volver arriba no tape el texto */
+  .footer-legal{ background:var(--surface); color:var(--muted); text-align:center; padding:22px 96px; font-size:12px; border-top:1px solid var(--border); }
+  @media(max-width:640px){ .footer-legal{ padding:22px 72px 22px 20px; } }
 
   /* ===== SEVERIDADES (auditorias y pentest) ===== */
   .sev-summary{ display:flex; flex-wrap:wrap; gap:14px; margin:0 0 26px; }
@@ -368,7 +496,8 @@ html.light {
   .sev.med{ background:var(--med); color:#3a2c00; } .sev.low{ background:var(--low); }
 
   /* Logo del cliente en la portada (co-branding) */
-  .cover-client-logo{ height:32px; width:auto; display:block; margin-top:2px; }
+  /* centrado bajo su rótulo, como los demás datos de la portada; altura cercana a la de una línea de valor */
+  .cover-client-logo{ height:30px; width:auto; display:block; margin:0 auto; }
   .cover-client-logo.on-dark{ display:var(--logo-light-display); }
   .cover-client-logo.on-light{ display:var(--logo-dark-display); }
 
@@ -385,12 +514,55 @@ html.light {
 
   /* pendientes (modo revisión) */
 
+  /* ===== MENÚ LATERAL (meta.sideNav): índice fijo con scrollspy, barra de progreso, índice móvil y volver arriba ===== */
+  #progress{ position:fixed; top:0; left:0; height:3px; width:0; z-index:320; background:linear-gradient(90deg,var(--primary),var(--blue),var(--accent)); transition:width .1s linear; }
+  .topbar{ position:fixed; top:0; left:0; right:0; height:54px; z-index:290; display:none; align-items:center; justify-content:space-between; padding:0 16px; background:var(--surface); backdrop-filter:blur(10px); border-bottom:1px solid var(--border); }
+  .topbar-logo{ height:22px; width:auto; } .topbar-spacer{ width:40px; }
+  .menu-btn{ background:transparent; border:1px solid var(--border); color:var(--heading); border-radius:10px; width:40px; height:40px; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+  .doc{ display:grid; grid-template-columns:296px minmax(0,1fr); align-items:start; width:100%; }
+  .doc-main{ min-width:0; }
+  .toc{ position:sticky; top:0; height:100vh; overflow-y:auto; padding:34px 22px 40px; background:var(--surface); color:var(--text); border-right:1px solid var(--border); }
+  .toc-brand{ margin-bottom:16px; } .toc-logo{ width:100%; max-width:120px; height:auto; }
+  .toc-logo.logo-light, .topbar-logo.logo-light{ display:var(--logo-light-display); }
+  .toc-logo.logo-dark, .topbar-logo.logo-dark{ display:var(--logo-dark-display); }
+  .toc-kicker{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--primary); font-weight:700; }
+  .toc-case{ font-size:11.5px; color:var(--muted); margin:14px 0 22px; padding:10px 12px; border:1px solid var(--border); border-radius:10px; background:rgba(var(--primary-rgb),.05); line-height:1.5; }
+  .toc-case strong{ color:var(--heading); }
+  .toc h3{ font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin:0 0 12px; font-weight:700; }
+  .toc ol{ list-style:none; display:flex; flex-direction:column; gap:2px; margin:0; padding:0; }
+  .toc ol a{ display:flex; gap:11px; align-items:baseline; text-decoration:none; color:var(--muted); font-size:13.5px; padding:8px 10px; border-radius:9px; border-left:2px solid transparent; transition:all .2s; }
+  .toc ol a .n{ font-family:var(--font-display); font-size:11px; color:var(--primary); font-weight:700; min-width:22px; }
+  .toc ol a:hover{ background:rgba(var(--primary-rgb),.08); color:var(--heading); }
+  .toc ol a.active{ background:rgba(var(--primary-rgb),.14); color:var(--heading); border-left-color:var(--primary); }
+  .toc ol a.active .n{ color:var(--accent); }
+  .doc .section{ scroll-margin-top:16px; }
+  .scrim{ display:none; }
+  #toTop{ position:fixed; bottom:30px; right:22px; width:46px; height:46px; border-radius:14px; background:var(--primary); color:var(--on-dark-strong); border:none; font-size:20px; cursor:pointer; opacity:0; pointer-events:none; transition:opacity .3s,transform .2s; z-index:280; box-shadow:0 8px 24px rgba(var(--primary-rgb),.4); }
+  #toTop.show{ opacity:1; pointer-events:auto; } #toTop:hover{ transform:translateY(-3px); }
+  @media(max-width:1024px){
+    .topbar{ display:flex; }
+    .doc{ grid-template-columns:1fr; }
+    .doc .section, .hero{ scroll-margin-top:54px; }
+    .toc{ position:fixed; top:54px; left:0; bottom:0; width:300px; height:auto; z-index:295; transform:translateX(-100%); transition:transform .3s; box-shadow:0 0 40px rgba(0,0,0,.4); }
+    .toc.open{ transform:translateX(0); }
+    .scrim{ display:block; position:fixed; inset:54px 0 0 0; background:rgba(0,0,0,.5); z-index:294; opacity:0; pointer-events:none; transition:opacity .3s; }
+    .scrim.show{ opacity:1; pointer-events:auto; }
+    .theme-toggle{ top:62px; }
+  }
 
 </style>
 </head>
 <body>
 
 
+
+<div id="progress"></div>
+
+<div class="topbar">
+  <button class="menu-btn" id="menuBtn" aria-label="Abrir índice">☰</button>
+  <span class="topbar-brand"><img class="topbar-logo logo-light" src="assets/incba-logo-light.png" alt="INCBA"><img class="topbar-logo logo-dark" src="assets/incba-logo-dark.png" alt="INCBA"></span>
+  <span class="topbar-spacer"></span>
+</div>
 
 <section class="hero">
   <div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div>
@@ -409,6 +581,38 @@ html.light {
   <div class="scroll-hint">DESLIZA PARA VER EL ANÁLISIS</div>
 </section>
 
+<div class="doc">
+
+<aside class="toc" id="toc">
+    <div class="toc-brand"><img class="toc-logo logo-light" src="assets/incba-logo-light.png" alt="INCBA"><img class="toc-logo logo-dark" src="assets/incba-logo-dark.png" alt="INCBA"></div>
+    <div class="toc-kicker">PC gaming en Chile 2026 · Análisis de Hardware</div>
+    
+    <h3>Contenido</h3>
+    <ol>
+      <li><a href="#resumen"><span class="n">01</span> Resumen</a></li>
+      <li><a href="#tener-en-cuenta"><span class="n">02</span> Para tener en cuenta</a></li>
+      <li><a href="#glosario"><span class="n">03</span> Para leer este análisis</a></li>
+      <li><a href="#metodo"><span class="n">04</span> Fuentes</a></li>
+      <li><a href="#contexto"><span class="n">05</span> Contexto</a></li>
+      <li><a href="#entrada"><span class="n">06</span> Gama de entrada · $796.050</a></li>
+      <li><a href="#entrada-fps"><span class="n">07</span> Gama de entrada · rendimiento medido</a></li>
+      <li><a href="#media"><span class="n">08</span> Gama media · $1.538.875</a></li>
+      <li><a href="#media-fps"><span class="n">09</span> Gama media · rendimiento medido</a></li>
+      <li><a href="#alta"><span class="n">10</span> Gama alta · $2.587.560</a></li>
+      <li><a href="#alta-fps"><span class="n">11</span> Gama alta · rendimiento medido</a></li>
+      <li><a href="#arte"><span class="n">12</span> Lo más potente que el dinero puede comprar en Chile - Estado del arte · $7.216.865</a></li>
+      <li><a href="#arte-fps"><span class="n">13</span> Estado del arte · rendimiento medido</a></li>
+      <li><a href="#upgrade"><span class="n">14</span> Camino de actualización</a></li>
+      <li><a href="#comparativa"><span class="n">15</span> Comparativa</a></li>
+      <li><a href="#recomendaciones"><span class="n">16</span> Recomendaciones</a></li>
+      <li><a href="#wow-forever"><span class="n">17</span> WoW Forever</a></li>
+    </ol>
+  </aside>
+
+<div class="scrim" id="scrim"></div>
+
+<main class="doc-main">
+
 <section class="section light" id="resumen">
   <div class="inner reveal">
     <div class="section-tag">Resumen</div>
@@ -418,7 +622,7 @@ html.light {
       <a class="gallery-item" href="#entrada"><span class="gallery-img"><img src="assets/gabinete-entrada.jpg" alt="Gabinete Cougar MX110" loading="lazy"></span>
         <span class="gallery-text"><strong>Gama de entrada · $796.050</strong><span>Para World of Warcraft a más de 60 FPS en 1080p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
       <a class="gallery-item" href="#media"><span class="gallery-img"><img src="assets/gabinete-media.jpg" alt="Gabinete Antec VCX300" loading="lazy"></span>
-        <span class="gallery-text"><strong>Gama media · $1.502.785</strong><span>Juegos AAA actuales a más de 144 FPS en 1080p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
+        <span class="gallery-text"><strong>Gama media · $1.538.875</strong><span>Juegos AAA actuales a más de 144 FPS en 1080p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
       <a class="gallery-item" href="#alta"><span class="gallery-img"><img src="assets/gabinete-alta.jpg" alt="Gabinete Airflow Roble Artis" loading="lazy"></span>
         <span class="gallery-text"><strong>Gama alta · $2.587.560</strong><span>Los mismos juegos a más de 144 FPS en 1440p.</span><span class="gallery-cta">Ver detalle ↗</span></span></a>
     </div>
@@ -520,25 +724,25 @@ html.light {
 
 <section class="section light" id="media">
   <div class="inner reveal">
-    <div class="section-tag">Gama media · $1.502.785</div>
+    <div class="section-tag">Gama media · $1.538.875</div>
     <h2 class="section-title">Juegos AAA a más de 144 FPS en 1080p</h2>
     <p class="section-subtitle">Para sostener 144 FPS en Battlefield 6 o Red Dead Redemption 2 en 1080p con calidad alta o ultra hace falta una tarjeta de la clase RX 9070 GRE y un procesador AM5 actual. La RX 9060 XT de 8 GB, un escalón más abajo, llega a 172 FPS en Doom The Dark Ages y 231 FPS en Delta Force, pero cae a 91 FPS en Expedition 33 y 52 FPS en Spider-Man 2 por falta de memoria de video. Baldur's Gate 3 depende del procesador en su acto final, por eso un Ryzen 7000 de 5,3 GHz. GTA 6 aún no tiene versión de PC ni requisitos publicados; el socket AM5 y la fuente de 750 W dejan margen para absorberlo.</p>
     <div class="table-scroll"><table class="data wide">
       <thead><tr><th>Componente</th><th>Modelo</th><th>Precio</th><th>Tienda más barata</th></tr></thead>
       <tbody>
         <tr><td>Procesador</td><td><a href="https://www.solotodo.cl/products/151869">AMD Ryzen 5 7600X</a> (6 núcleos, 5,3 GHz, sin cooler)</td><td>$179.990</td><td>Xtreme Components</td></tr>
-        <tr><td>Cooler</td><td><a href="https://www.solotodo.cl/products/158446">Thermalright Assassin X 120 Refined SE ARGB</a></td><td>$23.900</td><td>Centrale</td></tr>
+        <tr><td>Cooler</td><td><a href="https://www.solotodo.cl/products/145133">Deepcool AK620</a> (doble torre, 2 ventiladores de 120 mm, 160 mm de alto)</td><td>$59.990</td><td>DazBog Store</td></tr>
         <tr><td>Placa madre</td><td><a href="https://www.solotodo.cl/products/356069">MSI B840M Gaming WiFi 6E</a> (AM5, micro ATX, 2 M.2)</td><td>$109.440</td><td>Winpy</td></tr>
         <tr><td>Memoria</td><td><a href="https://www.solotodo.cl/products/252385">Kingston 16 GB DDR5-5600</a> (1 módulo)</td><td>$239.995</td><td>SP Digital</td></tr>
         <tr><td>Tarjeta de video</td><td><a href="https://www.solotodo.cl/products/406331">Gigabyte Radeon RX 9070 GRE Gaming OC 12 GB</a></td><td>$689.990</td><td>DazBog Store / Progaming</td></tr>
         <tr><td>SSD</td><td><a href="https://www.solotodo.cl/products/253373">Kingston NV3 1 TB NVMe PCIe 4.0</a></td><td>$151.490</td><td>Notebooksya! / Xtreme Components</td></tr>
         <tr><td>Fuente</td><td><a href="https://www.solotodo.cl/products/358155">be quiet! Pure Power 12 750 W 80 Plus Gold</a></td><td>$62.990</td><td>Dust2</td></tr>
         <tr><td>Gabinete</td><td><a href="https://www.solotodo.cl/products/365008">Antec VCX300 ARGB</a> (3 ventiladores, vidrio)</td><td>$44.990</td><td>PC Factory</td></tr>
-        <tr><td><strong>Total torre</strong></td><td></td><td><strong>$1.502.785</strong></td><td></td></tr>
+        <tr><td><strong>Total torre</strong></td><td></td><td><strong>$1.538.875</strong></td><td></td></tr>
         <tr><td>Monitor (aparte)</td><td><a href="https://www.solotodo.cl/products/378751">Gigabyte GS25F2A 25&quot; 1080p 240 Hz IPS</a>; en 27&quot;, <a href="https://www.solotodo.cl/products/366907">Xiaomi G27i 2026 165 Hz</a> a $114.990</td><td>$92.900</td><td>Sandos</td></tr>
       </tbody>
     </table></div>
-    <div class="box info"><strong>Alternativas.</strong> Nvidia: <a href="https://www.solotodo.cl/products/273016">Gigabyte RTX 5070 Eagle OC 12 GB</a> a $899.990, total $1.712.785, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: <a href="https://www.solotodo.cl/products/355722">ASUS Dual RX 9060 XT 16 GB</a> a $549.990, total $1.362.785, cerca de 20 % menos que la GRE pero con 16 GB de memoria de video. El 7600X cuesta $36.910 menos que el Ryzen 5 7600 con cooler y es más rápido; con el cooler elegido sigue siendo más barato.</div>
+    <div class="box info"><strong>Alternativas.</strong> Nvidia: <a href="https://www.solotodo.cl/products/273016">Gigabyte RTX 5070 Eagle OC 12 GB</a> a $899.990, total $1.748.875, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: <a href="https://www.solotodo.cl/products/355722">ASUS Dual RX 9060 XT 16 GB</a> a $549.990, total $1.398.875, cerca de 20 % menos que la GRE pero con 16 GB de memoria de video. El AK620 es un cooler de doble torre: mantiene al 7600X silencioso y sirve igual para un 7800X3D o un 9850X3D si después se cambia el procesador.</div>
   </div>
 </section>
 
@@ -681,8 +885,8 @@ html.light {
     <div class="table-scroll"><table class="data wide">
       <thead><tr><th></th><th>Entrada</th><th>Media</th><th>Alta</th><th>Estado del arte</th></tr></thead>
       <tbody>
-        <tr><td>Total torre</td><td>$796.050</td><td>$1.502.785</td><td>$2.587.560</td><td>$7.216.865</td></tr>
-        <tr><td>Con monitor sugerido</td><td>$875.950</td><td>$1.595.685</td><td>$2.732.550</td><td>$8.116.855</td></tr>
+        <tr><td>Total torre</td><td>$796.050</td><td>$1.538.875</td><td>$2.587.560</td><td>$7.216.865</td></tr>
+        <tr><td>Con monitor sugerido</td><td>$875.950</td><td>$1.631.775</td><td>$2.732.550</td><td>$8.116.855</td></tr>
         <tr><td>WoW en 1080p</td><td>Más de 60 FPS en calidad alta</td><td>Más de 144 FPS</td><td>Más de 144 FPS, también en 1440p</td><td>Más de 144 FPS en 4K</td></tr>
         <tr><td>Plataforma</td><td>AM4, DDR4</td><td>AM5, DDR5</td><td>AM5, DDR5</td><td>AM5, DDR5</td></tr>
         <tr><td>Memoria de video</td><td>8 GB</td><td>12 GB</td><td>16 GB</td><td>32 GB</td></tr>
@@ -718,6 +922,11 @@ html.light {
 </section>
 
 <div class="footer-legal">Análisis preparado por Camilo para Felipe. Precios tomados de las tiendas publicadas en SoloTodo el 11 de octubre de 2026 (precio oferta, que en varias tiendas corresponde a pago con transferencia). Rendimiento según benchmarks realizados en juegos actuales durante 2025 y 2026. Los precios y el stock cambian a diario; cada componente lleva su enlace para verificar antes de comprar.</div>
+
+</main>
+</div>
+
+<button id="toTop" aria-label="Volver arriba">↑</button>
 
 <div class="img-modal" id="imgModal" onclick="closeDiagram()">
   <span class="img-modal-close" aria-label="Cerrar">✕</span>
@@ -762,7 +971,7 @@ html.light {
       b.textContent = el.getAttribute("data-tip"); b.classList.add("on");
       var r = el.getBoundingClientRect(), w = b.offsetWidth, h = b.offsetHeight;
       var x = Math.min(Math.max(8, r.left + r.width / 2 - w / 2), window.innerWidth - w - 8);
-      var y = r.top - h - 10; if (y < 8) y = r.bottom + 10;
+      var y = r.top - h - 8, abajo = y < 8; if (abajo) y = r.bottom + 8; b.classList.toggle("below", abajo);
       b.style.left = x + "px"; b.style.top = y + "px";
     }
     function hide() { b.classList.remove("on"); }
@@ -780,6 +989,383 @@ html.light {
     document.querySelectorAll(".pay-view").forEach(function (v, k) { v.classList.toggle("active", k === n); });
     document.querySelectorAll(".pay-toggle button").forEach(function (b, k) { b.classList.toggle("active", k === n); });
   };
+
+  /* --- retorno de la inversión: cálculo compartido con el build (templates/roi.js) --- */
+  /* Retorno de la inversión frente a una suscripción de referencia.
+   Cálculo compartido: lo usa la plantilla al compilar (Node) y la página al cambiar la selección
+   de módulos (navegador). Devuelve textos sin escapar; la nota admite **negrita**.
+   cfg: { currency, reference: { setup, monthly, initial, recurring }, own: { monthly, covers,
+         coversBase, initial, initialNoPlan, quoteNote, recurring, excluded, excludedNone },
+         horizons: [años], texts: { ... } }
+   own.items (opcional): [{ id, text, monthly, optional, selected, label }] compone el recurrente; las partidas
+   opcionales entran solo si su id está en st.options. Sin items, se usa own.monthly.
+   st:  { total, baseLabel, modules: [títulos], unselected: [títulos], quoteCount, plan, options: [ids] }
+   Sin backticks ni "${": este archivo se inyecta dentro de una template literal. */
+function incbaRoiPlan(pcts) {
+  var p = (pcts || []).filter(function (x) { return x > 0; });
+  if (!p.length) return "";
+  var palabras = ["una fase", "dos fases", "tres fases", "cuatro fases", "cinco fases", "seis fases"];
+  return (palabras[p.length - 1] || p.length + " fases") + " (" + p.join(" / ") + ")";
+}
+function incbaRoi(cfg, st) {
+  var t = cfg.texts || {}, ref = cfg.reference || {}, own = cfg.own || {};
+  var cur = cfg.currency || "";
+  var fmt = function (n) { return Number(n).toLocaleString("es-CL"); };
+  var ORD = ["primer", "segundo", "tercer", "cuarto", "quinto", "sexto", "séptimo", "octavo", "noveno", "décimo"];
+  var ord = function (n) { return ORD[n - 1] || n + "º"; };
+  var tpl = function (s, v) { return String(s == null ? "" : s).replace(/\{(\w+)\}/g, function (m, k) { return k in v ? String(v[k]) : m; }); };
+  var minuscula = function (s) { s = String(s || ""); return s.charAt(0).toLowerCase() + s.slice(1); };
+  var lista = function (a) {
+    a = (a || []).map(minuscula);
+    if (!a.length) return "";
+    if (a.length === 1) return a[0];
+    return a.slice(0, -1).join(", ") + " y " + a[a.length - 1];
+  };
+  var total = Number(st.total) || 0, setup = Number(ref.setup) || 0;
+  var items = Array.isArray(own.items) ? own.items : null, opts = st.options || [];
+  var incluidos = items ? items.filter(function (it) { return !it.optional || opts.indexOf(it.id) >= 0; }) : [];
+  var ownMonthly = items ? incluidos.reduce(function (a, it) { return a + (Number(it.monthly) || 0); }, 0) : (Number(own.monthly) || 0);
+  var capital = function (s) { s = String(s || ""); return s.charAt(0).toUpperCase() + s.slice(1); };
+  var refYear = (Number(ref.monthly) || 0) * 12, ownYear = ownMonthly * 12;
+  var delta = refYear - ownYear;
+  var mods = st.modules || [], unsel = st.unselected || [], quote = Number(st.quoteCount) || 0;
+  var v = {
+    currency: cur, total: fmt(total), setup: fmt(setup),
+    refMonthly: fmt(ref.monthly || 0), ownMonthly: fmt(ownMonthly),
+    items: capital(lista(incluidos.map(function (it) { return it.text || it.label || ""; }))),
+    refYearly: fmt(refYear), ownYearly: fmt(ownYear), delta: fmt(Math.abs(delta)),
+    base: st.baseLabel || "", modules: lista(mods), unselected: lista(unsel), n: mods.length,
+    plan: st.plan || "",
+    quote: quote + " " + (quote === 1 ? (t.quoteOne || "módulo a cotizar") : (t.quoteMany || "módulos a cotizar"))
+  };
+  var monto = function (n) { return tpl(t.amount || "{amount} {currency}", { amount: fmt(n), currency: cur }); };
+  var porAnio = []; /* nombre propio: 'years' se reutiliza más abajo para el punto de equilibrio */
+  var rows = (cfg.horizons || [1, 2, 3, 5]).map(function (y) {
+    var r = setup + refYear * y, o = total + ownYear * y, d = r - o;
+    var w = { years: y, diff: fmt(Math.abs(d)), currency: cur };
+    porAnio.push({ years: y, label: y === 1 ? (t.year || "1 año") : tpl(t.years || "{years} años", w), ref: r, own: o, diff: d, refTxt: fmt(r), ownTxt: fmt(o), diffTxt: fmt(Math.abs(d)) });
+    return [
+      y === 1 ? (t.year || "1 año") : tpl(t.years || "{years} años", w),
+      monto(r),
+      monto(o),
+      d > 0 ? tpl(t.favorOwn || "{diff} {currency} a favor de esta propuesta", w)
+        : d < 0 ? tpl(t.favorRef || "{diff} {currency} a favor de la suscripción", w)
+        : (t.even || "Sin diferencia")
+    ];
+  });
+  var noteFirst = t.noteFirst || "**Esta propuesta cuesta menos desde el primer año.** El recurrente de la suscripción ({refYearly} {currency} anuales) supera al de un sistema propio (cerca de {ownYearly} {currency} anuales) y la diferencia crece cerca de {delta} {currency} por año.";
+  var noteNever = t.noteNever || "**Con esta configuración, la suscripción cuesta menos en todos los horizontes.** El recurrente de un sistema propio (cerca de {ownYearly} {currency} anuales) iguala o supera al de la suscripción ({refYearly} {currency} anuales).";
+  var noteLater = t.noteLater || "**Punto de equilibrio: {breakeven}.** La suscripción cuesta menos durante {period}. A partir del {from} año, esta propuesta cuesta menos y la diferencia crece cerca de {delta} {currency} por año, porque el recurrente de la suscripción ({refYearly} {currency} anuales) supera al de un sistema propio (cerca de {ownYearly} {currency} anuales).";
+  var note;
+  if (delta <= 0) {
+    note = tpl(total <= setup ? noteFirst : noteNever, v);
+  } else {
+    var be = (total - setup) / delta; /* años hasta el punto de equilibrio */
+    if (be <= 1) note = tpl(noteFirst, v);
+    else {
+      var years = Math.ceil(be) - 1; /* años completos en que la referencia cuesta menos */
+      v.years = years; v.from = ord(years + 1);
+      v.period = years === 1 ? (t.firstYear || "el primer año") : tpl(t.firstYears || "los {years} primeros años", v);
+      v.breakeven = years === 1 ? (t.breakevenOne || "al cierre del primer año") : tpl(t.breakevenMany || "a los {years} años", v);
+      note = tpl(noteLater, v);
+    }
+  }
+  return {
+    covers: tpl(mods.length ? (own.covers || "{base} con {modules} ({total} {currency})") : (own.coversBase || "{base} ({total} {currency})"), v),
+    initial: tpl(st.plan ? (own.initial || "{total} {currency}, en {plan}") : (own.initialNoPlan || "{total} {currency}"), v) + (quote ? " " + tpl(own.quoteNote || "(más {quote})", v) : ""),
+    excluded: tpl(unsel.length ? (own.excluded || "") : (own.excludedNone != null ? own.excludedNone : (own.excluded || "")), v),
+    refInitial: tpl(ref.initial || "{setup} {currency}", v),
+    refRecurring: tpl(ref.recurring || "{refMonthly} {currency} al mes: {refYearly} {currency} al año", v),
+    ownRecurring: tpl(own.recurring || "cerca de {ownMonthly} {currency} al mes: {ownYearly} {currency} al año", v),
+    rows: rows,
+    years: porAnio,
+    note: note,
+    ownMonthly: ownMonthly
+  };
+}
+/* Cuerpo de la tabla de costo acumulado, compartido por el build y la página.
+   cfg.accumulated.layout "years" (por defecto): los años como columnas, al modo de una tabla de
+   amortización, con cuatro filas: referencia, propuesta, a favor de la referencia, a favor de la
+   propuesta. "rows": un año por fila con la diferencia en texto. esc escapa texto para HTML. */
+function incbaRoiTabla(r, cfg, esc) {
+  var acc = cfg.accumulated || {}, L = acc.labels || {};
+  var b = function (s) { return "<td><strong>" + esc(s) + "</strong></td>"; };
+  var c = function (s, cls) { return "<td" + (cls ? " class='" + cls + "'" : "") + ">" + esc(s) + "</td>"; };
+  if ((acc.layout || "years") !== "years") {
+    return r.rows.map(function (row) { return "<tr>" + row.map(function (x, i) { return i === 0 ? b(x) : c(x); }).join("") + "</tr>"; }).join("");
+  }
+  var ys = r.years || [];
+  return "<tr>" + b(L.ref || "Suscripción") + ys.map(function (y) { return c(y.refTxt); }).join("") + "</tr>" +
+    "<tr>" + b(L.own || "Esta propuesta") + ys.map(function (y) { return c(y.ownTxt, y.diff > 0 ? "good" : ""); }).join("") + "</tr>" +
+    "<tr>" + b(L.favorRef || "A favor de la suscripción") + ys.map(function (y) { return c(y.diff < 0 ? y.diffTxt : "", "diff"); }).join("") + "</tr>" +
+    "<tr>" + b(L.favorOwn || "A favor de esta propuesta") + ys.map(function (y) { return c(y.diff > 0 ? y.diffTxt : "", y.diff > 0 ? "diff good" : "diff"); }).join("") + "</tr>";
+}
+
+  /* pinta un bloque de retorno con el estado dado; lo usan el carrito y los bloques sin carrito */
+  var txtRoi = function (s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; };
+  function pintarRoi(sec, rc, st) {
+    var r = incbaRoi(rc, st);
+    /* sin barras invertidas: este script vive dentro de una template literal */
+    var negrita = function (s) { return txtRoi(s).replace(/[*][*](.+?)[*][*]/g, "<strong>$1</strong>"); };
+    var poner = function (k, v) { var el = sec.querySelector("[data-roi='" + k + "']"); if (el) el.innerHTML = negrita(v); };
+    poner("covers", r.covers); poner("initial", r.initial); poner("excluded", r.excluded); poner("note", r.note); poner("recurring-text", r.ownRecurring);
+    var tb = sec.querySelector("[data-roi='rows']");
+    if (tb) tb.innerHTML = incbaRoiTabla(r, rc, txtRoi);
+  }
+  var idsMarcados = function (lista) { return lista.filter(function (c) { return c.checked; }).map(function (c) { return c.getAttribute("data-id"); }); };
+  /* bloques de retorno sin carrito: solo reaccionan a las partidas opcionales del recurrente */
+  document.querySelectorAll(".roi:not([data-roi-linked])").forEach(function (blk) {
+    var rc; try { rc = JSON.parse(blk.querySelector(".roi-config").textContent); } catch (e) { return; }
+    var opts = Array.prototype.slice.call(blk.querySelectorAll(".roi-opt-check"));
+    var pintar = function () { pintarRoi(blk, rc, { total: Number(rc.own.total) || 0, baseLabel: rc.own.label || "", modules: [], unselected: [], quoteCount: 0, plan: "", options: idsMarcados(opts) }); };
+    opts.forEach(function (c) { c.addEventListener("change", pintar); });
+  });
+
+  /* --- prototipo navegable incrustado (bloque mockup) --- */
+  document.querySelectorAll(".mockup").forEach(function (blk) {
+    var fuente = blk.querySelector(".mk-src"), vp = blk.querySelector(".mk-viewport"), stage = blk.querySelector(".mk-stage");
+    var pills = Array.prototype.slice.call(blk.querySelectorAll(".mk-pill")), desc = blk.querySelector(".mk-desc"), titulo = blk.querySelector(".mk-title");
+    var devBtns = Array.prototype.slice.call(blk.querySelectorAll(".mk-device button"));
+    var W = parseInt(blk.getAttribute("data-width"), 10) || 1280, H = parseInt(blk.getAttribute("data-height"), 10) || 800;
+    var PW = 390, PH = 780, marco = blk.getAttribute("data-frame") || "";
+    var url = null, frame = null, listo = false, ruta = blk.getAttribute("data-start") || "/", vista = "desktop", cargando = false;
+    var angosto = function () { return window.matchMedia("(max-width: 700px)").matches; };
+    var completa = function () { return (document.fullscreenElement || document.webkitFullscreenElement) === stage; };
+    function marcar(path) {
+      ruta = path;
+      var activa = null;
+      pills.forEach(function (p) { var on = p.getAttribute("data-route") === path; p.classList.toggle("on", on); p.setAttribute("aria-pressed", on ? "true" : "false"); if (on) activa = p; });
+      if (desc) desc.textContent = activa ? activa.getAttribute("data-desc") : "";
+      if (titulo) titulo.textContent = [marco, activa ? activa.getAttribute("data-label") : ""].filter(Boolean).join(" · ");
+    }
+    function medir() {
+      if (!frame) return;
+      var s = frame.style; s.transform = ""; s.margin = "";
+      vp.classList.remove("phone");
+      if (completa()) { s.width = "100%"; s.height = "100%"; vp.style.height = ""; return; }
+      var cw = vp.clientWidth;
+      if (angosto()) { s.width = cw + "px"; s.height = Math.round(Math.min(760, window.innerHeight * 0.78)) + "px"; vp.style.height = s.height; return; }
+      if (vista === "phone") { vp.classList.add("phone"); s.width = PW + "px"; s.height = PH + "px"; vp.style.height = (PH + 56) + "px"; return; }
+      var k = Math.min(1, cw / W);
+      s.width = W + "px"; s.height = H + "px"; s.transform = "scale(" + k + ")";
+      vp.style.height = Math.round(H * k) + "px";
+    }
+    async function abrirUrl() {
+      if (url) return url;
+      if (typeof DecompressionStream === "undefined") throw new Error("sin DecompressionStream");
+      var bin = atob(fuente.textContent.trim()), bytes = new Uint8Array(bin.length);
+      for (var i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      var html = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+      url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+      return url;
+    }
+    async function montar(path) {
+      if (cargando) return;
+      cargando = true;
+      try {
+        var u = await abrirUrl();
+        listo = false;
+        var nuevo = document.createElement("iframe");
+        nuevo.className = "mk-frame";
+        nuevo.title = "Prototipo navegable" + (marco ? ": " + marco : "");
+        nuevo.src = u + "#" + path;
+        if (frame) frame.replaceWith(nuevo); else { vp.innerHTML = ""; vp.appendChild(nuevo); }
+        frame = nuevo;
+        marcar(path); medir();
+      } catch (e) {
+        vp.innerHTML = "<div class='mk-loading'>Este navegador no puede abrir el prototipo incrustado. Actualícelo o ábralo en Chrome, Edge, Firefox o Safari recientes.</div>";
+      }
+      cargando = false;
+    }
+    function ir(path) {
+      if (!frame) { montar(path); return; }
+      if (listo) { frame.contentWindow.postMessage({ type: "mockup:navigate", to: path }, "*"); marcar(path); }
+      else montar(path);
+    }
+    window.addEventListener("message", function (e) {
+      if (!frame || e.source !== frame.contentWindow) return;
+      var d = e.data || {};
+      if (d.type === "mockup:ready") listo = true;
+      if (d.type === "mockup:route" && typeof d.path === "string") marcar(d.path);
+    });
+    pills.forEach(function (p) { p.addEventListener("click", function () { ir(p.getAttribute("data-route")); }); });
+    devBtns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        vista = b.getAttribute("data-device");
+        devBtns.forEach(function (x) { var on = x === b; x.classList.toggle("on", on); x.setAttribute("aria-pressed", on ? "true" : "false"); });
+        medir();
+      });
+    });
+    blk.querySelector(".mk-reset").addEventListener("click", function () { montar(ruta); });
+    blk.querySelector(".mk-full").addEventListener("click", async function () {
+      if (completa()) { (document.exitFullscreen || document.webkitExitFullscreen).call(document); return; }
+      var pedir = stage.requestFullscreen || stage.webkitRequestFullscreen;
+      if (pedir) { pedir.call(stage); return; }
+      try { window.open((await abrirUrl()) + "#" + ruta, "_blank"); } catch (e) {}
+    });
+    ["fullscreenchange", "webkitfullscreenchange"].forEach(function (ev) { document.addEventListener(ev, function () { setTimeout(medir, 50); }); });
+    window.addEventListener("resize", medir);
+    marcar(ruta);
+    /* se monta al acercarse a la sección, para no cargarlo con la portada */
+    var obs = new IntersectionObserver(function (es) {
+      if (es.some(function (e) { return e.isIntersecting; })) { obs.disconnect(); if (!frame) montar(ruta); }
+    }, { rootMargin: "300px 0px" });
+    obs.observe(blk);
+  });
+
+  /* --- selector de módulos: actualiza inversión, plan por fases y retorno --- */
+  document.querySelectorAll(".modules").forEach(function (blk) {
+    var cfg; try { cfg = JSON.parse(blk.querySelector(".modules-config").textContent); } catch (e) { return; }
+    var KEYM = "incba-modulos-" + (blk.getAttribute("data-modules-block") || "") + "-" + location.pathname;
+    var fmt = function (n) { return Number(n).toLocaleString("es-CL"); };
+    var txt = function (s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; };
+    var checks = Array.prototype.slice.call(blk.querySelectorAll(".module-check"));
+    try {
+      var guardado = JSON.parse(localStorage.getItem(KEYM) || "null");
+      if (Array.isArray(guardado)) checks.forEach(function (c) { if (!c.disabled) c.checked = guardado.indexOf(c.getAttribute("data-id")) >= 0; });
+    } catch (e) {}
+    var priceSec = cfg.targets.price ? document.getElementById(cfg.targets.price) : null;
+    var planSec = cfg.targets.timeline ? document.getElementById(cfg.targets.timeline) : null;
+    var roiSec = cfg.targets.roi ? document.getElementById(cfg.targets.roi) : null;
+    var rc = null; if (roiSec) { try { rc = JSON.parse(roiSec.querySelector(".roi-config").textContent); } catch (e) {} }
+    /* botón "comparar con la misma cobertura": marca exactamente los módulos equivalentes a la referencia */
+    var cmpBtn = roiSec ? roiSec.querySelector(".roi-compare") : null, cmpIds = rc && rc.compare ? rc.compare.modules || [] : [], cmpPrev = null;
+    var clave = function (ids) { return ids.slice().sort().join("|"); };
+    var seleccionados = function () { return checks.filter(function (c) { return c.checked; }).map(function (c) { return c.getAttribute("data-id"); }); };
+    var cmpOpts = rc && rc.compare ? rc.compare.options || [] : [], cmpPrevOpts = null;
+    var roiOpts = roiSec ? Array.prototype.slice.call(roiSec.querySelectorAll(".roi-opt-check")) : [], KEYO = KEYM + "-recurrente";
+    try { var g2 = JSON.parse(localStorage.getItem(KEYO) || "null"); if (Array.isArray(g2)) roiOpts.forEach(function (c) { c.checked = g2.indexOf(c.getAttribute("data-id")) >= 0; }); } catch (e) {}
+    var opciones = function () { return idsMarcados(roiOpts); };
+    var firma = function () { return clave(seleccionados()) + "#" + clave(opciones()); }, firmaCmp = clave(cmpIds) + "#" + clave(cmpOpts);
+    if (priceSec) {
+      var tg = priceSec.querySelector(".pay-toggle"); if (tg) tg.style.display = "none";
+      priceSec.querySelectorAll(".pay-view").forEach(function (v, k) { v.classList.toggle("active", k === 0); });
+    }
+    function elegirPlan(total) {
+      var reglas = cfg.paymentRules || [];
+      for (var i = 0; i < reglas.length; i++) { if (reglas[i].upTo == null || total <= reglas[i].upTo) return reglas[i]; }
+      return null;
+    }
+    function semanas(a, b) { return a === b ? "Semana " + a : "Semanas " + a + " a " + b; }
+    function actualizar() {
+      var sel = [], total = cfg.base.price, extra = 0, aCotizar = 0, pcts = [];
+      checks.forEach(function (c) {
+        var it = cfg.items.filter(function (m) { return m.id === c.getAttribute("data-id"); })[0];
+        var card = c.closest(".module-card"); if (card) card.classList.toggle("on", c.checked);
+        if (c.checked && it) { sel.push(it); if (it.price == null) aCotizar++; else total += it.price; extra += it.weeks || 0; }
+      });
+      var extraSem = Math.ceil(extra), semTotal = cfg.base.weeks + extraSem;
+      var n = blk.querySelector(".ms-count"), w = blk.querySelector(".ms-weeks"), l = blk.querySelector(".ms-label");
+      if (n) n.textContent = String(sel.length);
+      if (w) w.textContent = String(semTotal);
+      if (l) l.textContent = sel.length === 1 ? cfg.texts.one : cfg.texts.many;
+      if (priceSec) {
+        var num = priceSec.querySelector(".price-number"); if (num) num.textContent = fmt(total);
+        var lab = priceSec.querySelector(".price-label");
+        if (lab) {
+          if (!lab.getAttribute("data-base")) lab.setAttribute("data-base", cfg.labels.base || lab.textContent);
+          var plantilla = sel.length === 1 && cfg.labels.withModule ? cfg.labels.withModule : (cfg.labels.withModules || "");
+          if (sel.length === 1 && !cfg.labels.withModule) plantilla = plantilla.replace("módulos", "módulo");
+          lab.textContent = (sel.length && plantilla ? plantilla.replace("{n}", String(sel.length)) : lab.getAttribute("data-base")) + (aCotizar ? " (" + aCotizar + " a cotizar)" : "");
+        }
+        var per = priceSec.querySelector(".price-period");
+        if (per) {
+          if (!per.getAttribute("data-base")) per.setAttribute("data-base", per.textContent);
+          per.textContent = per.getAttribute("data-base") + (aCotizar ? " · " + aCotizar + (aCotizar === 1 ? " módulo a cotizar, sin valor todavía" : " módulos a cotizar, sin valor todavía") : "");
+        }
+        var bd = priceSec.querySelector(".price-breakdown");
+        if (bd) {
+          /* montos en columnas (signo, moneda, cifra) para que las cifras queden alineadas */
+          var monto = function (op, n) { return "<b class='amt'><em class='op'>" + op + "</em><em class='cur'>" + txt(cfg.currency) + "</em><em class='num'>" + fmt(n) + "</em></b>"; };
+          bd.innerHTML = sel.length
+            ? "<li><span>" + txt(cfg.base.label) + "</span>" + monto("", cfg.base.price) + "</li>" +
+              sel.map(function (m) { return "<li><span>" + txt(m.title) + "</span>" + (m.price == null ? "<b>" + txt(cfg.texts.quote) + "</b>" : monto("+", m.price)) + "</li>"; }).join("") +
+              "<li class='total'><span>" + txt(aCotizar ? cfg.texts.totalQuote : cfg.texts.total) + "</span>" + monto("", total) + "</li>"
+            : "";
+        }
+        var regla = elegirPlan(total);
+        if (regla) {
+          priceSec.querySelectorAll(".pay-view").forEach(function (v, k) { v.classList.toggle("active", k === (regla.plan || 0)); });
+          var head = priceSec.querySelector(".pay-head"); if (head && regla.title) head.textContent = regla.title;
+        }
+        priceSec.querySelectorAll(".pay-view.active tr[data-pct]").forEach(function (tr) {
+          var p = parseFloat(tr.getAttribute("data-pct")) || 0, amt = tr.querySelector(".m-amt");
+          pcts.push(p);
+          if (amt) amt.textContent = cfg.currency + " " + fmt(Math.round(total * p / 100));
+        });
+      }
+      if (roiSec && rc) {
+        var noSel = cfg.items.filter(function (m) { return m.price != null && sel.indexOf(m) < 0; }).map(function (m) { return m.title; });
+        pintarRoi(roiSec, rc, { total: total, baseLabel: cfg.base.label, modules: sel.map(function (m) { return m.title; }), unselected: noSel, quoteCount: aCotizar, plan: incbaRoiPlan(pcts), options: opciones() });
+        if (cmpBtn && cmpIds.length) {
+          var igual = firma() === firmaCmp;
+          cmpBtn.classList.toggle("on", igual);
+          var lbl = cmpBtn.querySelector("span"); if (lbl) lbl.textContent = cmpBtn.getAttribute(igual ? "data-label-back" : "data-label");
+          var tipTxt = igual ? (cmpBtn.getAttribute("data-tip-back") || cmpBtn.getAttribute("data-tip-on")) : cmpBtn.getAttribute("data-tip-on");
+          if (tipTxt) cmpBtn.setAttribute("data-tip", tipTxt);
+          if (!igual) { cmpPrev = null; cmpPrevOpts = null; }
+        }
+        try { localStorage.setItem(KEYO, JSON.stringify(opciones())); } catch (e) {}
+      }
+      if (planSec) {
+        var corrimiento = 0;
+        planSec.querySelectorAll(".timeline-item").forEach(function (it) {
+          var fecha = it.querySelector(".timeline-date"), ini = parseInt(it.getAttribute("data-start"), 10), fin = parseInt(it.getAttribute("data-end"), 10);
+          if (it.getAttribute("data-modules")) {
+            if (extraSem > 0 && !isNaN(ini)) {
+              it.hidden = false; if (fecha) fecha.textContent = semanas(ini, ini + extraSem - 1);
+              var d = it.querySelector(".timeline-desc"); if (d) d.textContent = sel.map(function (m) { return m.title + (m.price == null ? " (" + cfg.texts.quote.toLowerCase() + ")" : ""); }).join(" · ");
+              corrimiento = extraSem;
+            } else { it.hidden = true; }
+            return;
+          }
+          if (!isNaN(ini) && fecha) fecha.textContent = semanas(ini + corrimiento, (isNaN(fin) ? ini : fin) + corrimiento);
+        });
+        var pw = planSec.querySelector(".plan-weeks"); if (pw) pw.textContent = String(semTotal);
+      }
+      try { localStorage.setItem(KEYM, JSON.stringify(sel.map(function (m) { return m.id; }))); } catch (e) {}
+    }
+    checks.forEach(function (c) { c.addEventListener("change", actualizar); });
+    if (cmpBtn && cmpIds.length) cmpBtn.addEventListener("click", function () {
+      var igual = firma() === firmaCmp;
+      var destino = igual ? (cmpPrev || []) : cmpIds, destinoOpts = igual ? (cmpPrevOpts || []) : cmpOpts;
+      if (!igual) { cmpPrev = seleccionados(); cmpPrevOpts = opciones(); }
+      checks.forEach(function (c) { if (!c.disabled) c.checked = destino.indexOf(c.getAttribute("data-id")) >= 0; });
+      roiOpts.forEach(function (c) { c.checked = destinoOpts.indexOf(c.getAttribute("data-id")) >= 0; });
+      actualizar();
+      if (igual) { cmpPrev = null; cmpPrevOpts = null; }
+    });
+    roiOpts.forEach(function (c) { c.addEventListener("change", actualizar); });
+    actualizar();
+  });
+
+  /* --- menú lateral: barra de progreso, índice activo al desplazarse, índice móvil y volver arriba --- */
+  (function () {
+    var toc = document.getElementById("toc"); if (!toc) return;
+    var prog = document.getElementById("progress"), toTop = document.getElementById("toTop");
+    function onScroll() {
+      var h = document.documentElement, sc = h.scrollTop, max = h.scrollHeight - h.clientHeight;
+      if (prog) prog.style.width = (max > 0 ? sc / max * 100 : 0) + "%";
+      if (toTop) toTop.classList.toggle("show", sc > 600);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+    if (toTop) toTop.addEventListener("click", function () { window.scrollTo({ top: 0, behavior: "smooth" }); });
+    var links = Array.prototype.slice.call(toc.querySelectorAll("ol a")), map = {};
+    links.forEach(function (a) { map[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (l) { l.classList.remove("active"); });
+        var a = map[e.target.id]; if (a) a.classList.add("active");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+    document.querySelectorAll(".doc-main section[id]").forEach(function (s) { spy.observe(s); });
+    var scrim = document.getElementById("scrim"), btn = document.getElementById("menuBtn");
+    function cerrar() { toc.classList.remove("open"); if (scrim) scrim.classList.remove("show"); }
+    if (btn) btn.addEventListener("click", function () { toc.classList.toggle("open"); if (scrim) scrim.classList.toggle("show"); });
+    if (scrim) scrim.addEventListener("click", cerrar);
+    links.forEach(function (a) { a.addEventListener("click", function () { if (window.innerWidth <= 1024) cerrar(); }); });
+  })();
 
   /* --- diagrama ampliable --- */
   window.openDiagram = function (src) {

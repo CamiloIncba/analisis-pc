@@ -50,7 +50,7 @@
         {
           "image": "gabinete-media.jpg",
           "alt": "Gabinete Antec VCX300",
-          "title": "Gama media · $1.502.785",
+          "title": "Gama media · $1.538.875",
           "desc": "Juegos AAA actuales a más de 144 FPS en 1080p.",
           "href": "#media"
         },
@@ -316,7 +316,7 @@
       "type": "table",
       "tone": "light",
       "id": "media",
-      "tag": "Gama media · $1.502.785",
+      "tag": "Gama media · $1.538.875",
       "title": "Juegos AAA a más de 144 FPS en 1080p",
       "subtitle": "Para sostener 144 FPS en Battlefield 6 o Red Dead Redemption 2 en 1080p con calidad alta o ultra hace falta una tarjeta de la clase RX 9070 GRE y un procesador AM5 actual. La RX 9060 XT de 8 GB, un escalón más abajo, llega a 172 FPS en Doom The Dark Ages y 231 FPS en Delta Force, pero cae a 91 FPS en Expedition 33 y 52 FPS en Spider-Man 2 por falta de memoria de video. Baldur's Gate 3 depende del procesador en su acto final, por eso un Ryzen 7000 de 5,3 GHz. GTA 6 aún no tiene versión de PC ni requisitos publicados; el socket AM5 y la fuente de 750 W dejan margen para absorberlo.",
       "headers": [
@@ -334,9 +334,9 @@
         ],
         [
           "Cooler",
-          "[Thermalright Assassin X 120 Refined SE ARGB](https://www.solotodo.cl/products/158446)",
-          "$23.900",
-          "Centrale"
+          "[Deepcool AK620](https://www.solotodo.cl/products/145133) (doble torre, 2 ventiladores de 120 mm, 160 mm de alto)",
+          "$59.990",
+          "DazBog Store"
         ],
         [
           "Placa madre",
@@ -377,7 +377,7 @@
         [
           "**Total torre**",
           "",
-          "**$1.502.785**",
+          "**$1.538.875**",
           ""
         ],
         [
@@ -387,7 +387,7 @@
           "Sandos"
         ]
       ],
-      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5070 Eagle OC 12 GB](https://www.solotodo.cl/products/273016) a $899.990, total $1.712.785, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: [ASUS Dual RX 9060 XT 16 GB](https://www.solotodo.cl/products/355722) a $549.990, total $1.362.785, cerca de 20 % menos que la GRE pero con 16 GB de memoria de video. El 7600X cuesta $36.910 menos que el Ryzen 5 7600 con cooler y es más rápido; con el cooler elegido sigue siendo más barato."
+      "note": "**Alternativas.** Nvidia: [Gigabyte RTX 5070 Eagle OC 12 GB](https://www.solotodo.cl/products/273016) a $899.990, total $1.748.875, con DLSS 4 multiframe x4 y mejor path tracing. Más barata: [ASUS Dual RX 9060 XT 16 GB](https://www.solotodo.cl/products/355722) a $549.990, total $1.398.875, cerca de 20 % menos que la GRE pero con 16 GB de memoria de video. El AK620 es un cooler de doble torre: mantiene al 7600X silencioso y sirve igual para un 7800X3D o un 9850X3D si después se cambia el procesador."
     },
     {
       "type": "table",
@@ -791,14 +791,14 @@
         [
           "Total torre",
           "$796.050",
-          "$1.502.785",
+          "$1.538.875",
           "$2.587.560",
           "$7.216.865"
         ],
         [
           "Con monitor sugerido",
           "$875.950",
-          "$1.595.685",
+          "$1.631.775",
           "$2.732.550",
           "$8.116.855"
         ],
