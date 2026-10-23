@@ -315,6 +315,41 @@
     {
       "type": "table",
       "tone": "light",
+      "id": "entrada-bg3-fps",
+      "tag": "Gama de entrada · Baldur's Gate 3",
+      "title": "Baldur's Gate 3 en 1080p ultra",
+      "subtitle": "Baldur's Gate 3 se comporta distinto al resto: en los actos 1 y 2 manda la tarjeta de video y en el acto 3 (la ciudad de Baldur's Gate) manda el procesador. Ningún benchmark de esta página lo mide, así que la tabla combina mediciones publicadas por reseñas (marcadas como medido) con estimadores de FPS (marcados como estimado).",
+      "headers": [
+        "Situación",
+        "FPS esperados",
+        "Origen del dato"
+      ],
+      "rows": [
+        [
+          "Actos 1 y 2 (mundo abierto, manda la GPU)",
+          "65 a 100 FPS",
+          "Estimado; la RX 7600 medida en reseñas da cerca de 68 FPS en 1440p ultra, por eso en 1080p sube"
+        ],
+        [
+          "Acto 3 (ciudad, manda el procesador)",
+          "60 a 75 FPS, con 1 % low bajo 60 FPS",
+          "Reseñas: los Ryzen 5000 sin 3D V-Cache no sostienen los 1 % low sobre 60 FPS en la ciudad, y el 5500 es el más lento de esa familia"
+        ],
+        [
+          "60 FPS estables",
+          "Sí en los actos 1 y 2; justo en el acto 3",
+          ""
+        ],
+        [
+          "144 FPS",
+          "No",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "tone": "light",
       "id": "media",
       "tag": "Gama media · $1.538.875",
       "title": "Juegos AAA a más de 144 FPS en 1080p",
@@ -445,6 +480,41 @@
           "Doom The Dark Ages (nativo, RT, sin reescalado)",
           "76 (171 con FSR y FG)",
           "33"
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "tone": "light",
+      "id": "media-bg3-fps",
+      "tag": "Gama media · Baldur's Gate 3",
+      "title": "Baldur's Gate 3 en 1080p ultra",
+      "subtitle": "Baldur's Gate 3 se comporta distinto al resto: en los actos 1 y 2 manda la tarjeta de video y en el acto 3 (la ciudad de Baldur's Gate) manda el procesador. Ningún benchmark de esta página lo mide, así que la tabla combina mediciones publicadas por reseñas (marcadas como medido) con estimadores de FPS (marcados como estimado).",
+      "headers": [
+        "Situación",
+        "FPS esperados",
+        "Origen del dato"
+      ],
+      "rows": [
+        [
+          "Actos 1 y 2 (mundo abierto, manda la GPU)",
+          "110 a 150 FPS",
+          "Estimado para la RX 9070 GRE; las fuentes la sitúan entre 75 y 154 FPS en 1440p ultra"
+        ],
+        [
+          "Acto 3 (ciudad, manda el procesador)",
+          "Cerca de 100 FPS, 1 % low de 70 a 85 FPS",
+          "Medido: el Ryzen 5 7600X da 102 FPS en el acto 3 (1080p medio)"
+        ],
+        [
+          "60 FPS estables",
+          "Sí en todo el juego",
+          ""
+        ],
+        [
+          "144 FPS",
+          "Solo fuera de la ciudad y con FSR",
+          ""
         ]
       ]
     },
@@ -597,6 +667,41 @@
     {
       "type": "table",
       "tone": "light",
+      "id": "alta-bg3-fps",
+      "tag": "Gama alta · Baldur's Gate 3",
+      "title": "Baldur's Gate 3 en 1440p ultra",
+      "subtitle": "Baldur's Gate 3 se comporta distinto al resto: en los actos 1 y 2 manda la tarjeta de video y en el acto 3 (la ciudad de Baldur's Gate) manda el procesador. Ningún benchmark de esta página lo mide, así que la tabla combina mediciones publicadas por reseñas (marcadas como medido) con estimadores de FPS (marcados como estimado).",
+      "headers": [
+        "Situación",
+        "FPS esperados",
+        "Origen del dato"
+      ],
+      "rows": [
+        [
+          "Actos 1 y 2 (mundo abierto, manda la GPU)",
+          "85 a 110 FPS, 1 % low de 75 a 85 FPS (134 FPS en 1080p)",
+          "Reseñas de la RX 9070 XT en 1440p ultra; el valor de 1080p es estimado"
+        ],
+        [
+          "Acto 3 (ciudad, manda el procesador)",
+          "Hasta 126 FPS",
+          "Medido: el Ryzen 7 7800X3D da 126 FPS en el acto 3 (1080p medio); el 3D V-Cache entrega 24 % mejores 1 % low que un Ryzen 5000"
+        ],
+        [
+          "60 FPS estables",
+          "Sí en todo el juego, también en 1440p",
+          ""
+        ],
+        [
+          "144 FPS",
+          "Cerca en 1080p; en 1440p ultra queda entre 85 y 110 FPS",
+          ""
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "tone": "light",
       "id": "arte",
       "tag": "Lo más potente que el dinero puede comprar en Chile - Estado del arte · $7.216.865",
       "title": "4K con lo mejor que se vende en Chile",
@@ -725,6 +830,41 @@
           "",
           "",
           "86 / 139 / 157 a 170"
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "tone": "light",
+      "id": "arte-bg3-fps",
+      "tag": "Estado del arte · Baldur's Gate 3",
+      "title": "Baldur's Gate 3 en 4K ultra",
+      "subtitle": "Baldur's Gate 3 se comporta distinto al resto: en los actos 1 y 2 manda la tarjeta de video y en el acto 3 (la ciudad de Baldur's Gate) manda el procesador. Ningún benchmark de esta página lo mide, así que la tabla combina mediciones publicadas por reseñas (marcadas como medido) con estimadores de FPS (marcados como estimado).",
+      "headers": [
+        "Situación",
+        "FPS esperados",
+        "Origen del dato"
+      ],
+      "rows": [
+        [
+          "Actos 1 y 2 (mundo abierto, manda la GPU)",
+          "Cerca de 110 FPS",
+          "Estimado: la RTX 5090 rinde 1,7 veces la RX 9070 XT en la media de 15 juegos en 4K, y la 9070 XT se estima en 64 FPS en 4K ultra"
+        ],
+        [
+          "Acto 3 (ciudad, manda el procesador)",
+          "140 a 160 FPS en 1080p; en 4K la ciudad sigue limitada por el procesador",
+          "Estimado a partir del 9800X3D, que mide 38 % más que el 7600X3D (116 FPS) en el acto 3"
+        ],
+        [
+          "60 FPS estables",
+          "Sí en todo el juego, también en 4K",
+          ""
+        ],
+        [
+          "144 FPS",
+          "Sí en 1440p fuera de la ciudad; en 4K ultra, no",
+          ""
         ]
       ]
     },
